@@ -31,8 +31,8 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     LTEXT           "页面:",IDC_STATIC,7,7,20,8
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,17,73,148
-    CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,336,236,WS_EX_TRANSPARENT
-    GROUPBOX        "&Users",IDC_STATIC,307,7,116,150,0,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,356,236,WS_EX_TRANSPARENT
+    GROUPBOX        "用户(&U)",IDC_STATIC,307,7,116,150,0,WS_EX_TRANSPARENT
     LISTBOX         IDC_USERLIST,314,19,102,96,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
     PUSHBUTTON      "添加(&A)",IDC_USERADD,314,119,49,14,0,WS_EX_TRANSPARENT
     PUSHBUTTON      "删除(&R)",IDC_USERREMOVE,367,119,49,14,0,WS_EX_TRANSPARENT
@@ -53,203 +53,204 @@ BEGIN
     LTEXT           "成员组(&G):",IDC_STATIC,7,42,62,8
     COMBOBOX        IDC_GROUP,75,40,105,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "",IDC_STATIC,0,64,214,86
-    CONTROL         "忽略服务器的用户限制(&B)",IDC_MAXUSERBYPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,75,95,10
-    LTEXT           "最大连接数(&X):",IDC_STATIC,6,88,90,8
-    EDITTEXT        IDC_MAXCONNCOUNT,106,84,50,15,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "每 IP 连接数限制(&L):",IDC_STATIC,6,107,75,8
-    EDITTEXT        IDC_IPLIMIT,106,103,49,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "忽略服务器的用户限制(&B)",IDC_MAXUSERBYPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,75,150,10
+    LTEXT           "最大连接数(&X):",IDC_STATIC,6,91,90,8
+    EDITTEXT        IDC_MAXCONNCOUNT,106,87,50,15,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "每 IP 连接数限制(&L):",IDC_STATIC,6,110,75,8
+    EDITTEXT        IDC_IPLIMIT,106,106,49,14,ES_AUTOHSCROLL | ES_NUMBER
     GROUPBOX        "描述",IDC_STATIC,0,156,214,75
     EDITTEXT        IDC_USERS_GENERAL_COMMENTS,6,170,200,44,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
     LTEXT           "你可以为上面的用户输入一些备注信息",IDC_STATIC,6,218,168,8
-    CONTROL         "强制用户登录时使用 TLS(&F)",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,126,91,10
+    CONTROL         "强制用户登录时使用 TLS(&F)",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,126,150,10
 END
 
 IDD_USERS_SPEEDLIMIT DIALOG 0, 0, 306, 235
 STYLE DS_SETFONT | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg"
 BEGIN
-    GROUPBOX        "Download Speed Limit",IDC_STATIC,0,0,214,114
-    CONTROL         "Defaul&t",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,11,39,10
-    CONTROL         "No L&imit",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,7,21,41,10
-    CONTROL         "&Constant Speed Limit of",IDC_SPEEDLIMIT_DOWNLOAD3,
+    GROUPBOX        "下载速度限制",IDC_STATIC,0,0,214,114
+    CONTROL         "默认(&T)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,11,39,10
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,7,21,41,10
+    CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD3,
                     "Button",BS_AUTORADIOBUTTON,7,31,91,10
-    CONTROL         "U&se Speed Limit Rules:",IDC_SPEEDLIMIT_DOWNLOAD4,
+    CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD4,
                     "Button",BS_AUTORADIOBUTTON,7,41,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,100,30,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,33,16,8
-    CONTROL         "&Bypass server download speed limit",IDC_USERS_SPEEDLIMIT_SERVERBYPASS_DOWNLOAD,
+    CONTROL         "忽略服务器下载速度限制(&B)",IDC_USERS_SPEEDLIMIT_SERVERBYPASS_DOWNLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,14,127,10
     LISTBOX         IDC_SPEEDLIMIT_DOWNLOAD_RULES_LIST,19,54,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "&Add",IDC_SPEEDLIMIT_DOWNLOAD_ADD,171,54,35,11,WS_DISABLED
-    PUSHBUTTON      "&Remove",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,171,68,35,11,WS_DISABLED
-    PUSHBUTTON      "&Up",IDC_SPEEDLIMIT_DOWNLOAD_UP,171,82,35,11,WS_DISABLED
-    PUSHBUTTON      "D&own",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,96,35,11,WS_DISABLED
-    GROUPBOX        "Upload Speed Limit",IDC_STATIC,0,121,214,114
-    CONTROL         "De&fault",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,132,39,10
-    CONTROL         "No &Limit",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,142,41,10
-    CONTROL         "Co&nstant Speed Limit of",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,152,91,10
-    CONTROL         "Us&e Speed Limit Rules:",IDC_SPEEDLIMIT_UPLOAD4,"Button",BS_AUTORADIOBUTTON,7,162,89,10
+    PUSHBUTTON      "添加(&A)",IDC_SPEEDLIMIT_DOWNLOAD_ADD,171,54,35,11,WS_DISABLED
+    PUSHBUTTON      "删除(&R)",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,171,68,35,11,WS_DISABLED
+    PUSHBUTTON      "上移(&U)",IDC_SPEEDLIMIT_DOWNLOAD_UP,171,82,35,11,WS_DISABLED
+    PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,96,35,11,WS_DISABLED
+    GROUPBOX        "上传速度限制",IDC_STATIC,0,121,214,114
+    CONTROL         "默认(&F)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,132,39,10
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,142,41,10
+    CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,152,91,10
+    CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD4,"Button",BS_AUTORADIOBUTTON,7,162,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,100,150,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,153,16,8
-    CONTROL         "B&ypass server upload speed limit",IDC_USERS_SPEEDLIMIT_SERVERBYPASS_UPLOAD,
+    CONTROL         "忽略服务器上传速度限制(&Y)",IDC_USERS_SPEEDLIMIT_SERVERBYPASS_UPLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,135,118,10
     LISTBOX         IDC_SPEEDLIMIT_UPLOAD_RULES_LIST,19,175,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "A&dd",IDC_SPEEDLIMIT_UPLOAD_ADD,171,175,35,11,WS_DISABLED
-    PUSHBUTTON      "Re&move",IDC_SPEEDLIMIT_UPLOAD_REMOVE,171,189,35,11,WS_DISABLED
-    PUSHBUTTON      "U&p",IDC_SPEEDLIMIT_UPLOAD_UP,171,203,35,11,WS_DISABLED
-    PUSHBUTTON      "Do&wn",IDC_SPEEDLIMIT_UPLOAD_DOWN,171,217,35,11,WS_DISABLED
+    PUSHBUTTON      "添加(&D)",IDC_SPEEDLIMIT_UPLOAD_ADD,171,175,35,11,WS_DISABLED
+    PUSHBUTTON      "删除(&M)",IDC_SPEEDLIMIT_UPLOAD_REMOVE,171,189,35,11,WS_DISABLED
+    PUSHBUTTON      "上移(&P)",IDC_SPEEDLIMIT_UPLOAD_UP,171,203,35,11,WS_DISABLED
+    PUSHBUTTON      "下移(&W)",IDC_SPEEDLIMIT_UPLOAD_DOWN,171,217,35,11,WS_DISABLED
 END
 
 IDD_SPEEDLIMIT_RULE_DIALOG DIALOGEX 0, 0, 227, 140
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Criteria",IDC_STATIC,7,3,213,87
-    CONTROL         "&Date:",IDC_DATE_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,18,33,10
+    GROUPBOX        "规则",IDC_STATIC,7,3,213,87
+    CONTROL         "日期(&D):",IDC_DATE_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,18,33,10
     CONTROL         "DateTimePicker1",IDC_DATE_VALUE,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_APPCANPARSE | WS_TABSTOP,50,16,125,15
-    CONTROL         "&From:",IDC_FROM_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,39,33,10
+    CONTROL         "从(&F):",IDC_FROM_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,39,33,10
     CONTROL         "DateTimePicker2",IDC_FROM_TIME,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | DTS_APPCANPARSE | WS_TABSTOP | 0x8,50,37,55,15
-    CONTROL         "T&o:",IDC_TO_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,39,27,10
-    CONTROL         "DateTimePicker2",IDC_TO_TIME,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | DTS_APPCANPARSE | WS_TABSTOP | 0x8,145,37,55,15
-    CONTROL         "&Monday",IDC_CHECK_DAY1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,57,41,10
-    CONTROL         "&Tuesday",IDC_CHECK_DAY2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,57,43,10
-    CONTROL         "&Wednesday",IDC_CHECK_DAY3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,107,57,54,10
-    CONTROL         "T&hursday",IDC_CHECK_DAY4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,165,57,45,10
-    CONTROL         "F&riday",IDC_CHECK_DAY5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,73,35,10
-    CONTROL         "&Saturday",IDC_CHECK_DAY6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,73,44,10
-    CONTROL         "S&unday",IDC_CHECK_DAY7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,107,73,40,10
-    LTEXT           "S&peed:",IDC_STATIC,7,99,24,8
+    CONTROL         "到(&O):",IDC_TO_CHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,117,39,35,10
+    CONTROL         "DateTimePicker2",IDC_TO_TIME,"SysDateTimePick32",DTS_RIGHTALIGN | DTS_UPDOWN | DTS_APPCANPARSE | WS_TABSTOP | 0x8,155,37,55,15
+    CONTROL         "周一(&M)",IDC_CHECK_DAY1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,57,41,10
+    CONTROL         "周二(&T)",IDC_CHECK_DAY2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,57,43,10
+    CONTROL         "周三(&W)",IDC_CHECK_DAY3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,107,57,54,10
+    CONTROL         "周四(&H)",IDC_CHECK_DAY4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,165,57,45,10
+    CONTROL         "周五(&R)",IDC_CHECK_DAY5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,73,35,10
+    CONTROL         "周六(&S)",IDC_CHECK_DAY6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,61,73,44,10
+    CONTROL         "周日(&U)",IDC_CHECK_DAY7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,107,73,40,10
+    LTEXT           "速度(&P):",IDC_STATIC,7,99,24,8
     EDITTEXT        IDC_SPEED,34,96,50,14,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "kB/s",IDC_STATIC,88,99,16,8
-    DEFPUSHBUTTON   "OK",IDOK,110,119,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,170,119,50,14
+    DEFPUSHBUTTON   "确定",IDOK,110,119,50,14
+    PUSHBUTTON      "取消",IDCANCEL,170,119,50,14
 END
 
 IDD_OPTIONS_SPEEDLIMIT DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Download Speed Limit",IDC_STATIC,0,0,331,107
-    CONTROL         "No L&imit",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,11,41,10
-    CONTROL         "&Constant Speed Limit of",IDC_SPEEDLIMIT_DOWNLOAD2,
+    GROUPBOX        "下载速度限制",IDC_STATIC,0,0,331,107
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,11,41,10
+    CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD2,
                     "Button",BS_AUTORADIOBUTTON,84,11,91,10
-    CONTROL         "U&se Speed Limit Rules:",IDC_SPEEDLIMIT_DOWNLOAD3,
+    CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD3,
                     "Button",BS_AUTORADIOBUTTON,6,23,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,176,10,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,234,12,16,8
     LISTBOX         IDC_SPEEDLIMIT_DOWNLOAD_RULES_LIST,17,36,200,63,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "&Add",IDC_SPEEDLIMIT_DOWNLOAD_ADD,225,36,40,13,WS_DISABLED
-    PUSHBUTTON      "&Remove",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,225,53,40,13,WS_DISABLED
-    PUSHBUTTON      "&Up",IDC_SPEEDLIMIT_DOWNLOAD_UP,225,70,40,13,WS_DISABLED
-    PUSHBUTTON      "D&own",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,225,87,40,13,WS_DISABLED
-    GROUPBOX        "Upload Speed Limit",IDC_STATIC,0,109,331,107
-    CONTROL         "No &Limit",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,121,41,10
-    CONTROL         "Co&nstant Speed Limit of",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,84,121,91,10
-    CONTROL         "Us&e Speed Limit Rules:",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,6,132,89,10
+    PUSHBUTTON      "添加(&A)",IDC_SPEEDLIMIT_DOWNLOAD_ADD,225,36,40,13,WS_DISABLED
+    PUSHBUTTON      "删除(&R)",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,225,53,40,13,WS_DISABLED
+    PUSHBUTTON      "上移(&U)",IDC_SPEEDLIMIT_DOWNLOAD_UP,225,70,40,13,WS_DISABLED
+    PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,225,87,40,13,WS_DISABLED
+    GROUPBOX        "上传速度限制",IDC_STATIC,0,109,331,107
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,121,41,10
+    CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,84,121,91,10
+    CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,6,132,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,176,119,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,234,122,16,8
     LISTBOX         IDC_SPEEDLIMIT_UPLOAD_RULES_LIST,17,145,200,63,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "A&dd",IDC_SPEEDLIMIT_UPLOAD_ADD,225,145,40,13,WS_DISABLED
-    PUSHBUTTON      "Re&move",IDC_SPEEDLIMIT_UPLOAD_REMOVE,225,162,40,13,WS_DISABLED
-    PUSHBUTTON      "U&p",IDC_SPEEDLIMIT_UPLOAD_UP,225,179,40,13,WS_DISABLED
-    PUSHBUTTON      "Do&wn",IDC_SPEEDLIMIT_UPLOAD_DOWN,225,196,40,13,WS_DISABLED
+    PUSHBUTTON      "添加(&D)",IDC_SPEEDLIMIT_UPLOAD_ADD,225,145,40,13,WS_DISABLED
+    PUSHBUTTON      "删除(&M)",IDC_SPEEDLIMIT_UPLOAD_REMOVE,225,162,40,13,WS_DISABLED
+    PUSHBUTTON      "上移(&P)",IDC_SPEEDLIMIT_UPLOAD_UP,225,179,40,13,WS_DISABLED
+    PUSHBUTTON      "下移(&W)",IDC_SPEEDLIMIT_UPLOAD_DOWN,225,196,40,13,WS_DISABLED
 END
 
 IDD_GROUPS_SPEEDLIMIT DIALOGEX 0, 0, 306, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Download Speed Limit",IDC_STATIC,0,0,214,114
-    CONTROL         "No L&imit",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,12,41,10
-    CONTROL         "&Constant Speed Limit of",IDC_SPEEDLIMIT_DOWNLOAD2,
+    GROUPBOX        "下载速度限制",IDC_STATIC,0,0,214,114
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,12,41,10
+    CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD2,
                     "Button",BS_AUTORADIOBUTTON,7,25,91,10
-    CONTROL         "U&se Speed Limit Rules:",IDC_SPEEDLIMIT_DOWNLOAD3,
+    CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD3,
                     "Button",BS_AUTORADIOBUTTON,7,38,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,100,24,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,27,16,8
     CONTROL         "&Bypass server download speed limit",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_DOWNLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,12,127,10
     LISTBOX         IDC_SPEEDLIMIT_DOWNLOAD_RULES_LIST,19,52,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "&Add",IDC_SPEEDLIMIT_DOWNLOAD_ADD,171,52,35,11,WS_DISABLED
-    PUSHBUTTON      "&Remove",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,171,66,35,11,WS_DISABLED
-    PUSHBUTTON      "&Up",IDC_SPEEDLIMIT_DOWNLOAD_UP,171,80,35,11,WS_DISABLED
-    PUSHBUTTON      "D&own",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,94,35,11,WS_DISABLED
-    GROUPBOX        "Upload Speed Limit",IDC_STATIC,0,118,214,114
-    CONTROL         "No &Limit",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,130,41,10
-    CONTROL         "Co&nstant Speed Limit of",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,143,91,10
-    CONTROL         "Us&e Speed Limit Rules:",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,156,89,10
+    PUSHBUTTON      "添加(&A)",IDC_SPEEDLIMIT_DOWNLOAD_ADD,171,52,35,11,WS_DISABLED
+    PUSHBUTTON      "删除(&R)",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,171,66,35,11,WS_DISABLED
+    PUSHBUTTON      "上移(&U)",IDC_SPEEDLIMIT_DOWNLOAD_UP,171,80,35,11,WS_DISABLED
+    PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,94,35,11,WS_DISABLED
+    GROUPBOX        "上传速度限制",IDC_STATIC,0,118,214,114
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,130,41,10
+    CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,143,91,10
+    CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,156,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,100,141,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,144,16,8
     CONTROL         "B&ypass server upload speed limit",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_UPLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,130,118,10
     LISTBOX         IDC_SPEEDLIMIT_UPLOAD_RULES_LIST,19,170,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "A&dd",IDC_SPEEDLIMIT_UPLOAD_ADD,171,170,35,11,WS_DISABLED
-    PUSHBUTTON      "Re&move",IDC_SPEEDLIMIT_UPLOAD_REMOVE,171,184,35,11,WS_DISABLED
-    PUSHBUTTON      "U&p",IDC_SPEEDLIMIT_UPLOAD_UP,171,198,35,11,WS_DISABLED
-    PUSHBUTTON      "Do&wn",IDC_SPEEDLIMIT_UPLOAD_DOWN,171,212,35,11,WS_DISABLED
+    PUSHBUTTON      "添加(&D)",IDC_SPEEDLIMIT_UPLOAD_ADD,171,170,35,11,WS_DISABLED
+    PUSHBUTTON      "删除(&M)",IDC_SPEEDLIMIT_UPLOAD_REMOVE,171,184,35,11,WS_DISABLED
+    PUSHBUTTON      "上移(&P)",IDC_SPEEDLIMIT_UPLOAD_UP,171,198,35,11,WS_DISABLED
+    PUSHBUTTON      "下移(&W)",IDC_SPEEDLIMIT_UPLOAD_DOWN,171,212,35,11,WS_DISABLED
 END
 
 IDD_USERS_SHAREDFOLDERS DIALOGEX 0, 0, 306, 235
 STYLE DS_SETFONT | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Shared folders",IDC_STATIC,0,0,214,150
+    GROUPBOX        "共享文件夹",IDC_STATIC,0,0,214,150
     CONTROL         "",IDC_DIRS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_EDITLABELS | WS_BORDER | WS_TABSTOP,6,12,141,113
-    GROUPBOX        "Files",IDC_STATIC,152,8,55,57
-    CONTROL         "R&ead",IDC_FILES_READ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,18,33,10
-    CONTROL         "&Write",IDC_FILES_WRITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,29,33,10
-    CONTROL         "Dele&te",IDC_FILES_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,40,37,10
-    CONTROL         "Append",IDC_FILES_APPEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,51,41,10
-    GROUPBOX        "Directories",IDC_STATIC,152,68,55,57
-    CONTROL         "&Create",IDC_DIRS_CREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,79,37,10
-    CONTROL         "Delete",IDC_DIRS_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,90,37,10
-    CONTROL         "List",IDC_DIRS_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,101,27,10
-    CONTROL         "+ S&ubdirs",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
-    PUSHBUTTON      "A&dd",IDC_DIRADD,6,130,45,14
-    PUSHBUTTON      "Remo&ve",IDC_DIRREMOVE,55,130,44,14
-    PUSHBUTTON      "Rena&me",IDC_DIRRENAME,103,130,44,14
-    PUSHBUTTON      "Set as &home dir",IDC_DIRSETASHOME,152,130,55,14
-    LTEXT           "A directory alias will also appear at the specified location. Aliases must contain the full virtual path. Separate multiple aliases for one directory with the pipe character ( | )",IDC_STATIC,0,153,291,18
-    LTEXT           "If using aliases, please avoid cyclic directory structures, it will only confuse FTP clients.",IDC_STATIC,0,172,272,8
+    GROUPBOX        "文件",IDC_STATIC,152,8,55,57
+    CONTROL         "读取(&E)",IDC_FILES_READ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,18,38,10
+    CONTROL         "写入(&W)",IDC_FILES_WRITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,29,38,10
+    CONTROL         "删除(&T)",IDC_FILES_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,40,38,10
+    CONTROL         "追加",IDC_FILES_APPEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,51,38,10
+    GROUPBOX        "目录",IDC_STATIC,152,68,55,57
+    CONTROL         "创建(&C)",IDC_DIRS_CREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,79,37,10
+    CONTROL         "删除",IDC_DIRS_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,90,37,10
+    CONTROL         "列表",IDC_DIRS_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,101,27,10
+    CONTROL         "+子目录(&U)",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
+    PUSHBUTTON      "添加(&D)",IDC_DIRADD,6,130,45,14
+    PUSHBUTTON      "删除(&V)",IDC_DIRREMOVE,55,130,44,14
+    PUSHBUTTON      "重命名(&M)",IDC_DIRRENAME,103,130,44,14
+    PUSHBUTTON      "设为主目录(&H)",IDC_DIRSETASHOME,152,130,55,14
+    LTEXT           "目录别名将同样会被显示在指定的位置中。别名必须包含完整的虚拟路径。",IDC_STATIC,0,153,291,12
+    LTEXT           "你可以使用管道字符 ( | ) 来分隔一个目录的多个别名。",IDC_STATIC,0,167,291,13
+    LTEXT           "如果使用别名，那么请避免循环的目录结构，否则将会使 FTP 客户端无法正常区别。",IDC_STATIC,0,181,298,8
 END
 
 IDD_USERS_IPFILTER DIALOGEX 0, 0, 306, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "The following IP addresses are not allowed to connect to the server:",IDC_STATIC,0,0,200,19
+    LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,200,19
     EDITTEXT        IDC_USERS_IPFILTER_DISALLOWED,0,19,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Exclude the following IPs from the list of disallowed IPs, thus enabling access again:",IDC_STATIC,0,76,202,16
+    LTEXT           "允许下列 IP 地址连接到服务器(白名单):",IDC_STATIC,0,76,202,16
     EDITTEXT        IDC_USERS_IPFILTER_ALLOWED,0,96,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "If using groups, the user IP limits don't replace the group IP limits, they only extend the group limits.",IDC_STATIC,0,206,293,16
-    LTEXT           "By default everyone may connect to the server. You may either block individual IP addresses or address ranges. If you block all addresses, you may allow access for individual addresses or ranges again.",IDC_STATIC,0,178,272,24
-    LTEXT           "You can both enter individual IP addresses or address ranges in CIDR notation (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,147,204,20
+    LTEXT           "如果使用了 “组”功能，那么用户 IP 限制将不会替换组 IP 限制，它们将仅会扩展组限制。",IDC_STATIC,0,206,293,16
+    LTEXT           "默认情况下，每一个人都可以连接到该服务器。你可以禁止单个 IP 地址或整个 IP 段。如果你禁止所有地址，你也可以使用 “白名单” 来允许个别的地址或地址段访问。",IDC_STATIC,0,178,300,24
+    LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由) (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,147,204,20
 END
 
 IDD_GROUPS_IPFILTER DIALOGEX 0, 0, 306, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "The following IP addresses are not allowed to connect to the server:",IDC_STATIC,0,0,200,19
+    LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,200,19
     EDITTEXT        IDC_GROUPS_IPFILTER_DISALLOWED,0,19,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Exclude the following IPs from the list of disallowed IPs, thus enabling access again:",IDC_STATIC,0,76,202,16
+    LTEXT           "允许下列 IP 地址连接到服务器(白名单):",IDC_STATIC,0,76,202,16
     EDITTEXT        IDC_GROUPS_IPFILTER_ALLOWED,0,96,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "By default everyone may connect to the server. You may either block individual IP addresses or address ranges. If you block all addresses, you may allow access for individual addresses or ranges again.",IDC_STATIC,0,178,272,24
-    LTEXT           "You can both enter individual IP addresses or address ranges in CIDR notation (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,150,196,24
+    LTEXT           "默认情况下，每一个人都可以连接到该服务器。你可以禁止单个 IP 地址或整个 IP 段。如果你禁止所有地址，你也可以使用 “白名单” 来允许个别的地址或地址段访问。",IDC_STATIC,0,178,272,24
+    LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由) (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,150,196,24
 END
 
 IDD_DELETEGROUPINUSE DIALOGEX 0, 0, 164, 97
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Delete group which is in use"
+CAPTION "删除正在使用的组"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "There are still users using the group '%s' you want to delete.",IDC_DESC,7,7,150,18
-    CONTROL         "&Assign users to this group instead:",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,28,150,10
-    CONTROL         "&Delete affected user accounts",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,6,58,113,10
-    LTEXT           "&New group:",IDC_STATIC,19,43,38,8
+    LTEXT           "仍然有用户使用您要删除的组 '%s'，您要删除。",IDC_DESC,7,7,150,18
+    CONTROL         "将用户分配到该组中(&A):",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,28,150,10
+    CONTROL         "删除受影响的用户帐户(&D)",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,6,58,113,10
+    LTEXT           "新建组(&N):",IDC_STATIC,19,43,38,8
     COMBOBOX        IDC_NEWGROUPCOMBO,61,41,96,30,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    DEFPUSHBUTTON   "OK",IDOK,26,76,50,14
-    PUSHBUTTON      "Abbrechen",IDCANCEL,87,76,50,14
+    DEFPUSHBUTTON   "确定",IDOK,26,76,50,14
+    PUSHBUTTON      "取消",IDCANCEL,87,76,50,14
 END
 
 
@@ -387,7 +388,7 @@ BEGIN
     LTEXT           "Tim Kosse",IDC_MAIL,83,35,34,8
     LTEXT           "Homepage:",IDC_STATIC,39,49,38,8
     LTEXT           "https://filezilla-project.org",IDC_HOMEPAGE,83,49,129,8
-    DEFPUSHBUTTON   "OK",IDOK,85,64,50,14,WS_GROUP
+    DEFPUSHBUTTON   "确定",IDOK,85,64,50,14,WS_GROUP
 END
 
 IDD_GROUPS DIALOGEX 0, 0, 430, 250
@@ -395,12 +396,12 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 CAPTION "Groups"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,7,210,73,14
-    PUSHBUTTON      "Cancel",IDCANCEL,7,229,73,14
+    DEFPUSHBUTTON   "确定",IDOK,7,210,73,14
+    PUSHBUTTON      "取消",IDCANCEL,7,229,73,14
     GROUPBOX        "&Groups",IDC_STATIC,307,7,116,166,0,WS_EX_TRANSPARENT
     LISTBOX         IDC_GROUPS_GROUPLIST,314,19,102,108,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
-    PUSHBUTTON      "&Add",IDC_GROUPS_ADDGROUP,314,133,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "&Remove",IDC_GROUPS_REMOVEGROUP,367,133,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "添加(&A)",IDC_GROUPS_ADDGROUP,314,133,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "删除(&R)",IDC_GROUPS_REMOVEGROUP,367,133,49,14,0,WS_EX_TRANSPARENT
     PUSHBUTTON      "Re&name",IDC_GROUPS_RENAMEGROUP,314,151,49,14,0,WS_EX_TRANSPARENT
     PUSHBUTTON      "Cop&y",IDC_GROUPS_COPYGROUP,367,151,49,14,0,WS_EX_TRANSPARENT
     LTEXT           "Page:",IDC_STATIC,7,7,20,8
@@ -414,8 +415,8 @@ CAPTION "Title"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT1,7,87,215,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "&OK",IDOK,58,106,50,14
-    PUSHBUTTON      "&Cancel",IDCANCEL,121,106,50,14
+    DEFPUSHBUTTON   "确定(&O)",IDOK,58,106,50,14
+    PUSHBUTTON      "取消(&C)",IDCANCEL,121,106,50,14
     LTEXT           "Static",IDC_TEXT,7,7,215,69
 END
 
@@ -523,101 +524,101 @@ END
 
 IDD_CONNECT_DIALOG DIALOGEX 0, 0, 245, 147
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Enter server to administrate - FileZilla Server"
+CAPTION "连接到服务器 - FileZilla Server"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "Please enter the address and port of the FileZilla Server installation you want to administrate.",IDC_STATIC,7,7,231,18
-    LTEXT           "&Host:",IDC_STATIC,7,42,18,8
+    LTEXT           "请输入您要管理的 FileZilla Server 安装的地址和端口。",IDC_STATIC,7,7,231,18
+    LTEXT           "主机(&H):",IDC_STATIC,7,42,18,8
     EDITTEXT        IDC_CONNECTDIALOG_ADDRESS,43,40,84,14,ES_AUTOHSCROLL
-    LTEXT           "Hostname or IP address. To refer to this computer, enter localhost.",IDC_STATIC,133,35,103,25
-    LTEXT           "&Port:",IDC_STATIC,7,66,16,8
+    LTEXT           "主机名或IP地址。 要引用该计算机，请输入 localhost。",IDC_STATIC,133,35,103,25
+    LTEXT           "端口(&P):",IDC_STATIC,7,66,16,8
     EDITTEXT        IDC_CONNECTDIALOG_PORT,44,64,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Enter the administration port (14147 by default), not the FTP port.",IDC_STATIC,93,63,145,17
-    LTEXT           "Pass&word:",IDC_STATIC,7,90,46,8
+    LTEXT           "输入管理端口 (默认 14147)，不是FTP端口。",IDC_STATIC,93,63,145,17
+    LTEXT           "密码(&W):",IDC_STATIC,7,90,46,8
     EDITTEXT        IDC_CONNECTDIALOG_PASSWORD,44,88,71,14,ES_PASSWORD | ES_AUTOHSCROLL
-    CONTROL         "&Always connect to this server",IDC_CONNECTDIALOG_ALWAYS,
+    CONTROL         "总是连接到该服务器(&A)",IDC_CONNECTDIALOG_ALWAYS,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,109,108,10
-    DEFPUSHBUTTON   "&Connect",IDOK,130,126,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,188,126,50,14
+    DEFPUSHBUTTON   "连接(&C)",IDOK,130,126,50,14
+    PUSHBUTTON      "取消",IDCANCEL,188,126,50,14
 END
 
 IDD_OPTIONS_ADMININTERFACE DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "Important:",IDC_STATIC,0,0,32,8
-    LTEXT           "Due to security considerations, the admin interface settings can only be changed from local connections. If you aren't connected locally (using 127.0.0.1 as server IP), all changes on this page will be ignored by the server.",IDC_STATIC,0,12,332,25
-    LTEXT           "&Port on which the admin interface should listen:",IDC_STATIC,0,50,151,8
+    LTEXT           "重要信息:",IDC_STATIC,0,0,32,8
+    LTEXT           "出于对安全的考虑，管理界面设置仅允许使用本地连接进行更改。 如果你当前未使用本地连接 (使用 127.0.0.1 作为服务器 IP)，那么对该页的所有更改都将会被服务器忽略。",IDC_STATIC,0,12,332,25
+    LTEXT           "管理界面监听端口(&P):",IDC_STATIC,0,50,151,8
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_PORT,162,47,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "&Bind the admin interface to the following IP addresses:",IDC_STATIC,0,70,144,16
+    LTEXT           "将管理界面与下列 IP 地址绑定(&B):",IDC_STATIC,0,70,144,16
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_IPBINDINGS,0,88,144,28,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Use * to bind to all addresses.\n127.0.0.1 is the default binding, it always exists and cannot be removed.",IDC_STATIC,0,120,144,32
-    LTEXT           "&IP Addresses which are allowed to connect to the admin interface:",IDC_STATIC,188,70,144,16
+    LTEXT           "使用 * 绑定到所有地址。\n127.0.0.1 为默认绑定地址，它将永远存在并且无法被删除。",IDC_STATIC,0,120,144,32
+    LTEXT           "允许连接到管理界面的IP地址(&I):",IDC_STATIC,188,70,144,16
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_IPADDRESSES,188,88,144,28,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Localhost is always allowed to connect. You can enter additional addresses or address ranges using CIDR notation. Use * to allow all.",IDC_STATIC,188,120,144,32
-    CONTROL         "&Change admin password:",IDC_OPTIONS_ADMININTERFACE_CHANGEPASS,
+    LTEXT           "本地主机始终允许连接。你可以输入额外的单个地址或者带有 CIDR (无类别域间路由) 子网位数的地址段。使用 * 允许所有。",IDC_STATIC,188,120,144,32
+    CONTROL         "更改管理密码(&C):",IDC_OPTIONS_ADMININTERFACE_CHANGEPASS,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,168,95,10
-    LTEXT           "&New Password:",IDC_STATIC,20,183,50,8
+    LTEXT           "新密码(&N):",IDC_STATIC,20,183,50,8
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_NEWPASS,100,180,81,14,ES_PASSWORD | ES_AUTOHSCROLL
-    LTEXT           "&Retype new Password:",IDC_STATIC,20,199,74,8
+    LTEXT           "重新输入新密码(&R):",IDC_STATIC,20,199,74,8
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_NEWPASS2,100,196,81,14,ES_PASSWORD | ES_AUTOHSCROLL
-    LTEXT           "Minimum password length is 6 characters. Leave empty to remove password.",IDC_STATIC,0,218,247,8
-    LTEXT           "A password is required for remote administration to work.",IDC_STATIC,0,227,332,9
+    LTEXT           "最小密码长度为6位，留空则表示删除密码。",IDC_STATIC,0,218,247,8
+    LTEXT           "如果需要使用远程管理，必须设置一个密码。",IDC_STATIC,0,227,332,9
 END
 
 IDD_OPTIONS_LOGGING DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    CONTROL         "&Enable logging to file",IDC_OPTIONS_LOGGING_ENABLE,
+    CONTROL         "记录日志到文件(&E)",IDC_OPTIONS_LOGGING_ENABLE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,81,10
-    CONTROL         "&Limit log file size to",IDC_OPTIONS_LOGGING_LIMIT,
+    CONTROL         "限制日志文件大小为(&L):",IDC_OPTIONS_LOGGING_LIMIT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,15,74,10
     EDITTEXT        IDC_OPTIONS_LOGGING_LIMITSIZE,73,13,40,14,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "KB",IDC_STATIC,116,16,10,8
-    LTEXT           "Logfile type:",IDC_STATIC,0,32,98,8
-    CONTROL         "Log &all to 'FileZilla Server.log'",IDC_OPTIONS_LOGGING_LOGTYPE,
-                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,0,43,107,10
-    CONTROL         "&Use a different logfile each day (example: fzs-2003-02-10.log)",IDC_OPTIONS_LOGGING_LOGTYPE2,
-                    "Button",BS_AUTORADIOBUTTON,0,55,216,10
-    CONTROL         "&Delete old logfiles after",IDC_OPTIONS_LOGGING_DELETE,
+    LTEXT           "日志文件保存方式:",IDC_STATIC,0,32,98,8
+    CONTROL         "将所有的日志保存到 'FileZilla Server.log' 中(&A)",IDC_OPTIONS_LOGGING_LOGTYPE,
+                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,0,43,167,10
+    CONTROL         "每天使用一个不同的文件来保存日志(&U) (例如: fzs-2003-02-10.log)",IDC_OPTIONS_LOGGING_LOGTYPE2,
+                    "Button",BS_AUTORADIOBUTTON,0,55,256,10
+    CONTROL         "删除(&D)",IDC_OPTIONS_LOGGING_DELETE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,68,87,10
-    EDITTEXT        IDC_OPTIONS_LOGGING_DELETETIME,98,66,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "days",IDC_STATIC,141,68,16,8
-    LTEXT           "All log files will be saved in the ""Logs"" subfolder in the FileZilla Server folder.",IDC_STATIC,0,82,247,8
+    EDITTEXT        IDC_OPTIONS_LOGGING_DELETETIME,52,66,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "天前的日志文件",IDC_STATIC,95,68,62,8
+    LTEXT           "所有的日志文件都将会被保存到 ""FileZilla Server"" 目录下的 ""Logs"" 子目录中。",IDC_STATIC,0,82,280,8
 END
 
 IDD_NEWUSER DIALOG 0, 0, 186, 102
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Add user account"
+CAPTION "添加用户账户"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Please enter the &name of the user account that should be added:",IDC_STATIC,7,7,172,21
+    LTEXT           "请输入将要被添加的用户帐户的名称(&N):",IDC_STATIC,7,7,172,21
     EDITTEXT        IDC_NEWUSER_NAME,7,28,172,14,ES_AUTOHSCROLL
-    LTEXT           "User should be member of the following &group:",IDC_STATIC,7,50,146,8
+    LTEXT           "该用户为下列组的成员(&G):",IDC_STATIC,7,50,146,8
     COMBOBOX        IDC_NEWUSER_GROUP,7,61,172,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
-    DEFPUSHBUTTON   "&OK",IDOK,36,81,50,14
-    PUSHBUTTON      "&Cancel",IDCANCEL,99,81,50,14
+    DEFPUSHBUTTON   "确定(&O)",IDOK,36,81,50,14
+    PUSHBUTTON      "取消(&C)",IDCANCEL,99,81,50,14
 END
 
 IDD_GROUPS_GENERAL DIALOGEX 0, 0, 306, 250
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Group Settings",IDC_STATIC,0,0,214,30
-    CONTROL         "Enable access for users inside group.",IDC_GROUPS_GENERAL_ENABLE,
+    GROUPBOX        "用户组设置",IDC_STATIC,0,0,214,30
+    CONTROL         "允许组内用户进行访问",IDC_GROUPS_GENERAL_ENABLE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,12,133,10
-    GROUPBOX        "Description",IDC_STATIC,0,150,214,75
+    GROUPBOX        "描述",IDC_STATIC,0,150,214,75
     EDITTEXT        IDC_GROUPS_GENERAL_COMMENTS,6,164,200,44,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "You can enter some comments about the group above",IDC_STATIC,6,212,172,8
-    GROUPBOX        "Connection settings",IDC_STATIC,0,41,214,96
-    LTEXT           "Ma&ximum connection count:",IDC_STATIC,6,69,90,8
+    LTEXT           "你可以为上面的组输入一些备注信息",IDC_STATIC,6,212,172,8
+    GROUPBOX        "连接设置",IDC_STATIC,0,41,214,96
+    LTEXT           "最大连接数(&X):",IDC_STATIC,6,69,90,8
     EDITTEXT        IDC_GROUPS_MAXCONNCOUNT,106,65,36,15,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Connection &limit per IP:",IDC_STATIC,6,88,75,8
+    LTEXT           "每 IP 连接数限制(&L):",IDC_STATIC,6,88,75,8
     EDITTEXT        IDC_GROUPS_IPLIMIT,106,84,36,14,ES_AUTOHSCROLL | ES_NUMBER
-    CONTROL         "&Bypass userlimit of server",IDC_GROUPS_MAXUSERBYPASS,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,53,95,10
-    CONTROL         "&Force TLS for user login",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,106,91,10
+    CONTROL         "忽略服务器的用户限制(&B)",IDC_GROUPS_MAXUSERBYPASS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,53,132,10
+    CONTROL         "强制用户登录时使用 TLS(&F)",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,106,132,10
 END
 
 IDD_OPTIONS_PASV DIALOGEX 0, 0, 332, 246
@@ -693,7 +694,7 @@ BEGIN
     CONTROL         "创建(&C)",IDC_DIRS_CREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,79,37,10
     CONTROL         "删除",IDC_DIRS_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,90,37,10
     CONTROL         "列表",IDC_DIRS_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,101,27,10
-    CONTROL         "+ 子目录(&U)",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
+    CONTROL         "+子目录(&U)",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
     CONTROL         "自动创建",IDC_GROUPS_AUTOCREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,156,130,51,10
     PUSHBUTTON      "添加(&D)",IDC_DIRADD,6,145,45,14
     PUSHBUTTON      "删除(&V)",IDC_DIRREMOVE,55,145,44,14
@@ -710,9 +711,9 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,331,8
     EDITTEXT        IDC_OPTIONS_IPFILTER_DISALLOWED,0,11,332,65,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Exclude the following IPs from the list of disallowed IPs, thus allow access again:",IDC_STATIC,0,88,332,8
+    LTEXT           "允许下列 IP 地址连接到服务器(白名单):",IDC_STATIC,0,88,332,8
     EDITTEXT        IDC_OPTIONS_IPFILTER_ALLOWED,0,101,332,65,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "默认情况下, 每一个人都可以连接到该服务器. 你可以禁止单个 IP 地址或整个 IP 段. 如果你禁止所有地址, you may allow access for individual addresses or ranges again.",IDC_STATIC,0,180,332,24
+    LTEXT           "默认情况下，每一个人都可以连接到该服务器。你可以禁止单个 IP 地址或整个 IP 段。如果你禁止所有地址，你也可以使用 ""白名单"" 来允许个别的地址或地址段访问。",IDC_STATIC,0,180,332,24
     LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由选择)子网位数的地址段 (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,214,332,18
 END
 
@@ -765,8 +766,8 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     ICON            IDI_CERT,IDC_STATIC,10,9,20,20
-    LTEXT           "该对话框将会帮你创建一个用于让 FileZilla Server 接受 TLS 连接的新私钥以及一个自签证书.",IDC_STATIC,38,7,212,25
-    LTEXT           "请填写下列必要的信息. 错误的或者不完整的信息将会影响客户端的正常识别.",IDC_STATIC,7,32,243,16
+    LTEXT           "该对话框将会帮你创建一个用于让 FileZilla Server 接受 TLS 连接的新私钥以及一个自签证书。",IDC_STATIC,38,7,212,25
+    LTEXT           "请填写下列必要的信息。错误的或者不完整的信息将会影响客户端的正常识别。",IDC_STATIC,7,32,243,16
     LTEXT           "密钥大小(&K):",IDC_STATIC,7,51,30,8
     CONTROL         "1280 位",IDC_KEYSIZE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,43,51,45,10
     CONTROL         "2048 位",IDC_KEYSIZE2,"Button",BS_AUTORADIOBUTTON,103,51,42,10
@@ -797,17 +798,17 @@ IDD_OPTIONS_AUTOBAN DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "默认情况下, FileZilla Server 会在某个客户端多次登录失败后自动禁止该客户端的入站连接. 这样做将能有效的防止其他用户恶意入侵到服务器中.",IDC_STATIC,0,0,332,16
-    LTEXT           "如果你仍然感觉不安全, 那么你可以通过启用自动禁止功能来禁止多次登录失败的客户端连接. 但是, 需要提醒你的是, 自动禁止功能可能会导致你的服务器受到拒绝服务攻击, 所有请小心使用该功能.",IDC_STATIC,0,37,332,24
-    LTEXT           "不过, 合法的用户将仍然可以在任何时候登录到服务器中.",IDC_STATIC,0,22,214,8
+    LTEXT           "默认情况下，FileZilla Server 会在某个客户端多次登录失败后自动禁止该客户端的入站连接。这样做将能有效的防止其他用户恶意入侵到服务器中。",IDC_STATIC,0,0,320,16
+    LTEXT           "如果你仍然感觉不安全，那么你可以通过启用自动禁止功能来禁止多次登录失败的客户端连接。但是，需要提醒你的是，自动禁止功能可能会导致你的服务器受到拒绝服务攻击，所有请小心使用该功能。",IDC_STATIC,0,37,332,24
+    LTEXT           "不过，合法的用户将仍然可以在任何时候登录到服务器中。",IDC_STATIC,0,22,214,8
     CONTROL         "启用自动禁止(&E)",IDC_AUTOBAN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,67,88,10
-    LTEXT           "&Ban IP address after",IDC_STATIC,10,82,67,8
+    LTEXT           "禁止在一小时内登录失败(&B)",IDC_STATIC,10,82,67,8
     EDITTEXT        ID_ATTEMPTS,78,80,33,14,ES_AUTOHSCROLL
-    LTEXT           "failed attempts within one hour (最小值. 10).",IDC_STATIC,115,82,152,8
+    LTEXT           "次的 IP 地址 (最小值: 10)",IDC_STATIC,115,82,152,8
     CONTROL         "Ban &for",IDC_BANTYPE1,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_GROUP,8,119,39,10
     CONTROL         "永久禁止(&P)",IDC_BANTYPE2,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,8,134,70,10
     EDITTEXT        ID_BANTIME,37,100,33,14,ES_AUTOHSCROLL
-    LTEXT           "小时 (1-999).",IDC_STATIC,74,103,48,8
+    LTEXT           "小时 (1-999)",IDC_STATIC,74,103,48,8
     LTEXT           "禁止",IDC_STATIC,10,103,24,8
 END
 
@@ -1349,7 +1350,7 @@ BEGIN
     CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME,117,21,332,246
     LTEXT           "",IDC_CAPTION_BAR,117,5,332,12,SS_CENTERIMAGE
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,4,5,107,203
-    PUSHBUTTON      "Help",IDC_PHELP,11,218,73,14,NOT WS_VISIBLE | WS_DISABLED
+    PUSHBUTTON      "帮助",IDC_PHELP,11,218,73,14,NOT WS_VISIBLE | WS_DISABLED
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME,4,214,108,53
 END
 
