@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -221,20 +221,20 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 
 	if (!bInstalled) {
-		if (nAction == 1 || nAction == 5 || (nAction == 0 && MessageBox(0, _T("Install Service?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES)) {
+		if (nAction == 1 || nAction == 5 || (nAction == 0 && MessageBox(0, _T("安装服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES)) {
 			Scm scm(SC_MANAGER_CREATE_SERVICE);
 			if (!scm) {
 				return 1;
 			}
 			int nStartMode = (nAction==5)?SERVICE_AUTO_START:SERVICE_DEMAND_START;
 			if (!nAction)
-				if (MessageBox(0, _T("Autostart service?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES)
+				if (MessageBox(0, _T("自动启动服务?"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES)
 					nStartMode = SERVICE_AUTO_START;
 			TCHAR buffer[MAX_PATH + 3];
 			buffer[0] = '"';
 			DWORD written = GetModuleFileName(0, buffer + 1, MAX_PATH);
 			if (!written) {
-				MessageBox(0, _T("Failed to get own executable path"), _T("Could not install server"), MB_ICONSTOP);
+				MessageBox(0, _T("Failed to get own executable path"), _T("无法安装服务"), MB_ICONSTOP);
 				return 1;
 			}
 			buffer[written + 1] = '"';
@@ -256,7 +256,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 			return 0;
 	}
 
-	if (dwCurrentState == SERVICE_STOPPED && (nAction==3 || (nAction == 0 && MessageBox(0, _T("Start server?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState == SERVICE_STOPPED && (nAction==3 || (nAction == 0 && MessageBox(0, _T("启动服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_ALL_ACCESS);
 		if (!scm) {
@@ -271,7 +271,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
-	if (dwCurrentState == SERVICE_STOPPED && (nAction==2 || (nAction == 0 && MessageBox(0, _T("Uninstall Service?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState == SERVICE_STOPPED && (nAction==2 || (nAction == 0 && MessageBox(0, _T("卸载服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_CREATE_SERVICE);
 		if (!scm) {
@@ -286,7 +286,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
-	if (dwCurrentState != SERVICE_STOPPED && (nAction==4 || (nAction == 0 && MessageBox(0, _T("Stop Server?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState != SERVICE_STOPPED && (nAction==4 || (nAction == 0 && MessageBox(0, _T("停止服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_ALL_ACCESS);
 		if (!scm) {

@@ -3,6 +3,7 @@
 // Used by FileZilla server.rc
 //
 #define IDR_MAINFRAME                   10
+#define IDR_RT_MANIFEST                 1
 
 // Next default values for new objects
 // 

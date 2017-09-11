@@ -144,7 +144,7 @@ CString COptions::GetOption(int nOptionID)
 	switch (nOptionID)
 	{
 	case IOPTION_LASTSERVERADDRESS:
-		m_OptionsCache[nOptionID - 1].str = _T("localhost");
+		m_OptionsCache[nOptionID - 1].str = _T("127.0.0.1");
 		break;
 	default:
 		m_OptionsCache[nOptionID - 1].str = "";
@@ -186,10 +186,16 @@ CString COptions::GetFileName(bool for_saving)
 	PWSTR str = 0;
 	if (SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, 0, &str) == S_OK && str && *str) {
 		CString path = str;
-		path += _T("\\FileZilla Server\\");
+		// path += _T("\\FileZilla Server\\");
+
+		TCHAR buffer[MAX_PATH + 1000]; //Make it large enough
+		GetModuleFileName(0, buffer, MAX_PATH);
+		LPTSTR pos = _tcsrchr(buffer, '\\');
+		if (pos) *++pos = 0;
+		path = buffer;
 
 		if (for_saving) {
-			CreateDirectory(path, 0);
+			// CreateDirectory(path, 0);
 		}
 		path += _T("FileZilla Server Interface.xml");
 		

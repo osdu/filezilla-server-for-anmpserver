@@ -278,6 +278,9 @@ GOTO:EOF
   <ItemGroup>
     <Image Include="res\FileZilla server.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="res\manifest.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
