@@ -1,4 +1,4 @@
-// Microsoft Visual C++ generated resource script.
+﻿// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -26,42 +26,42 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 
 IDD_USERS DIALOGEX 0, 0, 430, 250
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Users"
+CAPTION "用户"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT           "Page:",IDC_STATIC,7,7,20,8
+    LTEXT           "页面:",IDC_STATIC,7,7,20,8
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,17,73,148
     CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,336,236,WS_EX_TRANSPARENT
     GROUPBOX        "&Users",IDC_STATIC,307,7,116,150,0,WS_EX_TRANSPARENT
     LISTBOX         IDC_USERLIST,314,19,102,96,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
-    PUSHBUTTON      "&Add",IDC_USERADD,314,119,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "&Remove",IDC_USERREMOVE,367,119,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "Re&name",IDC_USERRENAME,314,137,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "Cop&y",IDC_USERCOPY,367,137,49,14,0,WS_EX_TRANSPARENT
-    DEFPUSHBUTTON   "OK",IDOK,7,210,73,14
-    PUSHBUTTON      "Cancel",IDCANCEL,7,229,73,14
+    PUSHBUTTON      "添加(&A)",IDC_USERADD,314,119,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "删除(&R)",IDC_USERREMOVE,367,119,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "重命名(&N)",IDC_USERRENAME,314,137,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "复制(&Y)",IDC_USERCOPY,367,137,49,14,0,WS_EX_TRANSPARENT
+    DEFPUSHBUTTON   "确定",IDOK,7,210,73,14
+    PUSHBUTTON      "取消",IDCANCEL,7,229,73,14
 END
 
 IDD_USERS_GENERAL DIALOGEX 0, 0, 306, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Account settings",IDC_STATIC,0,0,214,58
-    CONTROL         "&Enable account",IDC_USERS_GENERAL_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,11,66,10
-    CONTROL         "&Password:",IDC_NEEDPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,24,49,10
+    GROUPBOX        "账户设置",IDC_STATIC,0,0,214,58
+    CONTROL         "启用账户(&E)",IDC_USERS_GENERAL_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,11,66,10
+    CONTROL         "密码(&P):",IDC_NEEDPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,24,49,10
     EDITTEXT        IDC_PASS,75,21,105,14,ES_PASSWORD | ES_AUTOHSCROLL
-    LTEXT           "&Group membership:",IDC_STATIC,7,42,62,8
+    LTEXT           "成员组(&G):",IDC_STATIC,7,42,62,8
     COMBOBOX        IDC_GROUP,75,40,105,89,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "",IDC_STATIC,0,64,214,86
-    CONTROL         "&Bypass userlimit of server",IDC_MAXUSERBYPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,75,95,10
-    LTEXT           "Ma&ximum connection count:",IDC_STATIC,6,88,90,8
+    CONTROL         "忽略服务器的用户限制(&B)",IDC_MAXUSERBYPASS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,75,95,10
+    LTEXT           "最大连接数(&X):",IDC_STATIC,6,88,90,8
     EDITTEXT        IDC_MAXCONNCOUNT,106,84,50,15,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Connection &limit per IP:",IDC_STATIC,6,107,75,8
+    LTEXT           "每 IP 连接数限制(&L):",IDC_STATIC,6,107,75,8
     EDITTEXT        IDC_IPLIMIT,106,103,49,14,ES_AUTOHSCROLL | ES_NUMBER
-    GROUPBOX        "Description",IDC_STATIC,0,156,214,75
+    GROUPBOX        "描述",IDC_STATIC,0,156,214,75
     EDITTEXT        IDC_USERS_GENERAL_COMMENTS,6,170,200,44,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "You can enter some comments about the user above",IDC_STATIC,6,218,168,8
-    CONTROL         "&Force TLS for user login",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,126,91,10
+    LTEXT           "你可以为上面的用户输入一些备注信息",IDC_STATIC,6,218,168,8
+    CONTROL         "强制用户登录时使用 TLS(&F)",IDC_FORCESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,126,91,10
 END
 
 IDD_USERS_SPEEDLIMIT DIALOG 0, 0, 306, 235
@@ -386,7 +386,7 @@ BEGIN
     LTEXT           "Written by:",IDC_STATIC,39,35,38,8
     LTEXT           "Tim Kosse",IDC_MAIL,83,35,34,8
     LTEXT           "Homepage:",IDC_STATIC,39,49,38,8
-    LTEXT           "https://filezilla-project.org/",IDC_HOMEPAGE,83,49,129,8
+    LTEXT           "https://filezilla-project.org",IDC_HOMEPAGE,83,49,129,8
     DEFPUSHBUTTON   "OK",IDOK,85,64,50,14,WS_GROUP
 END
 
@@ -624,7 +624,7 @@ IDD_OPTIONS_PASV DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "Use custom &port range:",IDD_OPTIONS_PASV_USEPORTRANGE,
+    CONTROL         "使用自定义端口范围(&P):",IDD_OPTIONS_PASV_USEPORTRANGE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,1,89,10
     EDITTEXT        IDC_OPTIONS_PASV_PORTMIN,98,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
     CTEXT           "-",IDC_STATIC,130,1,8,8
@@ -633,18 +633,18 @@ BEGIN
     GROUPBOX        "IPv4 specific",IDC_STATIC,0,17,331,229
     LTEXT           "External Server &IP Address for passive mode transfers:",IDC_STATIC,6,30,125,19
     CONTROL         "&Default",IDC_OPTIONS_PASV_IPTYPE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,48,39,10
-    CONTROL         "&Use the following IP:",IDC_OPTIONS_PASV_IPTYPE2,"Button",BS_AUTORADIOBUTTON,6,62,81,10
-    CONTROL         "&Retrieve external IP address from:",IDC_OPTIONS_PASV_IPTYPE3,
+    CONTROL         "使用下列 IP(&U):",IDC_OPTIONS_PASV_IPTYPE2,"Button",BS_AUTORADIOBUTTON,6,62,81,10
+    CONTROL         "在下列位置中检索外部 IP 地址(&R):",IDC_OPTIONS_PASV_IPTYPE3,
                     "Button",BS_AUTORADIOBUTTON,6,101,122,10
     EDITTEXT        IDC_OPTIONS_PASV_IP,16,73,129,14,ES_AUTOHSCROLL | WS_GROUP
-    LTEXT           "You can also enter hostnames",IDC_STATIC,17,88,131,8
+    LTEXT           "你同样也可以输入主机名称",IDC_STATIC,17,88,131,8
     EDITTEXT        IDC_OPTIONS_PASV_URL,16,114,129,14,ES_AUTOHSCROLL
     LTEXT           "(Default: http://ip.filezilla-project.org/ip.php)",IDC_STATIC,17,129,150,8
     EDITTEXT        IDC_OPTIONS_PASV_TEXT,167,30,157,105,ES_MULTILINE | ES_READONLY | NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
     LTEXT           "Information for users with dynamic IPs: If your external IP changes, it might take up to 5 minutes after the next failed transfer until FileZilla Server recognizes the changed IP.\nIn most cases, the IP is updated within 30s after a failed transfer.",IDC_STATIC,6,157,318,33
     CONTROL         "D&on't use external IP for local connections",IDC_OPTIONS_PASV_NOLOCAL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,192,326,10
-    LTEXT           "https://ftptest.net/",IDC_FTPTEST,6,232,115,8
+    LTEXT           "https://ftptest.net",IDC_FTPTEST,6,232,115,8
     LTEXT           "You can use this site to test that your settings work correctly:",IDC_STATIC,6,222,235,8
 END
 
@@ -652,30 +652,30 @@ IDD_OPTIONS_COMPRESSION DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT           "Using the MODE Z ftp protocol extension it is possible to use compressed file transfers.",IDC_STATIC,0,0,332,16
-    CONTROL         "Enable MODE Z support",IDC_OPTIONS_COMPRESSION_USE,
+    LTEXT           "使用 MODE Z FTP 协议扩展将可以对文件进行压缩传输.",IDC_STATIC,0,0,332,16
+    CONTROL         "启用 MODE Z 支持",IDC_OPTIONS_COMPRESSION_USE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,14,93,10
-    LTEXT           "Minimum allowed compression level (1- 8):",IDC_STATIC,0,31,134,8
+    LTEXT           "允许的最小压缩等级 (1- 8):",IDC_STATIC,0,31,134,8
     EDITTEXT        IDC_OPTIONS_COMPRESSION_LEVELMIN,137,28,15,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "Maximum allowed compression level (8-9):",IDC_STATIC,0,48,135,8
+    LTEXT           "允许的最大压缩等级 (8-9):",IDC_STATIC,0,48,135,8
     EDITTEXT        IDC_OPTIONS_COMPRESSION_LEVELMAX,137,46,15,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "To conserve CPU power, MODE Z should not be used inside local networks.",IDC_STATIC,0,68,242,8
-    CONTROL         "Exclude private IP address ranges",IDC_OPTIONS_EXCLUDELOCAL,
+    LTEXT           "为了能够节约 CPU 资源, 建议不要在本地网络中使用 MODE Z.",IDC_STATIC,0,68,242,8
+    CONTROL         "排除私有 IP 地址段",IDC_OPTIONS_EXCLUDELOCAL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,78,123,10
-    LTEXT           "Don't use MODE Z for the following IP addresses:",IDC_STATIC,0,99,179,8
+    LTEXT           "对于下列 IP 地址不使用 MODE Z:",IDC_STATIC,0,99,179,8
     EDITTEXT        IDC_OPTIONS_COMPRESSION_DISALLOWED_IPS,0,110,332,68,ES_MULTILINE | ES_AUTOHSCROLL | WS_VSCROLL
-    LTEXT           "You can also enter IPs with wildcards, IP address ranges or use the IP/subnet syntax.",IDC_STATIC,0,180,332,8
-    LTEXT           "For details about the compression method, please read http://filezilla-project.org/specs/draft-preston-ftpext-deflate-04.txt",IDC_STATIC,0,228,332,18
-    LTEXT           "You can also enter regular expressions (enclosed in slashes) to filter hostnames.",IDC_STATIC,0,190,332,8
+    LTEXT           "你可以输入包含通配符的 IP 地址, IP 地址段或者使用 IP/子网 语法.",IDC_STATIC,0,180,332,8
+    LTEXT           "关于压缩功能的详细信息, 请查阅 http://filezilla-project.org/specs/draft-preston-ftpext-deflate-04.txt",IDC_STATIC,0,228,332,18
+    LTEXT           "你也可以通过输入正则表达式 (enclosed in slashes) 来过滤主机名称.",IDC_STATIC,0,190,332,8
 END
 
 IDD_OPTIONS_GENERAL_IPBINDINGS DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    LTEXT           "&Bind the server to the following IP addresses:",IDC_STATIC,0,0,231,16
+    LTEXT           "将服务器与下列 IP 地址进行绑定(&B):",IDC_STATIC,0,0,231,16
     EDITTEXT        IDC_OPTIONS_GENERAL_IPBINDUNGS_IPBINDINGS,0,11,332,59,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "Use * to bind to all addresses.",IDC_STATIC,0,74,94,8
+    LTEXT           "使用 * 号绑定到所有地址.",IDC_STATIC,0,74,94,8
 END
 
 IDD_GROUPS_SHAREDFOLDERS DIALOGEX 0, 0, 306, 241
@@ -684,36 +684,36 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     GROUPBOX        "",IDC_STATIC,0,0,214,166
     CONTROL         "List3",IDC_DIRS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_EDITLABELS | WS_BORDER | WS_TABSTOP,6,12,141,126
-    GROUPBOX        "Files",IDC_STATIC,152,8,55,57
-    CONTROL         "R&ead",IDC_FILES_READ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,18,33,10
-    CONTROL         "&Write",IDC_FILES_WRITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,29,33,10
-    CONTROL         "Dele&te",IDC_FILES_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,40,37,10
-    CONTROL         "A&ppend",IDC_FILES_APPEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,51,41,10
-    GROUPBOX        "Directories",IDC_STATIC,152,68,55,57
-    CONTROL         "&Create",IDC_DIRS_CREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,79,37,10
-    CONTROL         "Delete",IDC_DIRS_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,90,37,10
-    CONTROL         "List",IDC_DIRS_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,101,27,10
-    CONTROL         "+ S&ubdirs",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
-    CONTROL         "Autocreate",IDC_GROUPS_AUTOCREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,156,130,51,10
-    PUSHBUTTON      "A&dd",IDC_DIRADD,6,145,45,14
-    PUSHBUTTON      "Remo&ve",IDC_DIRREMOVE,55,145,44,14
-    PUSHBUTTON      "Rena&me",IDC_DIRRENAME,104,145,44,14
-    PUSHBUTTON      "Set as &home dir",IDC_DIRSETASHOME,152,145,55,14
-    LTEXT           "You can use :u in foldernames as a placeholder for the username.",IDC_STATIC,0,169,207,8
-    LTEXT           "If specified an alias for a directory, it will also appear at that location. Aliases must contain the full virtual path. Separate multiple aliases with the pipe character ( | )",IDC_STATIC,0,178,291,18
-    LTEXT           "If using aliases, please avoid cyclic directory structures, it will only confuse FTP clients.",IDC_STATIC,0,196,272,8
+    GROUPBOX        "文件",IDC_STATIC,152,8,55,57
+    CONTROL         "读取(&E)",IDC_FILES_READ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,18,33,10
+    CONTROL         "写入(&W)",IDC_FILES_WRITE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,29,33,10
+    CONTROL         "删除(&T)",IDC_FILES_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,40,37,10
+    CONTROL         "追加(&P)",IDC_FILES_APPEND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,51,41,10
+    GROUPBOX        "目录",IDC_STATIC,152,68,55,57
+    CONTROL         "创建(&C)",IDC_DIRS_CREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,79,37,10
+    CONTROL         "删除",IDC_DIRS_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,90,37,10
+    CONTROL         "列表",IDC_DIRS_LIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,101,27,10
+    CONTROL         "+ 子目录(&U)",IDC_DIRS_SUBDIRS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,158,112,45,10
+    CONTROL         "自动创建",IDC_GROUPS_AUTOCREATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,156,130,51,10
+    PUSHBUTTON      "添加(&D)",IDC_DIRADD,6,145,45,14
+    PUSHBUTTON      "删除(&V)",IDC_DIRREMOVE,55,145,44,14
+    PUSHBUTTON      "重命名(&M)",IDC_DIRRENAME,104,145,44,14
+    PUSHBUTTON      "设为主目录(&H)",IDC_DIRSETASHOME,152,145,55,14
+    LTEXT           "你可以在文件夹名称中使用 :u 作为用户名的占位符.",IDC_STATIC,0,169,207,8
+    LTEXT           "如果为一个目录指定了一个别名, 那么它将同样会被显示在指定的位置中. 别名必须包含完整的逻辑路径. 你可以使用符号 ( | ) 来分隔一个目录的多个别名",IDC_STATIC,0,178,291,18
+    LTEXT           "如果使用别名, 那么请避免循环的目录结构, 如果那样将会使 FTP 客户端无法正常区别.",IDC_STATIC,0,196,272,8
 END
 
 IDD_OPTIONS_IPFILTER DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "The following IP addresses are not allowed to connect to the server:",IDC_STATIC,0,0,331,8
+    LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,331,8
     EDITTEXT        IDC_OPTIONS_IPFILTER_DISALLOWED,0,11,332,65,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
     LTEXT           "Exclude the following IPs from the list of disallowed IPs, thus allow access again:",IDC_STATIC,0,88,332,8
     EDITTEXT        IDC_OPTIONS_IPFILTER_ALLOWED,0,101,332,65,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "By default everyone may connect to the server. You may either block individual IP addresses or address ranges. If you block all addresses, you may allow access for individual addresses or ranges again.",IDC_STATIC,0,180,332,24
-    LTEXT           "You can both enter individual IP addresses or address ranges in CIDR notation (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,214,332,18
+    LTEXT           "默认情况下, 每一个人都可以连接到该服务器. 你可以禁止单个 IP 地址或整个 IP 段. 如果你禁止所有地址, you may allow access for individual addresses or ranges again.",IDC_STATIC,0,180,332,24
+    LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由选择)子网位数的地址段 (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,214,332,18
 END
 
 IDD_ENTERSOMETHING DIALOGEX 0, 0, 207, 74
@@ -722,8 +722,8 @@ CAPTION "Title"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT1,7,35,193,14,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "&OK",IDOK,47,53,50,14
-    PUSHBUTTON      "&Cancel",IDCANCEL,110,53,50,14
+    DEFPUSHBUTTON   "确定(&O)",IDOK,47,53,50,14
+    PUSHBUTTON      "取消(&C)",IDCANCEL,110,53,50,14
     LTEXT           "Static",IDC_TEXT,7,7,193,25
 END
 
@@ -731,20 +731,20 @@ IDD_OPTIONS_SSL DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "&Enable FTP over TLS support (FTPS)",IDC_ENABLESSL,
+    CONTROL         "&启用 FTP over TLS 支持(&E) (FTPS)",IDC_ENABLESSL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,145,10
     CONTROL         "&Disallow plain unencrypted FTP",IDC_FORCEEXPLICIT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,12,115,10
     GROUPBOX        "X.509 Certificate",IDC_STATIC,0,28,331,90
-    LTEXT           "&Private key file:",IDC_STATIC,6,43,51,8
+    LTEXT           "私钥文件(&P):",IDC_STATIC,6,43,51,8
     EDITTEXT        IDC_PRIVATEKEY,70,40,158,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "&Browse...",IDC_PRIVATEKEY_BROWSE,234,39,50,14
-    LTEXT           "&Certificate file:",IDC_STATIC,6,63,51,8
+    PUSHBUTTON      "浏览(&B)...",IDC_PRIVATEKEY_BROWSE,234,39,50,14
+    LTEXT           "证书文件(&C):",IDC_STATIC,6,63,51,8
     EDITTEXT        IDC_CERTIFICATE,70,60,158,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "B&rowse...",IDC_CERTIFICATE_BROWSE,234,59,50,14
-    LTEXT           "&Key password:",IDC_STATIC,6,83,51,8
+    PUSHBUTTON      "浏览(&R)...",IDC_CERTIFICATE_BROWSE,234,59,50,14
+    LTEXT           "密钥密码(&K):",IDC_STATIC,6,83,51,8
     EDITTEXT        IDC_KEYPASS,70,80,158,14,ES_PASSWORD | ES_AUTOHSCROLL
-    LTEXT           "Password will be stored in plaintext.",IDC_STATIC,234,79,90,22
+    LTEXT           "密码将会以明文方式保存.",IDC_STATIC,234,79,90,22
     PUSHBUTTON      "&Generate new certificate...",IDC_GENERATE,6,98,97,14
     GROUPBOX        "Explicit and implicit FTP over TLS",IDC_STATIC,0,121,331,67
     CONTROL         "&Allow explicit FTP over TLS (default: yes)",IDC_ALLOWEXPLICIT,
@@ -765,50 +765,50 @@ STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSM
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
     ICON            IDI_CERT,IDC_STATIC,10,9,20,20
-    LTEXT           "This dialog will help you to create a new private key and a self-signed certificate, needed by FileZilla Server to accept TLS connections.",IDC_STATIC,38,7,212,25
-    LTEXT           "Please fill out the required information. Wrong or missing information may confuse clients.",IDC_STATIC,7,32,243,16
-    LTEXT           "&Key size:",IDC_STATIC,7,51,30,8
-    CONTROL         "1280 bit",IDC_KEYSIZE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,43,51,45,10
-    CONTROL         "2048 bit",IDC_KEYSIZE2,"Button",BS_AUTORADIOBUTTON,103,51,42,10
-    CONTROL         "4096 bit",IDC_KEYSIZE3,"Button",BS_AUTORADIOBUTTON,163,51,42,10
-    LTEXT           "2-&Digit country code:",IDC_STATIC,7,67,68,8
+    LTEXT           "该对话框将会帮你创建一个用于让 FileZilla Server 接受 TLS 连接的新私钥以及一个自签证书.",IDC_STATIC,38,7,212,25
+    LTEXT           "请填写下列必要的信息. 错误的或者不完整的信息将会影响客户端的正常识别.",IDC_STATIC,7,32,243,16
+    LTEXT           "密钥大小(&K):",IDC_STATIC,7,51,30,8
+    CONTROL         "1280 位",IDC_KEYSIZE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,43,51,45,10
+    CONTROL         "2048 位",IDC_KEYSIZE2,"Button",BS_AUTORADIOBUTTON,103,51,42,10
+    CONTROL         "4096 位",IDC_KEYSIZE3,"Button",BS_AUTORADIOBUTTON,163,51,42,10
+    LTEXT           "国家代码(&D) (2位数字):",IDC_STATIC,7,67,68,8
     EDITTEXT        IDC_COUNTRY,83,64,24,14,ES_AUTOHSCROLL
-    LTEXT           "&Full state or province:",IDC_STATIC,7,85,71,15
+    LTEXT           "州/省(&F):",IDC_STATIC,7,85,71,15
     EDITTEXT        IDC_STATE,83,82,167,14,ES_AUTOHSCROLL
-    LTEXT           "&Locality (City):",IDC_STATIC,7,103,48,8
+    LTEXT           "地区(&L) (城市):",IDC_STATIC,7,103,48,8
     EDITTEXT        IDC_CITY,83,100,167,14,ES_AUTOHSCROLL
-    LTEXT           "&Organization:",IDC_STATIC,7,121,44,8
+    LTEXT           "组织(&O):",IDC_STATIC,7,121,44,8
     EDITTEXT        IDC_ORGANIZATION,83,118,167,14,ES_AUTOHSCROLL
-    LTEXT           "Organization &unit:",IDC_STATIC,7,139,58,8
+    LTEXT           "组织单位(&U):",IDC_STATIC,7,139,58,8
     EDITTEXT        IDC_UNIT,83,136,167,14,ES_AUTOHSCROLL
-    LTEXT           "Contact &E-Mail:",IDC_STATIC,7,157,50,8
+    LTEXT           "联系 &E-Mail:",IDC_STATIC,7,157,50,8
     EDITTEXT        IDC_EMAIL,83,154,167,14,ES_AUTOHSCROLL
-    LTEXT           "&Common name (Server address):",IDC_STATIC,7,171,68,18
+    LTEXT           "通用名称(&C) (服务器地址):",IDC_STATIC,7,171,68,18
     EDITTEXT        IDC_CNAME,83,172,167,14,ES_AUTOHSCROLL
-    LTEXT           "&Save key and certificate to this file:",IDC_STATIC,7,190,72,17
+    LTEXT           "将密钥与证书保存到(&S):",IDC_STATIC,7,190,72,17
     EDITTEXT        IDC_FILE,83,190,112,14,ES_AUTOHSCROLL
-    PUSHBUTTON      "&Browse...",IDC_BROWSE,200,190,50,14
-    LTEXT           "Generating the certificate may take some time depending on the key size.",IDC_STATIC,7,214,236,8
-    DEFPUSHBUTTON   "&Generate certificate",IDOK,51,228,73,14
-    PUSHBUTTON      "Cancel",IDCANCEL,132,228,73,14
+    PUSHBUTTON      "浏览(&B)...",IDC_BROWSE,200,190,50,14
+    LTEXT           "证书生成所耗费的时间将依赖于密钥的大小.",IDC_STATIC,7,214,236,8
+    DEFPUSHBUTTON   "生成证书(&G)",IDOK,51,228,73,14
+    PUSHBUTTON      "取消",IDCANCEL,132,228,73,14
 END
 
 IDD_OPTIONS_AUTOBAN DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "By default, FileZilla Server throttles incoming connects after some failed login attempts. This makes attempts to break into the server impractical.",IDC_STATIC,0,0,332,16
-    LTEXT           "If you're feeling paranoid, you can enable an automatic ban upon multiple failed login attempts. Be advised that automatic banning can be abused for denial of service attacks, so use with care.",IDC_STATIC,0,37,332,24
-    LTEXT           "However, a legitimate user would still be able to logon at any time.",IDC_STATIC,0,22,214,8
-    CONTROL         "&Enable automatic bans",IDC_AUTOBAN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,67,88,10
+    LTEXT           "默认情况下, FileZilla Server 会在某个客户端多次登录失败后自动禁止该客户端的入站连接. 这样做将能有效的防止其他用户恶意入侵到服务器中.",IDC_STATIC,0,0,332,16
+    LTEXT           "如果你仍然感觉不安全, 那么你可以通过启用自动禁止功能来禁止多次登录失败的客户端连接. 但是, 需要提醒你的是, 自动禁止功能可能会导致你的服务器受到拒绝服务攻击, 所有请小心使用该功能.",IDC_STATIC,0,37,332,24
+    LTEXT           "不过, 合法的用户将仍然可以在任何时候登录到服务器中.",IDC_STATIC,0,22,214,8
+    CONTROL         "启用自动禁止(&E)",IDC_AUTOBAN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,67,88,10
     LTEXT           "&Ban IP address after",IDC_STATIC,10,82,67,8
     EDITTEXT        ID_ATTEMPTS,78,80,33,14,ES_AUTOHSCROLL
-    LTEXT           "failed attempts within one hour (min. 10).",IDC_STATIC,115,82,152,8
+    LTEXT           "failed attempts within one hour (最小值. 10).",IDC_STATIC,115,82,152,8
     CONTROL         "Ban &for",IDC_BANTYPE1,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE | WS_GROUP,8,119,39,10
-    CONTROL         "Ban &permanently",IDC_BANTYPE2,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,8,134,70,10
+    CONTROL         "永久禁止(&P)",IDC_BANTYPE2,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,8,134,70,10
     EDITTEXT        ID_BANTIME,37,100,33,14,ES_AUTOHSCROLL
-    LTEXT           "hours (1-999).",IDC_STATIC,74,103,48,8
-    LTEXT           "Ban for",IDC_STATIC,10,103,24,8
+    LTEXT           "小时 (1-999).",IDC_STATIC,74,103,48,8
+    LTEXT           "禁止",IDC_STATIC,10,103,24,8
 END
 
 
@@ -1052,26 +1052,26 @@ IDI_CERT                ICON                    "res\\certificate.ico"
 
 IDR_MAINFRAME MENU
 BEGIN
-    POPUP "&File"
+    POPUP "文件(&F)"
     BEGIN
-        MENUITEM "&Connect to server...",       ID_FILE_CONNECT
-        MENUITEM "&Disconnect",                 ID_FILE_DISCONNECT
-        MENUITEM "&Quit",                       ID_APP_EXIT
+        MENUITEM "连接到服务器(&C)...",       ID_FILE_CONNECT
+        MENUITEM "断开连接(&D)",                 ID_FILE_DISCONNECT
+        MENUITEM "退出(&Q)",                       ID_APP_EXIT
     END
-    POPUP "&Server"
+    POPUP "服务器(&S)"
     BEGIN
-        MENUITEM "&Active",                     ID_ACTIVE
-        MENUITEM "&Lock",                       ID_LOCK
+        MENUITEM "激活(&A)",                     ID_ACTIVE
+        MENUITEM "锁定(&L)",                       ID_LOCK
     END
-    POPUP "&Edit"
+    POPUP "编辑(&E)"
     BEGIN
-        MENUITEM "&Settings",                   ID_EDIT_SETTINGS
-        MENUITEM "&Users",                      ID_MENU_EDIT_USERS
-        MENUITEM "&Groups",                     ID_MENU_EDIT_GROUPS
+        MENUITEM "设置(&S)",                   ID_EDIT_SETTINGS
+        MENUITEM "用户(&U)",                      ID_MENU_EDIT_USERS
+        MENUITEM "组(&G)",                     ID_MENU_EDIT_GROUPS
     END
-    POPUP "&?"
+    POPUP "帮助(&?)"
     BEGIN
-        MENUITEM "&About FileZilla Server",     ID_APP_ABOUT
+        MENUITEM "&关于 FileZilla Server",     ID_APP_ABOUT
     END
 END
 
@@ -1079,10 +1079,10 @@ IDR_USERCONTEXT MENU
 BEGIN
     POPUP "Menu"
     BEGIN
-        MENUITEM "&Add",                        ID_USERMENU_ADD
-        MENUITEM "&Copy",                       ID_USERMENU_COPY
-        MENUITEM "&Remove",                     ID_USERMENU_REMOVE
-        MENUITEM "Re&name",                     ID_USERMENU_RENAME
+        MENUITEM "添加(&A)",                        ID_USERMENU_ADD
+        MENUITEM "复制(&C)",                       ID_USERMENU_COPY
+        MENUITEM "删除(&R)",                     ID_USERMENU_REMOVE
+        MENUITEM "重命名(&N)",                     ID_USERMENU_RENAME
     END
 END
 
@@ -1090,11 +1090,11 @@ IDR_DIRCONTEXT MENU
 BEGIN
     POPUP "Menu"
     BEGIN
-        MENUITEM "&Add",                        ID_DIRMENU_ADD
-        MENUITEM "&Remove",                     ID_DIRMENU_REMOVE
-        MENUITEM "Re&name",                     ID_DIRMENU_RENAME
-        MENUITEM "Set as &home dir",            ID_DIRMENU_SETASHOMEDIR
-        MENUITEM "&Edit aliases",               ID_DIRMENU_EDITALIASES
+        MENUITEM "添加(&A)",                        ID_DIRMENU_ADD
+        MENUITEM "删除(&R)",                     ID_DIRMENU_REMOVE
+        MENUITEM "重命名(&N)",                     ID_DIRMENU_RENAME
+        MENUITEM "设为主目录(&H)",            ID_DIRMENU_SETASHOMEDIR
+        MENUITEM "编辑别名(&E)",               ID_DIRMENU_EDITALIASES
     END
 END
 
@@ -1102,8 +1102,8 @@ IDR_OUTPUTCONTEXT MENU
 BEGIN
     POPUP "OutputContext"
     BEGIN
-        MENUITEM "C&opy to Clipboard",          ID_OUTPUTCONTEXT_COPYTOCLIPBOARD
-        MENUITEM "&Clear All",                  ID_OUTPUTCONTEXT_CLEARALL
+        MENUITEM "复制到剪贴板(&O)",          ID_OUTPUTCONTEXT_COPYTOCLIPBOARD
+        MENUITEM "清除全部(&C)",                  ID_OUTPUTCONTEXT_CLEARALL
     END
 END
 
@@ -1111,8 +1111,8 @@ IDR_USERVIEWCONTEXT MENU
 BEGIN
     POPUP "ContextMenu"
     BEGIN
-        MENUITEM "&Kick user",                  ID_USERVIEWCONTEXT_KICK
-        MENUITEM "&Ban user's IP address",      ID_USERVIEWCONTEXT_BAN
+        MENUITEM "断开用户连接(&K)",                  ID_USERVIEWCONTEXT_KICK
+        MENUITEM "禁止用户 IP 地址(&B)",      ID_USERVIEWCONTEXT_BAN
     END
 END
 
@@ -1120,10 +1120,10 @@ IDR_GROUPCONTEXT MENU
 BEGIN
     POPUP "Menu"
     BEGIN
-        MENUITEM "&Add",                        ID_GROUPMENU_ADD
-        MENUITEM "&Copy",                       ID_GROUPMENU_COPY
-        MENUITEM "&Remove",                     ID_GROUPMENU_REMOVE
-        MENUITEM "Re&name",                     ID_GROUPMENU_RENAME
+        MENUITEM "添加(&A)",                        ID_GROUPMENU_ADD
+        MENUITEM "复制(&C)",                       ID_GROUPMENU_COPY
+        MENUITEM "删除(&R)",                     ID_GROUPMENU_REMOVE
+        MENUITEM "重命名(&N)",                     ID_GROUPMENU_RENAME
     END
 END
 
@@ -1131,9 +1131,9 @@ IDR_SORTMENU MENU
 BEGIN
     POPUP "popup"
     BEGIN
-        MENUITEM "Sort by &Userid",             ID_DISPLAY_SORTBYUSERID
-        MENUITEM "Sort by &Account",            ID_DISPLAY_SORTBYACCOUNT
-        MENUITEM "Sort by &IP",                 ID_DISPLAY_SORTBYIP
+        MENUITEM "按用户 ID 排列(&U)",             ID_DISPLAY_SORTBYUSERID
+        MENUITEM "按帐户排列(&A)",            ID_DISPLAY_SORTBYACCOUNT
+        MENUITEM "按 IP 排列(&I)",                 ID_DISPLAY_SORTBYIP
     END
 END
 
@@ -1162,13 +1162,13 @@ BEGIN
         BEGIN
             VALUE "Comments", "Open Source FTP server for Windows"
             VALUE "CompanyName", "FileZilla Project"
-            VALUE "FileDescription", "FileZilla Server"
-            VALUE "FileVersion", "0, 9, 59, 0"
-            VALUE "InternalName", "FileZilla Server"
+            VALUE "FileDescription", "FileZilla Server Interface"
+            VALUE "FileVersion", "0, 9, 60, 0"
+            VALUE "InternalName", "FileZilla Server Interface"
             VALUE "LegalCopyright", "Copyright (C) 2001-2017"
-            VALUE "OriginalFilename", "FileZilla server.exe"
+            VALUE "OriginalFilename", "FileZilla Server Interface.exe"
             VALUE "ProductName", "FileZilla Server"
-            VALUE "ProductVersion", "0, 9, 59, 0"
+            VALUE "ProductVersion", "0, 9, 60, 0"
         END
     END
     BLOCK "VarFileInfo"
@@ -1209,40 +1209,40 @@ END
 
 STRINGTABLE
 BEGIN
-    IDP_SOCKETS_INIT_FAILED "Initializing Windows Sockets failed."
-    IDS_ADDGROUPDIALOG      "Add user group|Please enter the name of the user group that should be added."
-    IDS_BROWSEFORFOLDER     "Please select a folder that should be added to the folders list of the selected user account."
-    IDS_COPYGROUPDIALOG     "Copy user group|Please enter the name of the copied user group."
-    IDS_COPYUSERDIALOG      "Copy user account|Please enter the name of the copied user account."
-    IDS_ERRORMSG_ENTERSTRING "You have to enter a string!"
+    IDP_SOCKETS_INIT_FAILED "初始化 Windows Sockets 失败."
+    IDS_ADDGROUPDIALOG      "添加用户组|请输入你想要添加的用户组的名称."
+    IDS_BROWSEFORFOLDER     "请选择一个将会被添加到选定用户帐户的文件夹列表中的文件夹."
+    IDS_COPYGROUPDIALOG     "复制用户组|请输入复制后该用户组的名称."
+    IDS_COPYUSERDIALOG      "复制用户帐户|请输入复制后该用户帐户的名称."
+    IDS_ERRORMSG_ENTERSTRING "你必须输入一个字符串!"
 END
 
 STRINGTABLE
 BEGIN
     IDS_ERRORMSG_GROUPALREADYEXISTS 
-                            "You can't enter a groupname which already exists"
+                            "你不可以输入一个已存在的用户组名"
     IDS_ERRORMSG_USERALREADYEXISTS 
-                            "You can't enter a username which already exists"
+                            "你不可以输入一个已存在的用户名"
     IDS_INPUTDIALOGTEXT_RENAME 
-                            "Rename account|Please enter the new name of the user account that should be renamed."
-    IDS_OPTIONSPAGE_ADMININTERFACE "Admin Interface settings"
-    IDS_OPTIONSPAGE_GENERAL "General settings"
-    IDS_OPTIONSPAGE_GENERAL_WELCOMEMESSAGE "Welcome message"
-    IDS_OPTIONSPAGE_LOGGING "Logging"
-    IDS_OPTIONSPAGE_MISC    "Miscellaneous"
-    IDS_OPTIONSPAGE_SECURITY "Security settings"
-    IDS_OPTIONSPAGE_SPEEDLIMIT "Speed Limits"
-    IDS_OPTIONSPAGE_PASV    "Passive mode settings"
-    IDS_OPTIONSPAGE_COMPRESSION "Filetransfer compression"
-    IDS_OPTIONSPAGE_GENERAL_IPBINDINGS "IP bindings"
-    IDS_OPTIONSPAGE_GENERAL_IPFILTER "IP Filter"
-    IDS_OPTIONSPAGE_SSL     "FTP over TLS settings"
+                            "重命名帐户|请输入你想要重命名的用户帐户的新名称."
+    IDS_OPTIONSPAGE_ADMININTERFACE "管理接口设置"
+    IDS_OPTIONSPAGE_GENERAL "常规设置"
+    IDS_OPTIONSPAGE_GENERAL_WELCOMEMESSAGE "欢迎消息"
+    IDS_OPTIONSPAGE_LOGGING "日志"
+    IDS_OPTIONSPAGE_MISC    "其他"
+    IDS_OPTIONSPAGE_SECURITY "安全设置"
+    IDS_OPTIONSPAGE_SPEEDLIMIT "速度限制"
+    IDS_OPTIONSPAGE_PASV    "被动模式设置"
+    IDS_OPTIONSPAGE_COMPRESSION "文件传输压缩"
+    IDS_OPTIONSPAGE_GENERAL_IPBINDINGS "IP 绑定"
+    IDS_OPTIONSPAGE_GENERAL_IPFILTER "IP 过滤"
+    IDS_OPTIONSPAGE_SSL     "FTP over TLS 设置"
 END
 
 STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "FileZilla server"
-    AFX_IDS_IDLEMESSAGE     "Ready"
+    AFX_IDS_IDLEMESSAGE     "就绪"
 END
 
 STRINGTABLE
@@ -1251,14 +1251,14 @@ BEGIN
     ID_INDICATOR_CAPS       "UF"
     ID_INDICATOR_NUM        "NUM"
     ID_INDICATOR_SCRL       "RF"
-    ID_INDICATOR_OVR        "�B"
+    ID_INDICATOR_OVR        "üB"
     ID_INDICATOR_REC        "MA"
 END
 
 STRINGTABLE
 BEGIN
-    ID_APP_ABOUT            "Displays the about dialog with useful information about FileZilla Server"
-    ID_APP_EXIT             "Quits FileZilla Server after confirmation"
+    ID_APP_ABOUT            "显示 FileZilla Server 的关于对话框及其它有用的信息"
+    ID_APP_EXIT             "在确认后退出 FileZilla Server"
 END
 
 STRINGTABLE
@@ -1269,28 +1269,28 @@ END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_SCSIZE          "Change the window size."
-    AFX_IDS_SCMOVE          "Change the window position."
-    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon."
-    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size."
-    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window."
-    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window."
-    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents."
+    AFX_IDS_SCSIZE          "改变窗口大小."
+    AFX_IDS_SCMOVE          "改变窗口位置."
+    AFX_IDS_SCMINIMIZE      "把窗口最小化为图标."
+    AFX_IDS_SCMAXIMIZE      "更改窗口为最大化."
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口."
+    AFX_IDS_SCPREVWINDOW    "切换到上一个文档窗口."
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档."
 END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_SCRESTORE       "Restore the window to normal size."
-    AFX_IDS_SCTASKLIST      "Activate Task List."
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小."
+    AFX_IDS_SCTASKLIST      "激活任务列表."
 END
 
 STRINGTABLE
 BEGIN
-    ID_ACTIVE               "Switch between on- and offline mode"
-    ID_EDIT_SETTINGS        "Displays the options dialog"
-    ID_FILE_CONNECT         "Connects to the interface of FileZilla Server"
-    ID_FILE_DISCONNECT      "Disconnects from server"
-    ID_GROUPS               "Displays the user groups dialog"
+    ID_ACTIVE               "切换在线与离线模式"
+    ID_EDIT_SETTINGS        "显示选项对话框"
+    ID_FILE_CONNECT         "连接到 FileZilla Server 管理界面"
+    ID_FILE_DISCONNECT      "断开与服务器的连接"
+    ID_GROUPS               "显示用户组对话框"
     ID_INDICATOR_RECVCOUNT  "               "
     ID_INDICATOR_RECVLED    "               "
     ID_INDICATOR_RECVRATE   "               "
@@ -1301,10 +1301,10 @@ BEGIN
     ID_INDICATOR_SENDCOUNT  "               "
     ID_INDICATOR_SENDLED    "               "
     ID_INDICATOR_SENDRATE   "               "
-    ID_LOCK                 "Lock server, no new connections will be accepted"
-    ID_MENU_EDIT_GROUPS     "Opens the groups dialog"
-    ID_MENU_EDIT_USERS      "Opens the users dialog"
-    ID_USERS                "Displays the user accounts dialog"
+    ID_LOCK                 "锁定服务器, 服务器将不允许任何新的连接"
+    ID_MENU_EDIT_GROUPS     "打开用户组对话框"
+    ID_MENU_EDIT_USERS      "打开用户帐户对话框"
+    ID_USERS                "显示用户帐户对话框"
 END
 
 STRINGTABLE
@@ -1315,7 +1315,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_SHAREDFOLDERS_ENTERALIASES 
-                            "Enter directory aliases|You have to enter the full virtual path for each alias.\n\nExample: Assume you have shared C:\\pub\\somedir and given it the alias /data/myfiles.\nThe shared directory will then appear on the server in the directory /data under the name myfiles.\n\nSeparate multiple aliases with the pipe character |"
+                            "输入目录别名|你必须为每一个别名都输入完整的物理路径.\n\n例如: Assume you have shared C:\\pub\\somedir and given it the alias /data/myfiles.\nThe shared directory will then appear on the server in the directory /data under the name myfiles.\n\nSeparate multiple aliases with the pipe character |"
 END
 
 STRINGTABLE
@@ -1332,7 +1332,7 @@ END
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -1341,11 +1341,11 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 IDD_SAPREFS DIALOGEX 0, 0, 455, 274
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "FileZilla Server Options"
+CAPTION "FileZilla Server 选项"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,17,223,80,14
-    PUSHBUTTON      "Cancel",IDCANCEL,17,244,80,14
+    DEFPUSHBUTTON   "确定",IDOK,17,223,80,14
+    PUSHBUTTON      "取消",IDCANCEL,17,244,80,14
     CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME,117,21,332,246
     LTEXT           "",IDC_CAPTION_BAR,117,5,332,12,SS_CENTERIMAGE
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,4,5,107,203
@@ -1382,11 +1382,11 @@ IDR_SYSTRAY_MENU MENU
 BEGIN
     POPUP "POPUP"
     BEGIN
-        MENUITEM "&Restore",                    ID_TRAY_RESTORE
+        MENUITEM "恢复(&R)",                    ID_TRAY_RESTORE
         MENUITEM SEPARATOR
-        MENUITEM "Server &Online",              ID_ACTIVE
-        MENUITEM "&Lock Server",                ID_LOCK
-        MENUITEM "E&xit",                       ID_TRAY_EXIT
+        MENUITEM "切换服务器在线状态(&O)",              ID_ACTIVE
+        MENUITEM "锁定服务器(&L)",                ID_LOCK
+        MENUITEM "退出(&X)",                       ID_TRAY_EXIT
     END
 END
 
