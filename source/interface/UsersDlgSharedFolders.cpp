@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -102,14 +102,14 @@ BEGIN_MESSAGE_MAP(CUsersDlgSharedFolders, CSAPrefsSubDlg)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// Behandlungsroutinen f�r Nachrichten CUsersDlgSharedFolders
+// Behandlungsroutinen für Nachrichten CUsersDlgSharedFolders
 
 BOOL CUsersDlgSharedFolders::OnInitDialog()
 {
 	CSAPrefsSubDlg::OnInitDialog();
 
-	m_cDirs.InsertColumn(0, _T("Directories"), LVCFMT_LEFT, 120);
-	m_cDirs.InsertColumn(1, _T("Aliases"), LVCFMT_LEFT, 200);
+	m_cDirs.InsertColumn(0, _T("目录"), LVCFMT_LEFT, 120);
+	m_cDirs.InsertColumn(1, _T("别名"), LVCFMT_LEFT, 200);
 	UpdateData(FALSE);
 
 	m_imagelist.Create( 16, 16, ILC_MASK, 3, 3 );
@@ -128,7 +128,7 @@ BOOL CUsersDlgSharedFolders::OnInitDialog()
 	SetCtrlState();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-				  // EXCEPTION: OCX-Eigenschaftenseiten sollten FALSE zur�ckgeben
+				  // EXCEPTION: OCX-Eigenschaftenseiten sollten FALSE zurückgeben
 }
 
 struct cmp

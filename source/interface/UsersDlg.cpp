@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -50,10 +50,10 @@ CUsersDlg::CUsersDlg(CWnd* pParent, bool localConnection)
 	m_pSharedFoldersPage = new CUsersDlgSharedFolders(this);
 	m_pIpFilterPage = new CUsersDlgIpFilter(this);
 
-	AddPage(*m_pGeneralPage, _T("General"));
-	AddPage(*m_pSharedFoldersPage, _T("Shared folders"));
-	AddPage(*m_pSpeedLimitPage, _T("Speed Limits"));
-	AddPage(*m_pIpFilterPage, _T("IP Filter"));
+	AddPage(*m_pGeneralPage, _T("常规"));
+	AddPage(*m_pSharedFoldersPage, _T("共享文件夹"));
+	AddPage(*m_pSpeedLimitPage, _T("速度限制"));
+	AddPage(*m_pIpFilterPage, _T("IP 过滤器"));
 }
 
 CUsersDlg::~CUsersDlg()
@@ -90,7 +90,7 @@ BEGIN_MESSAGE_MAP(CUsersDlg, CSAPrefsDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// Behandlungsroutinen f�r Nachrichten CUsersDlg
+// Behandlungsroutinen für Nachrichten CUsersDlg
 
 BOOL CUsersDlg::OnInitDialog()
 {
@@ -113,7 +113,7 @@ BOOL CUsersDlg::OnInitDialog()
 	SetCtrlState();
 
 	return TRUE;  // return TRUE unless you set the focus to a control
-				  // EXCEPTION: OCX-Eigenschaftenseiten sollten FALSE zur�ckgeben
+				  // EXCEPTION: OCX-Eigenschaftenseiten sollten FALSE zurückgeben
 }
 
 BOOL CUsersDlg::Validate()

@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -50,10 +50,10 @@ CGroupsDlg::CGroupsDlg(CWnd* pParent, bool localConnection)
 	m_pSharedFoldersPage = new CGroupsDlgSharedFolders(this);
 	m_pIpFilterPage = new CGroupsDlgIpFilter(this);
 
-	AddPage(*m_pGeneralPage, _T("General"));
-	AddPage(*m_pSharedFoldersPage, _T("Shared folders"));
-	AddPage(*m_pSpeedLimitPage, _T("Speed Limits"));
-	AddPage(*m_pIpFilterPage, _T("IP Filter"));
+	AddPage(*m_pGeneralPage, _T("常规"));
+	AddPage(*m_pSharedFoldersPage, _T("共享文件夹"));
+	AddPage(*m_pSpeedLimitPage, _T("速度限制"));
+	AddPage(*m_pIpFilterPage, _T("IP 过滤器"));
 }
 
 CGroupsDlg::~CGroupsDlg()
@@ -88,7 +88,7 @@ BEGIN_MESSAGE_MAP(CGroupsDlg, CSAPrefsDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// Behandlungsroutinen f�r Nachrichten CGroupsDlg
+// Behandlungsroutinen für Nachrichten CGroupsDlg
 
 BOOL CGroupsDlg::OnInitDialog()
 {

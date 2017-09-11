@@ -631,22 +631,22 @@ BEGIN
     CTEXT           "-",IDC_STATIC,136,1,8,8
     EDITTEXT        IDC_OPTIONS_PASV_PORTMAX,146,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "(1-65535)",IDC_STATIC,182,1,31,8
-    GROUPBOX        "IPv4 specific",IDC_STATIC,0,17,331,229
-    LTEXT           "External Server &IP Address for passive mode transfers:",IDC_STATIC,6,30,125,19
-    CONTROL         "&Default",IDC_OPTIONS_PASV_IPTYPE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,48,39,10
+    GROUPBOX        "IPv4 特性",IDC_STATIC,0,17,331,229
+    LTEXT           "被动模式传输时使用的外部服务器 IP 地址(&I)",IDC_STATIC,6,30,125,19
+    CONTROL         "默认(&D)",IDC_OPTIONS_PASV_IPTYPE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,48,39,10
     CONTROL         "使用下列 IP(&U):",IDC_OPTIONS_PASV_IPTYPE2,"Button",BS_AUTORADIOBUTTON,6,62,81,10
     CONTROL         "在下列位置中检索外部 IP 地址(&R):",IDC_OPTIONS_PASV_IPTYPE3,
                     "Button",BS_AUTORADIOBUTTON,6,101,122,10
     EDITTEXT        IDC_OPTIONS_PASV_IP,16,73,129,14,ES_AUTOHSCROLL | WS_GROUP
     LTEXT           "你同样也可以输入主机名称",IDC_STATIC,17,88,131,8
     EDITTEXT        IDC_OPTIONS_PASV_URL,16,114,129,14,ES_AUTOHSCROLL
-    LTEXT           "(Default: http://ip.filezilla-project.org/ip.php)",IDC_STATIC,17,129,150,8
+    LTEXT           "(默认: http://ip.filezilla-project.org/ip.php)",IDC_STATIC,17,129,150,8
     EDITTEXT        IDC_OPTIONS_PASV_TEXT,167,30,157,105,ES_MULTILINE | ES_READONLY | NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
-    LTEXT           "Information for users with dynamic IPs: If your external IP changes, it might take up to 5 minutes after the next failed transfer until FileZilla Server recognizes the changed IP.\nIn most cases, the IP is updated within 30s after a failed transfer.",IDC_STATIC,6,157,318,33
-    CONTROL         "D&on't use external IP for local connections",IDC_OPTIONS_PASV_NOLOCAL,
+    LTEXT           "对于使用动态 IP 的用户: 如果你的外部 IP 发生变化，FileZilla Server 有可能需要在下一次传输失败后一段时间内(最多5分钟)才可以识别你的新 IP.\n但是，在大多数情况下，IP 通常会在传输失败后的30秒内被更新。",IDC_STATIC,6,157,318,33
+    CONTROL         "本地连接则不使用外部 IP(&O)",IDC_OPTIONS_PASV_NOLOCAL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,192,326,10
     LTEXT           "https://ftptest.net",IDC_FTPTEST,6,232,115,8
-    LTEXT           "You can use this site to test that your settings work correctly:",IDC_STATIC,6,222,235,8
+    LTEXT           "您可以使用本网站来测试您的设置是否正常工作:",IDC_STATIC,6,222,235,8
 END
 
 IDD_OPTIONS_COMPRESSION DIALOGEX 0, 0, 332, 246
@@ -734,9 +734,9 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     CONTROL         "&启用 FTP over TLS 支持(&E) (FTPS)",IDC_ENABLESSL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,145,10
-    CONTROL         "&Disallow plain unencrypted FTP",IDC_FORCEEXPLICIT,
+    CONTROL         "禁止普通未加密的FTP(&D)",IDC_FORCEEXPLICIT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,12,115,10
-    GROUPBOX        "X.509 Certificate",IDC_STATIC,0,28,331,90
+    GROUPBOX        "X.509 证书",IDC_STATIC,0,28,331,90
     LTEXT           "私钥文件(&P):",IDC_STATIC,6,43,51,8
     EDITTEXT        IDC_PRIVATEKEY,70,40,158,14,ES_AUTOHSCROLL
     PUSHBUTTON      "浏览(&B)...",IDC_PRIVATEKEY_BROWSE,234,39,50,14
@@ -746,14 +746,14 @@ BEGIN
     LTEXT           "密钥密码(&K):",IDC_STATIC,6,83,51,8
     EDITTEXT        IDC_KEYPASS,70,80,158,14,ES_PASSWORD | ES_AUTOHSCROLL
     LTEXT           "密码将会以明文方式保存.",IDC_STATIC,234,79,90,22
-    PUSHBUTTON      "&Generate new certificate...",IDC_GENERATE,6,98,97,14
-    GROUPBOX        "Explicit and implicit FTP over TLS",IDC_STATIC,0,121,331,67
-    CONTROL         "&Allow explicit FTP over TLS (default: yes)",IDC_ALLOWEXPLICIT,
+    PUSHBUTTON      "生成新证书(&G)...",IDC_GENERATE,6,98,97,14
+    GROUPBOX        "显式和隐式 FTP over TLS",IDC_STATIC,0,121,331,67
+    CONTROL         "允许显式 FTP over TLS(&A) (默认: yes)",IDC_ALLOWEXPLICIT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,133,147,10
-    LTEXT           "Note: Explicit FTP over TLS shares the normal FTP port configured on the General settings page.",IDC_STATIC,18,144,309,8
-    LTEXT           "&Listen for implicit FTP over TLS connections on the following ports (default: 990):",IDC_STATIC,7,158,258,8
+    LTEXT           "注意: Explicit FTP over TLS shares the normal FTP port configured on the General settings page.",IDC_STATIC,18,144,309,8
+    LTEXT           "&Listen for implicit FTP over TLS connections on the following ports (默认: 990):",IDC_STATIC,7,158,258,8
     EDITTEXT        IDC_SSLONLY,7,168,197,14,ES_AUTOHSCROLL
-    GROUPBOX        "File transfer security",IDC_STATIC,0,191,331,55
+    GROUPBOX        "文件传输安全",IDC_STATIC,0,191,331,55
     LTEXT           "These settings need to be enabled for file transfers to be secure.",IDC_STATIC,6,202,210,8
     CONTROL         "F&orce PROT P to encrypt file transfers when using FTP over TLS",IDC_FORCEPROTP,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,215,272,10
@@ -1310,7 +1310,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDC_OPTIONS_PASV_TEXT   "Use custom PASV settings if you are operating the server from behind a NAT router or a firewall. In that case, the IP address of the server is not accessible from outside of the router, so you should fill in the correct address here. Use the port range to limit the number of ports that will need to be forwarded through the router."
+    IDC_OPTIONS_PASV_TEXT   "如果从NAT路由器或防火墙后面操作服务器，请使用自定义PASV设置。在这种情况下，服务器的IP地址不能从路由器的外部访问，所以您应该在这里填写正确的地址。 使用端口范围来限制需要通过路由器转发的端口数量。"
 END
 
 STRINGTABLE
@@ -1321,7 +1321,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_OPTIONSPAGE_AUTOBAN "Autoban"
+    IDS_OPTIONSPAGE_AUTOBAN "自动禁止"
 END
 
 #endif    // Neutral (Default) resources

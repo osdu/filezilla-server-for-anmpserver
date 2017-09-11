@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -109,7 +109,7 @@ static UINT indicators[] =
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame Konstruktion/Zerst�rung
+// CMainFrame Konstruktion/Zerstörung
 
 CMainFrame::CMainFrame(COptions *pOptions)
 {
@@ -265,7 +265,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 	if( !CFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
 
-	// ZU ERLEDIGEN: �ndern Sie hier die Fensterklasse oder das Erscheinungsbild, indem Sie
+	// ZU ERLEDIGEN: Ändern Sie hier die Fensterklasse oder das Erscheinungsbild, indem Sie
 	//  CREATESTRUCT cs modifizieren.
 
 	cs.lpszClass = AfxRegisterWndClass(0);
@@ -293,7 +293,7 @@ void CMainFrame::OnSetFocus(CWnd* pOldWnd)
 
 BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
-	// andernfalls die Standardbehandlung durchf�hren
+	// andernfalls die Standardbehandlung durchführen
 	return CFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
@@ -542,7 +542,7 @@ void CMainFrame::OnLock()
 		SendCommand(2, buffer, 2);
 	}
 	else {
-		if (AfxMessageBox(_T("Do you really want to lock the server? No new connections will be accepted while locked."), MB_YESNO|MB_ICONQUESTION) != IDYES)
+		if (AfxMessageBox(_T("你真的想锁定服务器吗？锁定时不会接受新的连接。"), MB_YESNO|MB_ICONQUESTION) != IDYES)
 			return;
 		int nServerState = m_nServerState | STATE_LOCKED;
 		unsigned char buffer[2];

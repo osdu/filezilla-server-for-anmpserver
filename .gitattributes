@@ -1,7 +1,12 @@
 # git gui - can it be made to display UTF16?
 #> https://stackoverflow.com/questions/3915072/git-gui-can-it-be-made-to-display-utf16
 
+"MainFrm.cpp" filter=mixedtext-cpp
 "Service.cpp" filter=mixedtext-cpp
 "Options.cpp" filter=mixedtext-cpp
+"UsersDlg.cpp" filter=mixedtext-cpp
+"UsersDlgSharedFolders.cpp" filter=mixedtext-cpp
+"GroupsDlg.cpp" filter=mixedtext-cpp
+"GroupsDlgSharedFolders.cpp" filter=mixedtext-cpp
 "FileZilla server.rc" filter=mixedtext-rc
 
