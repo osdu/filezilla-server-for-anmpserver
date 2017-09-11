@@ -167,7 +167,7 @@ BEGIN
                     "Button",BS_AUTORADIOBUTTON,7,38,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,100,24,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,27,16,8
-    CONTROL         "&Bypass server download speed limit",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_DOWNLOAD,
+    CONTROL         "忽略服务器下载速度限制(&B)",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_DOWNLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,12,127,10
     LISTBOX         IDC_SPEEDLIMIT_DOWNLOAD_RULES_LIST,19,52,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "添加(&A)",IDC_SPEEDLIMIT_DOWNLOAD_ADD,171,52,35,11,WS_DISABLED
@@ -180,7 +180,7 @@ BEGIN
     CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,156,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,100,141,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
     LTEXT           "kB/s",IDC_STATIC,158,144,16,8
-    CONTROL         "B&ypass server upload speed limit",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_UPLOAD,
+    CONTROL         "忽略服务器上传速度限制(&Y)",IDC_GROUPS_SPEEDLIMIT_SERVERBYPASS_UPLOAD,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,83,130,118,10
     LISTBOX         IDC_SPEEDLIMIT_UPLOAD_RULES_LIST,19,170,146,53,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "添加(&D)",IDC_SPEEDLIMIT_UPLOAD_ADD,171,170,35,11,WS_DISABLED
@@ -393,18 +393,18 @@ END
 
 IDD_GROUPS DIALOGEX 0, 0, 430, 250
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Groups"
+CAPTION "用户组"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "确定",IDOK,7,210,73,14
     PUSHBUTTON      "取消",IDCANCEL,7,229,73,14
-    GROUPBOX        "&Groups",IDC_STATIC,307,7,116,166,0,WS_EX_TRANSPARENT
+    GROUPBOX        "用户组(&G)",IDC_STATIC,307,7,116,166,0,WS_EX_TRANSPARENT
     LISTBOX         IDC_GROUPS_GROUPLIST,314,19,102,108,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
     PUSHBUTTON      "添加(&A)",IDC_GROUPS_ADDGROUP,314,133,49,14,0,WS_EX_TRANSPARENT
     PUSHBUTTON      "删除(&R)",IDC_GROUPS_REMOVEGROUP,367,133,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "Re&name",IDC_GROUPS_RENAMEGROUP,314,151,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "Cop&y",IDC_GROUPS_COPYGROUP,367,151,49,14,0,WS_EX_TRANSPARENT
-    LTEXT           "Page:",IDC_STATIC,7,7,20,8
+    PUSHBUTTON      "重命名(&N)",IDC_GROUPS_RENAMEGROUP,314,151,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "复制&Y()",IDC_GROUPS_COPYGROUP,367,151,49,14,0,WS_EX_TRANSPARENT
+    LTEXT           "页面:",IDC_STATIC,7,7,20,8
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,17,73,148
     CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,336,236,WS_EX_TRANSPARENT
 END
@@ -424,41 +424,41 @@ IDD_OPTIONS_GENERAL DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    GROUPBOX        "Connection settings",IDC_STATIC,0,0,331,59
-    LTEXT           "&Listen on these ports:",IDC_STATIC,6,20,76,8
+    GROUPBOX        "连接设置",IDC_STATIC,0,0,331,59
+    LTEXT           "监听端口(&L):",IDC_STATIC,6,20,76,8
     EDITTEXT        IDC_PORT,82,17,89,14,ES_AUTOHSCROLL
-    LTEXT           "List of ports between 1 and 65535. These ports are used both for plain FTP and explicit FTP over TLS. (Default port: 21)",IDC_STATIC,177,12,151,25
-    LTEXT           "&Max. number of users:",IDC_STATIC,6,38,73,8
+    LTEXT           "(端口范围: 1 - 65535)。这些端口用于普通 plain FTP and explicit FTP over TLS. (默认端口: 21)",IDC_STATIC,177,12,151,25
+    LTEXT           "最大用户数量(&M):",IDC_STATIC,6,38,73,8
     EDITTEXT        IDC_MAXUSERS,82,35,41,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "(0 for unlimited users)",IDC_STATIC,131,38,70,8
-    GROUPBOX        "Performance settings",IDC_STATIC,0,60,332,49
-    LTEXT           "&Number of threads:",IDC_STATIC,7,75,64,8
+    LTEXT           "(0 表示不限制用户数量)",IDC_STATIC,131,38,90,8
+    GROUPBOX        "性能设置",IDC_STATIC,0,60,332,49
+    LTEXT           "线程数量(&N):",IDC_STATIC,7,75,64,8
     EDITTEXT        IDC_THREADNUM,82,73,41,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "This value should be a multiple of the number of processors installed on your system. Increase this value if your server is under heavy load.",IDC_STATIC,131,71,194,33
-    GROUPBOX        "Timeout settings",IDC_STATIC,0,113,332,82,0,WS_EX_TRANSPARENT
-    LTEXT           "&Connections timeout:",IDC_STATIC,7,132,69,8
+    LTEXT           "该值应为你当前系统中已安装的处理器数量的倍数。如果你的服务器负载过大，那么请增大该值。",IDC_STATIC,131,71,194,33
+    GROUPBOX        "超时设置",IDC_STATIC,0,113,332,82,0,WS_EX_TRANSPARENT
+    LTEXT           "连接超时(&C):",IDC_STATIC,7,132,69,8
     EDITTEXT        IDC_TIMEOUT,82,129,41,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "in seconds (1-9999, 0 for no timeout).",IDC_STATIC,131,132,135,8
-    LTEXT           "No &Transfer timeout:",IDC_STATIC,7,152,68,8
+    LTEXT           "单位: 秒 (1-9999, 0表示无超时)",IDC_STATIC,131,132,135,8
+    LTEXT           "无传输超时(&T):",IDC_STATIC,7,152,68,8
     EDITTEXT        IDC_TRANSFERTIMEOUT,82,149,41,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "in seconds (600-9999, 0 for no timeout). This value specifies the time a user has to initiate a file transfer.",IDC_STATIC,131,145,195,26
-    LTEXT           "L&ogin timeout:",IDC_STATIC,7,175,45,8
+    LTEXT           "单位: 秒 (600-9999, 0表示无超时)。用户必须在该指定的时间内开始进行文件传输，否则将视为超时。",IDC_STATIC,131,145,195,26
+    LTEXT           "登录超时(&O):",IDC_STATIC,7,175,45,8
     EDITTEXT        IDC_LOGINTIMEOUT,82,171,41,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "in seconds (1-9999, 0 for no timeout). This value specifies the time in which a new user has to login.",IDC_STATIC,131,173,195,26
+    LTEXT           "单位: 秒 (1-9999, 0 表示无超时)。新用户必须在该指定的时间内登录，否则将视为超时。",IDC_STATIC,131,173,195,26
 END
 
 IDD_OFFLINEASK DIALOG 0, 0, 147, 89
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Confirmation requested"
+CAPTION "确认请求"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "There are currently users connected to the server. Do you really want to take the server offline and kick all users?",IDC_STATIC,7,7,133,26
+    LTEXT           "当前有用户已连接到服务器。你真的要将服务器切换到离线状态并断开所有用户吗？",IDC_STATIC,7,7,133,26
     CONTROL         "No&w",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,33,31,10
-    CONTROL         "Wait until all users have logged out",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,11,44,126,10
-    CONTROL         "Wait until all transfers are finished",IDC_RADIO3,
+    CONTROL         "等待所有用户注销",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,11,44,126,10
+    CONTROL         "等待所有传输完成",IDC_RADIO3,
                     "Button",BS_AUTORADIOBUTTON,11,55,121,10
-    DEFPUSHBUTTON   "&Yes",IDOK,20,68,50,14
-    PUSHBUTTON      "&No",IDCANCEL,78,68,50,14
+    DEFPUSHBUTTON   "是(&Y)",IDOK,20,68,50,14
+    PUSHBUTTON      "否(&N)",IDCANCEL,78,68,50,14
 END
 
 IDD_OPTIONS_SECURITY DIALOGEX 0, 0, 331, 246
@@ -486,22 +486,22 @@ IDD_OPTIONS_MISC DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    CONTROL         "&Don't show passwords in message log",IDC_OPTIONS_MISC_DONTSHOWPASS,
+    CONTROL         "禁止在消息日志中显示密码(&D)",IDC_OPTIONS_MISC_DONTSHOWPASS,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,135,10
-    CONTROL         "&Start minimized",IDC_OPTIONS_MISC_STARTMINIMIZED,
+    CONTROL         "启动时最小化(&S)",IDC_OPTIONS_MISC_STARTMINIMIZED,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,21,63,10
-    LTEXT           "Internal transfer &buffer size:",IDC_STATIC,0,44,93,8
+    LTEXT           "内部传输缓存大小(&B):",IDC_STATIC,0,44,93,8
     EDITTEXT        IDC_OPTIONS_TRANSFERBUFFERSIZE,94,42,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "(default: 32768)",IDC_STATIC,140,44,54,8
-    LTEXT           "&Socket buffer size:",IDC_STATIC,0,67,61,8
+    LTEXT           "(默认: 32768)",IDC_STATIC,140,44,54,8
+    LTEXT           "Socket 缓冲区大小(&S):",IDC_STATIC,0,67,61,8
     EDITTEXT        IDC_OPTIONS_TRANSFERBUFFERSIZE2,94,64,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "(default: 262144)",IDC_STATIC,140,67,70,8
-    LTEXT           "Adjust these values if you get very slow transfer rates.",IDC_STATIC,0,86,311,8
-    LTEXT           "Please check your changes to the buffer size carefully. Too high or too low values can have a huge impact on the data throughput.",IDC_STATIC,0,99,332,24
-    CONTROL         "&Allow downloading of files which are open for writing by another process.",IDC_SHAREWRITE,
+    LTEXT           "(默认: 262144)",IDC_STATIC,140,67,70,8
+    LTEXT           "如果您的传输速度非常慢，请调整这些值。",IDC_STATIC,0,86,311,8
+    LTEXT           "请仔细检查您对缓冲区大小的更改。太高或太低的值可能对数据吞吐量产生巨大的影响。",IDC_STATIC,0,99,332,24
+    CONTROL         "允许下载当前正在被其它进程写入的文件(&A)",IDC_SHAREWRITE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,128,250,10
-    LTEXT           "Please note that this can result in corrupt transfers!",IDC_STATIC,11,141,169,8
-    CONTROL         "&Ignore unroutable IPs on PORT command if remote address is routable.",IDC_ACTIVE_IGNORELOCAL,
+    LTEXT           "请注意, 这样将有可能会导致传输失败!",IDC_STATIC,11,141,169,8
+    CONTROL         "如果远程地址是可路由的, 那么在 PORT 命令中则忽略不可路由的 IPs(&I)",IDC_ACTIVE_IGNORELOCAL,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,160,244,10
 END
 
@@ -509,16 +509,16 @@ IDD_OPTIONS_GENERAL_WELCOMEMESSAGE DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "On this page you can modify the welcome message that will be sent to each connected client.",IDC_STATIC,0,0,332,17
-    LTEXT           "If you enter no custom message, the default message will be used.",IDC_STATIC,0,13,326,8
-    LTEXT           "Please enter only 75 characters per line, additional characters will be removed.\r\nEmpty lines at the top or bottom of the message will be removed.",IDC_STATIC,0,36,320,21
-    LTEXT           "Rules for welcome messages:",IDC_STATIC,0,27,94,8
+    LTEXT           "在此页面上，您可以修改将发送到每个连接的客户端的欢迎信息。",IDC_STATIC,0,0,332,17
+    LTEXT           "如果您不输入自定义消息，将使用默认消息。",IDC_STATIC,0,13,326,8
+    LTEXT           "每行只输入75个字符，其他字符将被删除。\r\n消息顶部或底部的空行将被删除。",IDC_STATIC,0,36,320,21
+    LTEXT           "欢迎信息规则:",IDC_STATIC,0,27,94,8
     EDITTEXT        IDC_OPTIONS_GENERAL_WELCOMEMESSAGE_WELCOMEMESSAGE,0,70,332,100,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
-    LTEXT           "&Custom welcome message:",IDC_STATIC,0,59,86,8
-    LTEXT           "Format specifiers:",IDC_STATIC,0,172,104,8
-    LTEXT           "%v - Displays version of FileZilla Server",IDC_STATIC,0,181,245,8
-    LTEXT           "%% - the % character",IDC_STATIC,0,190,190,11
-    CONTROL         "&Hide welcome message in log",IDC_OPTIONS_WELCOMEMESSAGE_HIDE,
+    LTEXT           "自定义欢迎信息(&C):",IDC_STATIC,0,59,86,8
+    LTEXT           "格式说明:",IDC_STATIC,0,172,104,8
+    LTEXT           "%v - 显示 FileZilla Server 的版本信息",IDC_STATIC,0,181,245,8
+    LTEXT           "%% - 显示字符 %",IDC_STATIC,0,190,190,11
+    CONTROL         "在日志中隐藏欢迎消息(&H)",IDC_OPTIONS_WELCOMEMESSAGE_HIDE,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,215,109,10
 END
 
@@ -626,11 +626,11 @@ STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     CONTROL         "使用自定义端口范围(&P):",IDD_OPTIONS_PASV_USEPORTRANGE,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,1,89,10
-    EDITTEXT        IDC_OPTIONS_PASV_PORTMIN,98,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
-    CTEXT           "-",IDC_STATIC,130,1,8,8
-    EDITTEXT        IDC_OPTIONS_PASV_PORTMAX,140,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "(1-65535)",IDC_STATIC,175,1,31,8
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,1,94,10
+    EDITTEXT        IDC_OPTIONS_PASV_PORTMIN,104,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "-",IDC_STATIC,136,1,8,8
+    EDITTEXT        IDC_OPTIONS_PASV_PORTMAX,146,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "(1-65535)",IDC_STATIC,182,1,31,8
     GROUPBOX        "IPv4 specific",IDC_STATIC,0,17,331,229
     LTEXT           "External Server &IP Address for passive mode transfers:",IDC_STATIC,6,30,125,19
     CONTROL         "&Default",IDC_OPTIONS_PASV_IPTYPE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,48,39,10
