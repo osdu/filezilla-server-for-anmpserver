@@ -385,10 +385,10 @@ void COptions::SetOption(int nOptionID, LPCTSTR value, bool save /*=true*/)
 			if (str == _T("")) {
 				str = _T("%v");
 				str += _T("\r\nwritten by Tim Kosse (tim.kosse@filezilla-project.org)");
-				str += _T("\r\nPlease visit https://filezilla-project.org/");
+				str += _T("\r\nPlease visit https://filezilla-project.org");
 			}
 			str.Replace(_T("tim.kosse@gmx.de"), _T("tim.kosse@filezilla-project.org"));
-			str.Replace(_T("http://sourceforge.net/projects/filezilla/"), _T("https://filezilla-project.org/"));
+			str.Replace(_T("http://sourceforge.net/projects/filezilla"), _T("https://filezilla-project.org"));
 		}
 		break;
 	case OPTION_ADMINIPBINDINGS:

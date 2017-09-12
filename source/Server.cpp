@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -107,8 +107,8 @@ bool CServer::Create()
 		}
 	}
 
-	m_pFileLogger->Log(GetProductVersionString() + _T(" started"));
-	m_pFileLogger->Log(_T("Initializing Server."));
+	m_pFileLogger->Log(GetProductVersionString() + _T(" 已启动"));
+	m_pFileLogger->Log(_T("初始化服务器"));
 
 	m_nTimerID = SetTimer(m_hWnd, 1234, 10000, NULL);
 	ASSERT(m_nTimerID);
@@ -118,10 +118,10 @@ bool CServer::Create()
 
 	if (CreateListenSocket()) {
 		m_nServerState = STATE_ONLINE;
-		ShowStatus(_T("Server online."), 0);
+		ShowStatus(_T("服务器在线"), 0);
 	}
 	else
-		ShowStatus(_T("Server not online."), 1);
+		ShowStatus(_T("服务器不在线"), 1);
 
 	CreateAdminListenSocket();
 
@@ -392,7 +392,7 @@ LRESULT CServer::OnServerMessage(CServerThread* pThread, WPARAM wParam, LPARAM l
 					m_nServerState &= ~(STATE_ONLINE | STATE_MASK_GOOFFLINE);
 					SendState();
 					if (!m_bQuit)
-						ShowStatus(_T("Server offline."), 1);
+						ShowStatus(_T("服务器离线"), 1);
 					else {
 						hMainWnd = 0;
 						DestroyWindow(m_hWnd);
@@ -415,7 +415,7 @@ LRESULT CServer::OnServerMessage(CServerThread* pThread, WPARAM wParam, LPARAM l
 					m_nServerState &= ~(STATE_ONLINE | STATE_MASK_GOOFFLINE);
 					SendState();
 					if (!m_bQuit)
-						ShowStatus(_T("Server offline."), 1);
+						ShowStatus(_T("服务器离线"), 1);
 					else {
 						hMainWnd = 0;
 						DestroyWindow(m_hWnd);
@@ -489,12 +489,12 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 			pAdminSocket->SendCommand(1, 2, buffer, 2);
 		}
 		else {
-			pAdminSocket->SendCommand(1, 1, "\001Protocol error: Unexpected data length", strlen("\001Protocol error: Unexpected data length") + 1);
+			pAdminSocket->SendCommand(1, 1, "\001协议错误: Unexpected data length", strlen("\001协议错误: Unexpected data length") + 1);
 		}
 		break;
 	case 3:
 		if (!nDataLength) {
-			pAdminSocket->SendCommand(1, 1, "\001Protocol error: Unexpected data length", strlen("\001Protocol error: Unexpected data length") + 1);
+			pAdminSocket->SendCommand(1, 1, "\001协议错误: Unexpected data length", strlen("\001协议错误: Unexpected data length") + 1);
 		}
 		else if (*pData == USERCONTROL_GETLIST) {
 			int len = 4;
@@ -584,7 +584,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 		}
 		else if (*pData == USERCONTROL_KICK || *pData == USERCONTROL_BAN) {
 			if (nDataLength != 5)
-				pAdminSocket->SendCommand(1, 1, "\001Protocol error: Unexpected data length", strlen("\001Protocol error: Unexpected data length")+1);
+				pAdminSocket->SendCommand(1, 1, "\001协议错误: Unexpected data length", strlen("\001协议错误: Unexpected data length")+1);
 			else {
 				int nUserID;
 				memcpy(&nUserID, pData+1, 4);
@@ -632,7 +632,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 			}
 		}
 		else {
-			pAdminSocket->SendCommand(1, 1, "\001Protocol error: Invalid data", strlen("\001Protocol error: Invalid data") + 1);
+			pAdminSocket->SendCommand(1, 1, "\001协议错误: Invalid data", strlen("\001协议错误: Invalid data") + 1);
 		}
 		break;
 	case 5:
@@ -646,7 +646,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 		}
 		else if (m_pOptions) {
 			if (nDataLength < 2) {
-				pAdminSocket->SendCommand(1, 1, "\001Protocol error: Unexpected data length", strlen("\001Protocol error: Unexpected data length") + 1);
+				pAdminSocket->SendCommand(1, 1, "\001协议错误: Unexpected data length", strlen("\001协议错误: Unexpected data length") + 1);
 			}
 			else {
 				CStdString const listenPorts = m_pOptions->GetOption(OPTION_SERVERPORT);
@@ -667,7 +667,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 				}
 
 				if (!m_pOptions->ParseOptionsCommand(pData, nDataLength, bLocal)) {
-					pAdminSocket->SendCommand(1, 1, "\001Protocol error: Invalid data, could not import settings.", strlen("\001Protocol error: Invalid data, could not import settings.")+1);
+					pAdminSocket->SendCommand(1, 1, "\001协议错误: Invalid data, could not import settings.", strlen("\001协议错误: Invalid data, could not import settings.")+1);
 					char buffer = 1;
 					pAdminSocket->SendCommand(1, 5, &buffer, 1);
 					break;
@@ -754,11 +754,11 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 		}
 		else {
 			if (nDataLength < 2)
-				pAdminSocket->SendCommand(1, 1, "\001Protocol error: Unexpected data length", strlen("\001Protocol error: Unexpected data length")+1);
+				pAdminSocket->SendCommand(1, 1, "\001协议错误: Unexpected data length", strlen("\001协议错误: Unexpected data length")+1);
 			else {
 				CPermissions permissions = CPermissions(std::function<void()>());
 				if (!permissions.ParseUsersCommand(pData, nDataLength)) {
-					pAdminSocket->SendCommand(1, 1, "\001Protocol error: Invalid data, could not import account settings.", strlen("\001Protocol error: Invalid data, could not import account settings.")+1);
+					pAdminSocket->SendCommand(1, 1, "\001协议错误: Invalid data, could not import account settings.", strlen("\001协议错误: Invalid data, could not import account settings.")+1);
 					char buffer = 1;
 					pAdminSocket->SendCommand(1, 6, &buffer, 1);
 					break;
@@ -774,7 +774,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 	default:
 		{
 			CStdStringA str;
-			str.Format("\001Protocol error: Unknown command (%d).", nID);
+			str.Format("\001协议错误: Unknown command (%d).", nID);
 			pAdminSocket->SendCommand(1, 1, str.c_str(), str.GetLength());
 		}
 		break;
@@ -823,13 +823,13 @@ bool CServer::ToggleActive(int nServerState)
 	else if (nServerState & STATE_ONLINE) {
 		if (m_ListenSocketList.empty()) {
 			if (!CreateListenSocket()) {
-				ShowStatus(_T("Failed to create a listen socket on any of the specified ports. Server is not online!"), 1);
+				ShowStatus(_T("无法在任何指定端口上创建监听 Socket。服务器不在线！"), 1);
 				return true;
 			}
 		}
 
 		if (!m_ListenSocketList.empty()) {
-			ShowStatus(_T("Server online"), 0);
+			ShowStatus(_T("服务器在线"), 0);
 			int num = (m_pOptions ? (int)m_pOptions->GetOptionVal(OPTION_THREADNUM) : 2);
 
 			//Recreate the threads
@@ -990,12 +990,12 @@ BOOL CServer::CreateAdminListenSocket()
 		int p = DoCreateAdminListenSocket(0, _T("127.0.0.1"), AF_INET);
 		if (!p) {
 			CStdString str;
-			str.Format(_T("Failed to create listen socket for admin interface on port %d for IPv4, the IPv4 admin interface has been disabled."), nAdminPort);
+			str.Format(_T("无法在端口 %d 上为 IPv4 创建用于管理界面的监听 Socket，IPv4 管理接口在端口 %u 上可用。"), nAdminPort);
 			ShowStatus(str, 1);
 		}
 		else {
 			CStdString str;
-			str.Format(_T("Failed to create listen socket for admin interface on port %d for IPv4, for this session the IPv4 admin interface is available on port %u."), p);
+			str.Format(_T("无法在端口 %d 上为 IPv4 创建用于管理界面的监听 Socket，对于此会话，IPv4 管理接口在端口 %u 上可用。"), p);
 			ShowStatus(str, 1);
 		}
 	}
@@ -1005,12 +1005,12 @@ BOOL CServer::CreateAdminListenSocket()
 			int p = DoCreateAdminListenSocket(0, _T("::1"), AF_INET6);
 			if (!p) {
 				CStdString str;
-				str.Format(_T("Failed to create listen socket for admin interface on port %d for IPv6, the IPv6 admin interface has been disabled."), nAdminPort);
+				str.Format(_T("无法在端口 %d 上为 IPv6 创建用于管理界面的监听 Socket，IPv6 管理界面已被禁用。"), nAdminPort);
 				ShowStatus(str, 1);
 			}
 			else {
 				CStdString str;
-				str.Format(_T("Failed to create listen socket for admin interface on port %d for IPv6, for this session the IPv6 admin interface is available on port %u."), p);
+				str.Format(_T("无法在端口 %d 上为 IPv6 创建用于管理界面的监听 Socket，对于此会话，IPv6 管理接口在端口 %u 上可用。"), p);
 				ShowStatus(str, 1);
 			}
 		}
@@ -1035,7 +1035,7 @@ BOOL CServer::CreateAdminListenSocket()
 
 			if (!pAdminListenSocket->Create(nAdminPort, SOCK_STREAM, FD_ACCEPT, ip, family) || !pAdminListenSocket->Listen(16)) {
 				CStdString str;
-				str.Format(_T("Failed to create listen socket for admin interface on port %d for address %s"), nAdminPort, ip);
+				str.Format(_T("无法在端口 %d上为地址 %s 创建管理界面的监听 Socket"), nAdminPort, ip);
 				ShowStatus(str, 1);
 			}
 			else
@@ -1058,7 +1058,7 @@ bool CServer::CreateListenSocket()
 	}
 
 	if (success && m_ListenSocketList.empty()) {
-		ShowStatus(_T("No listen ports set in settings"), 1);
+		ShowStatus(_T("没有设置监听端口"), 1);
 	}
 
 	return !m_ListenSocketList.empty();
@@ -1077,14 +1077,14 @@ bool CServer::CreateListenSocket(CStdString ports, bool ssl)
 		pos = ports.Find(' ');
 
 		CStdString str;
-		str.Format(_T("Creating listen socket on port %d..."), nPort);
+		str.Format(_T("在端口 %d 上创建监听 Socket..."), nPort);
 		ShowStatus(str, 0);
 		if (ipBindings.empty() || ipBindings == _T("*")) {
 			ipBindings = _T("::0 0.0.0.0");
 		}
 			
 		bool bError = false;
-		str.Format(_T("Failed to bind the listen socket on port %d to the following IPs:"), nPort);
+		str.Format(_T("无法将端口 %d 上的监听 Socket 绑定到以下IP:"), nPort);
 		ipBindings += _T(" ");
 		while (ipBindings != _T("")) {
 			int pos = ipBindings.Find(' ');
@@ -1159,7 +1159,7 @@ void CServer::VerifyTlsSettings(CAdminSocket *pAdminSocket)
 {
 	bool enableSsl = m_pOptions->GetOptionVal(OPTION_ENABLETLS) != 0;
 	if (!enableSsl) {
-		ShowStatus(_T("Warning: FTP over TLS is not enabled, users cannot securely log in."), 1, pAdminSocket);
+		ShowStatus(_T("警告: FTP over TLS 未启用，用户无法安全登录。"), 1, pAdminSocket);
 	}
 	else {
 		if (m_nServerState & STATE_ONLINE) {
@@ -1171,7 +1171,7 @@ void CServer::VerifyTlsSettings(CAdminSocket *pAdminSocket)
 				}
 			}
 			if (!allowExplicit || !hasExplicit) {
-				ShowStatus(_T("Warning: Explicit FTP over TLS is not enabled or there is no FTP listen socket configured."), 1, pAdminSocket);
+				ShowStatus(_T("警告: 显式 FTP over TLS 未启用或者没有配置 FTP listen socket。"), 1, pAdminSocket);
 			}
 		}
 
@@ -1185,16 +1185,16 @@ void CServer::VerifyTlsSettings(CAdminSocket *pAdminSocket)
 		int res = layer.SetCertKeyFile(cert, key, pass, &error, true);
 		if (error.empty()) {
 			if (res == SSL_FAILURE_LOADDLLS) {
-				error = _T("Failed to load TLS libraries");
+				error = _T("无法加载 TLS 库");
 			}
 			else if (res == SSL_FAILURE_INITSSL) {
-				error = _T("Failed to initialize TLS libraries");
+				error = _T("无法初始化 TLS 库");
 			}
 			else if (res == SSL_FAILURE_VERIFYCERT) {
-				error = _T("Failed to set certificate and private key");
+				error = _T("无法设置证书和私钥");
 			}
 			else if (res) {
-				error = _T("Unknown error loading TLS certificate and private key");
+				error = _T("加载 TLS 证书和私钥时出现未知错误");
 			}
 		}
 
@@ -1218,7 +1218,7 @@ void CServer::VerifyPassiveModeSettings(CAdminSocket *pAdminSocket)
 	}
 
 	if (listensIPv4 && nat && !passiveIPType) {
-		CStdString error = _T("You appear to be behind a NAT router. Please configure the passive mode settings and forward a range of ports in your router.");
+		CStdString error = _T("你似乎位于 NAT 路由器后面。请配置被动模式设置并在路由器中转发一系列端口。");
 		ShowStatus(error, 1, pAdminSocket);
 	}
 }

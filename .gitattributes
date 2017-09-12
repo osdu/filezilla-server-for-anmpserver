@@ -8,5 +8,9 @@
 "UsersDlgSharedFolders.cpp" filter=mixedtext-cpp
 "GroupsDlg.cpp" filter=mixedtext-cpp
 "GroupsDlgSharedFolders.cpp" filter=mixedtext-cpp
+"Server.cpp" filter=mixedtext-cpp
+"AdminSocket.cpp" filter=mixedtext-cpp
+"UsersListCtrl.cpp" filter=mixedtext-cpp
+"ControlSocket.cpp" filter=mixedtext-cpp
 "FileZilla server.rc" filter=mixedtext-rc
 

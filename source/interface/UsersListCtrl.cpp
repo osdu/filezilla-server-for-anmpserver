@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -140,7 +140,7 @@ BEGIN_MESSAGE_MAP(CUsersListCtrl, CListCtrl)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// Behandlungsroutinen f�r Nachrichten CUsersListCtrl
+// Behandlungsroutinen für Nachrichten CUsersListCtrl
 
 int CUsersListCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
@@ -153,11 +153,11 @@ int CUsersListCtrl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	SetExtendedStyle(LVS_EX_LABELTIP | LVS_EX_SUBITEMIMAGES | LVS_EX_FULLROWSELECT);
 
 	InsertColumn(COLUMN_ID, _T("ID"), LVCFMT_RIGHT, 75);
-	InsertColumn(COLUMN_USER, _T("Account"), LVCFMT_LEFT, 150);
-	InsertColumn(COLUMN_IP, _T("IP"), LVCFMT_RIGHT, 100);
-	InsertColumn(COLUMN_TRANSFERINIT, _T("Transfer"), LVCFMT_LEFT, 250);
-	InsertColumn(COLUMN_TRANSFERPROGRESS, _T("Progress"), LVCFMT_RIGHT, 150);
-	InsertColumn(COLUMN_TRANSFERSPEED, _T("Speed"), LVCFMT_LEFT, 80);
+	InsertColumn(COLUMN_USER, _T("账户"), LVCFMT_LEFT, 150);
+	InsertColumn(COLUMN_IP, _T("IP 地址"), LVCFMT_RIGHT, 100);
+	InsertColumn(COLUMN_TRANSFERINIT, _T("传输"), LVCFMT_LEFT, 250);
+	InsertColumn(COLUMN_TRANSFERPROGRESS, _T("进度"), LVCFMT_RIGHT, 150);
+	InsertColumn(COLUMN_TRANSFERSPEED, _T("速度"), LVCFMT_LEFT, 80);
 
 	m_SortImg.Create( 8, 8, ILC_MASK, 3, 3 );
 	HICON Icon;
@@ -233,7 +233,7 @@ bool CUsersListCtrl::ProcessConnOp(unsigned char *pData, DWORD dwDataLength)
 		pConnectionData->listIndex = m_connectionDataArray.size();
 		m_connectionDataArray.push_back(pConnectionData);
 
-		pConnectionData->columnText[COLUMN_USER] = _T("(not logged in)");
+		pConnectionData->columnText[COLUMN_USER] = _T("(未登录)");
 		SetItemCount(GetItemCount() + 1);
 		SetSortColumn(m_sortColumn, m_sortDir);
 
@@ -271,7 +271,7 @@ bool CUsersListCtrl::ProcessConnOp(unsigned char *pData, DWORD dwDataLength)
 		if (pConnectionData->columnText[COLUMN_USER] == _T(""))
 		{
 			pConnectionData->itemImages[COLUMN_ID] = 5;
-			pConnectionData->columnText[COLUMN_USER] = _T("(not logged in)");
+			pConnectionData->columnText[COLUMN_USER] = _T("(未登录)");
 		}
 		else
 		{
@@ -639,7 +639,7 @@ BOOL CUsersListCtrl::ParseUserControlCommand(unsigned char *pData, DWORD dwDataL
 				m_connectionDataArray.push_back(pConnectionData);
 
 				if (pConnectionData->columnText[COLUMN_USER] == _T("")) {
-					pConnectionData->columnText[COLUMN_USER] = _T("(not logged in)");
+					pConnectionData->columnText[COLUMN_USER] = _T("(未登录)");
 				}
 				else {
 					pConnectionData->itemImages[COLUMN_ID] = 4;

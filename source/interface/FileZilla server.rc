@@ -354,10 +354,8 @@ END
 
 STRINGTABLE
 BEGIN
-    ID_USERLISTTOOLBAR_DISPLAYLOGICAL 
-                            "Display logical filenames in the filename column of the users list."
-    ID_USERLISTTOOLBAR_DISPLAYPHYSICAL 
-                            "Display physical filenames in the filename column of the users list."
+    ID_USERLISTTOOLBAR_DISPLAYLOGICAL "在用户列表的文件名列中显示逻辑文件名。"
+    ID_USERLISTTOOLBAR_DISPLAYPHYSICAL "在用户列表的文件名列中显示物理文件名。"
 END
 
 #endif    // Neutral resources

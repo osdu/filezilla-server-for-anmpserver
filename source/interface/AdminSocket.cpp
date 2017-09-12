@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -45,13 +45,13 @@ void CAdminSocket::OnConnect(int nErrorCode)
 {
 	if (!nErrorCode) {
 		if (!m_nConnectionState) {
-			m_pMainFrame->ShowStatus(_T("Connected, waiting for authentication"), 0);
+			m_pMainFrame->ShowStatus(_T("已连接，等待认证"), 0);
 			m_nConnectionState = 1;
 		}
 		m_pMainFrame->OnAdminInterfaceConnected();
 	}
 	else {
-		m_pMainFrame->ShowStatus(_T("Error, could not connect to server"), 1);
+		m_pMainFrame->ShowStatus(_T("错误，无法连接到服务器"), 1);
 		Close();
 	}
 }
@@ -59,13 +59,13 @@ void CAdminSocket::OnConnect(int nErrorCode)
 void CAdminSocket::OnReceive(int nErrorCode)
 {
 	if (nErrorCode) {
-		m_pMainFrame->ShowStatus(_T("OnReceive failed, closing connection"), 1);
+		m_pMainFrame->ShowStatus(_T("接收失败，关闭连接"), 1);
 		Close();
 		return;
 	}
 
 	if (!m_nConnectionState) {
-		m_pMainFrame->ShowStatus(_T("Connected, waiting for authentication"), 0);
+		m_pMainFrame->ShowStatus(_T("已连接，等待认证"), 0);
 		m_nConnectionState = 1;
 	}
 
@@ -110,7 +110,7 @@ void CAdminSocket::OnSend(int nErrorCode)
 void CAdminSocket::Close()
 {
 	if (m_nConnectionState) {
-		m_pMainFrame->ShowStatus(_T("Connection to server closed."), 1);
+		m_pMainFrame->ShowStatus(_T("到服务器的连接已关闭。"), 1);
 	}
 	m_nConnectionState = 0;
 	if (!m_bClosed) {
@@ -131,7 +131,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			}
 			if (m_pRecvBuffer[0] != 'F' || m_pRecvBuffer[1] != 'Z' || m_pRecvBuffer[2] != 'S') {
 				CString str;
-				str.Format(_T("Protocol error: Unknown protocol identifier (0x%d 0x%d 0x%d). Most likely connected to the wrong port."), (int)m_pRecvBuffer[0], (int)m_pRecvBuffer[1], (int)m_pRecvBuffer[2]);
+				str.Format(_T("协议错误: Unknown protocol identifier (0x%d 0x%d 0x%d). Most likely connected to the wrong port."), (int)m_pRecvBuffer[0], (int)m_pRecvBuffer[1], (int)m_pRecvBuffer[2]);
 				m_pMainFrame->ShowStatus(str, 1);
 				Close();
 				return FALSE;
@@ -142,7 +142,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			len = m_pRecvBuffer[3] * 256 + m_pRecvBuffer[4];
 			if (len != 4) {
 				CString str;
-				str.Format(_T("Protocol error: Invalid server version length (%lu)."), len);
+				str.Format(_T("协议错误: Invalid server version length (%lu)."), len);
 				m_pMainFrame->ShowStatus(str, 1);
 				Close();
 				return FALSE;
@@ -154,7 +154,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			int version = (int)GET32(m_pRecvBuffer + 5);
 			if (version != SERVER_VERSION) {
 				CString str;
-				str.Format(_T("Protocol warning: Server version mismatch: Server version is %d.%d.%d.%d, interface version is %d.%d.%d.%d"),
+				str.Format(_T("协议警告: Server version mismatch: Server version is %d.%d.%d.%d, interface version is %d.%d.%d.%d"),
 						   (version >> 24) & 0xFF,
 						   (version >> 16) & 0xFF,
 						   (version >>  8) & 0xFF,
@@ -172,7 +172,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			len = m_pRecvBuffer[9] * 256 + m_pRecvBuffer[10];
 			if (len != 4) {
 				CString str;
-				str.Format(_T("Protocol error: Invalid protocol version length (%lu)."), len);
+				str.Format(_T("协议错误: Invalid protocol version length (%lu)."), len);
 				m_pMainFrame->ShowStatus(str, 1);
 				Close();
 				return FALSE;
@@ -183,7 +183,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			version = (int)GET32(m_pRecvBuffer + 11);
 			if (version != PROTOCOL_VERSION) {
 				CString str;
-				str.Format(_T("Protocol error: Protocol version mismatch: Server protocol version is %d.%d.%d.%d, interface protocol version is %d.%d.%d.%d"),
+				str.Format(_T("协议错误: Protocol version mismatch: Server protocol version is %d.%d.%d.%d, interface protocol version is %d.%d.%d.%d"),
 						   (version >> 24) & 0xFF,
 						   (version >> 16) & 0xFF,
 						   (version >>  8) & 0xFF,
@@ -208,7 +208,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 		}
 		if ((m_pRecvBuffer[0]&0x03) > 2) {
 			CString str;
-			str.Format(_T("Protocol error: Unknown command type (%d), closing connection."), (int)(m_pRecvBuffer[0]&0x03));
+			str.Format(_T("协议错误: Unknown command type (%d), closing connection."), (int)(m_pRecvBuffer[0]&0x03));
 			m_pMainFrame->ShowStatus(str, 1);
 			Close();
 			return FALSE;
@@ -243,7 +243,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 				}
 				auto utf8 = ConvToNetwork(m_Password);
 				if (utf8.empty() && !m_Password.IsEmpty()) {
-					m_pMainFrame->ShowStatus(_T("Can't convert password to UTF-8"), 1);
+					m_pMainFrame->ShowStatus(_T("无法将密码转换为 UTF-8"), 1);
 					Close();
 					return FALSE;
 				}
@@ -268,7 +268,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			}
 			else {
 				CString str;
-				str.Format(_T("Protocol error: Unknown command ID (%d), closing connection."), (int)(m_pRecvBuffer[0]&0x7C)>>2);
+				str.Format(_T("协议错误: Unknown command ID (%d), closing connection."), (int)(m_pRecvBuffer[0]&0x7C)>>2);
 				m_pMainFrame->ShowStatus(str, 1);
 				Close();
 				return FALSE;
@@ -285,7 +285,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 		int nID = (*m_pRecvBuffer & 0x7C) >> 2;
 		if (nType > 2 || nType < 1) {
 			CString str;
-			str.Format(_T("Protocol error: Unknown command type (%d), closing connection."), nType);
+			str.Format(_T("协议错误: Unknown command type (%d), closing connection."), nType);
 			m_pMainFrame->ShowStatus(str, 1);
 			Close();
 			return FALSE;
@@ -294,7 +294,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 			len = (unsigned int)GET32(m_pRecvBuffer + 1);
 			if (len > 0xFFFFFF) {
 				CString str;
-				str.Format(_T("Protocol error: Invalid data length (%lu) for command (%d:%d)"), len, nType, nID);
+				str.Format(_T("协议错误: Invalid data length (%lu) for command (%d:%d)"), len, nType, nID);
 				m_pMainFrame->ShowStatus(str, 1);
 				Close();
 				return FALSE;
@@ -311,7 +311,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 				}
 				else {
 					CString str;
-					str.Format(_T("Protocol warning: Command type %d not implemented."), nType);
+					str.Format(_T("协议警告: Command type %d not implemented."), nType);
 					m_pMainFrame->ShowStatus(str, 1);
 				}
 

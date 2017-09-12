@@ -204,14 +204,17 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_wndStatusBar.SetPaneInfo(m_wndStatusBar.CommandToIndex(ID_INDICATOR_SENDLED),ID_INDICATOR_SENDLED,SBPS_NOBORDERS,6);
 
 	ShowStatus(GetProductVersionString(), 0);
-	ShowStatus(_T("Copyright 2001-2016 by Tim Kosse (tim.kosse@filezilla-project.org)"), 0);
-	ShowStatus(_T("https://filezilla-project.org/"), 0);
+	ShowStatus(_T("Copyright 2001-2017 by Tim Kosse (tim.kosse@filezilla-project.org)"), 0);
+	// ShowStatus(_T("https://filezilla-project.org"), 0);
+
+	ShowStatus(_T("Compiled by 858908467@qq.com for AnmpServer (http://www.anmpserver.com)"), 0);
+	ShowStatus(_T(" "), 0);
 
 	m_nTimerID = SetTimer(7777, 10000, 0);
 	m_nRateTimerID = SetTimer(7778, 1000, 0);
 
-	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_SENDCOUNT), _T("0 bytes sent"));
-	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_RECVCOUNT), _T("0 bytes received"));
+	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_SENDCOUNT), _T("已发送 0 B"));
+	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_RECVCOUNT), _T("已接收 0 B"));
 	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_RECVRATE), _T("0 B/s"));
 	SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_SENDRATE), _T("0 B/s"));
 
@@ -394,21 +397,21 @@ void CMainFrame::OnEditSettings()
 	}
 	m_nEdit |= 0x04;
 	SendCommand(5, 0, 0);
-	ShowStatus(_T("Retrieving settings, please wait..."), 0);
+	ShowStatus(_T("检索设置，请稍候..."), 0);
 }
 
 void CMainFrame::OnActive()
 {
 	if (m_nServerState & STATE_ONLINE && !(m_nServerState & STATE_MASK_GOOFFLINE)) {
 		if (!GetUsersPane()->m_pListCtrl->GetItemCount()) {
-			if (AfxMessageBox(_T("Do you really want to take the server offline?"), MB_YESNO | MB_ICONQUESTION) != IDYES)
+			if (AfxMessageBox(_T("你真的想让服务器离线吗？"), MB_YESNO | MB_ICONQUESTION) != IDYES)
 				return;
 			int nServerState = m_nServerState | STATE_GOOFFLINE_NOW;
 			unsigned char buffer[2];
 			buffer[0] = nServerState / 256;
 			buffer[1] = nServerState % 256;
 			SendCommand(2, buffer, 2);
-			ShowStatus(_T("Server is going offline..."), 0);
+			ShowStatus(_T("服务器正在离线..."), 0);
 			return;
 		}
 		else {
@@ -421,7 +424,7 @@ void CMainFrame::OnActive()
 				buffer[0] = nServerState / 256;
 				buffer[1] = nServerState % 256;
 				SendCommand(2, buffer, 2);
-				ShowStatus(_T("Server is going offline when all transfers have finished..."), 0);
+				ShowStatus(_T("所有传输完成后，服务器将脱机离线..."), 0);
 				return;
 			}
 			if (dlg.m_nRadio == 1) {
@@ -430,7 +433,7 @@ void CMainFrame::OnActive()
 				buffer[0] = nServerState / 256;
 				buffer[1] = nServerState % 256;
 				SendCommand(2, buffer, 2);
-				ShowStatus(_T("Server is going offline when all users have logged out..."), 0);
+				ShowStatus(_T("所有用户注销后，服务器都将离线..."), 0);
 				return;
 			}
 			else {
@@ -439,7 +442,7 @@ void CMainFrame::OnActive()
 				buffer[0] = nServerState / 256;
 				buffer[1] = nServerState % 256;
 				SendCommand(2, buffer, 2);
-				ShowStatus(_T("Server is going offline now..."), 0);
+				ShowStatus(_T("服务器现在离线..."), 0);
 				return;
 			}
 		}
@@ -549,7 +552,7 @@ void CMainFrame::OnLock()
 		buffer[0] = nServerState / 256;
 		buffer[1] = nServerState % 256;
 		SendCommand(2, buffer, 2);
-		ShowStatus("Server locked", 0);
+		ShowStatus("服务器已锁定", 0);
 	}
 }
 
@@ -697,7 +700,7 @@ void CMainFrame::OnMenuEditUsers()
 	}
 	m_nEdit |= 1;
 	SendCommand(6, 0, 0);
-	ShowStatus(_T("Retrieving account settings, please wait..."), 0);
+	ShowStatus(_T("检索帐户设置，请稍候..."), 0);
 }
 
 void CMainFrame::OnMenuEditGroups()
@@ -709,7 +712,7 @@ void CMainFrame::OnMenuEditGroups()
 	}
 	m_nEdit |= 2;
 	SendCommand(6, 0, 0);
-	ShowStatus(_T("Retrieving account settings, please wait..."), 0);
+	ShowStatus(_T("检索帐户设置，请稍候..."), 0);
 }
 
 void CMainFrame::ShowStatus(const CString& status, int nType)
@@ -730,7 +733,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 	{
 	case 0:
 		{
-			ShowStatus(_T("Logged on"), 0);
+			ShowStatus(_T("已登录"), 0);
 			SendCommand(2);
 			unsigned char buffer = USERCONTROL_GETLIST;
 			SendCommand(3, &buffer, 1);
@@ -753,25 +756,25 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 		{
 			if (nDataLength<2)
 			{
-				ShowStatus(_T("Protocol error: Unexpected data length"), 1);
+				ShowStatus(_T("协议错误: Unexpected data length"), 1);
 				return;
 			}
 			else if (!GetUsersPane()->m_pListCtrl->ParseUserControlCommand(pData, nDataLength))
-				ShowStatus(_T("Protocol error: Invalid data"), 1);
+				ShowStatus(_T("协议错误: Invalid data"), 1);
 		}
 		break;
 	case 5:
 		if (nDataLength == 1)
 		{
 			if (*pData == 0)
-				ShowStatus(_T("Done sending settings."), 0);
+				ShowStatus(_T("发送设置，已完成。"), 0);
 			else if (*pData == 1)
-				ShowStatus(_T("Could not change settings"), 1);
+				ShowStatus(_T("无法更改设置"), 1);
 			break;
 		}
-		ShowStatus(_T("Done retrieving settings"), 0);
+		ShowStatus(_T("检索设置，已完成。"), 0);
 		if (nDataLength<2)
-			ShowStatus(_T("Protocol error: Unexpected data length"), 1);
+			ShowStatus(_T("协议错误: Unexpected data length"), 1);
 		else
 		{
 			if ((m_nEdit & 0x1C) == 0x04)
@@ -780,14 +783,14 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 				m_nEdit |= 0x08;
 				if (!m_pOptionsDlg->Init(pData, nDataLength))
 				{
-					ShowStatus(_T("Protocol error: Invalid data"), 1);
+					ShowStatus(_T("协议错误: Invalid data"), 1);
 					delete m_pOptionsDlg;
 					m_pOptionsDlg = 0;
 					m_nEdit = 0;
 				}
 				else if (!PostMessage(WM_APP))
 				{
-					ShowStatus(_T("Can't send window message"), 1);
+					ShowStatus(_T("无法发送窗口消息"), 1);
 					delete m_pOptionsDlg;
 					m_pOptionsDlg = 0;
 					m_nEdit = 0;
@@ -799,14 +802,14 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 		if (nDataLength == 1)
 		{
 			if (*pData == 0)
-				ShowStatus(_T("Done sending account settings."), 0);
+				ShowStatus(_T("发送帐户设置，已完成。"), 0);
 			else if (*pData == 1)
-				ShowStatus(_T("Could not change account settings"), 1);
+				ShowStatus(_T("无法更改帐户设置"), 1);
 			break;
 		}
-		ShowStatus(_T("Done retrieving account settings"), 0);
+		ShowStatus(_T("检索帐户设置，已完成。"), 0);
 		if (nDataLength<2)
-			ShowStatus(_T("Protocol error: Unexpected data length"), 1);
+			ShowStatus(_T("协议错误: Unexpected data length"), 1);
 		else
 		{
 			if ((m_nEdit & 0x19) == 0x01)
@@ -815,7 +818,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 				m_nEdit |= 0x08;
 				if (!m_pUsersDlg->Init(pData, nDataLength))
 				{
-					ShowStatus(_T("Protocol error: Invalid data"), 1);
+					ShowStatus(_T("协议错误: Invalid data"), 1);
 					delete m_pUsersDlg;
 					m_pUsersDlg = 0;
 					m_nEdit = 0;
@@ -823,7 +826,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 				}
 				else if (!PostMessage(WM_APP))
 				{
-					ShowStatus(_T("Can't send window message"), 1);
+					ShowStatus(_T("无法发送窗口消息"), 1);
 					delete m_pUsersDlg;
 					m_pUsersDlg = 0;
 					m_nEdit = 0;
@@ -835,7 +838,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 				m_nEdit |= 0x08;
 				if (!m_pGroupsDlg->Init(pData, nDataLength))
 				{
-					ShowStatus(_T("Protocol error: Invalid data"), 1);
+					ShowStatus(_T("协议错误: Invalid data"), 1);
 					delete m_pGroupsDlg;
 					m_pGroupsDlg = 0;
 					m_nEdit = 0;
@@ -843,7 +846,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 				}
 				else if (!PostMessage(WM_APP))
 				{
-					ShowStatus(_T("Can't send window message"), 1);
+					ShowStatus(_T("无法发送窗口消息"), 1);
 					delete m_pGroupsDlg;
 					m_pGroupsDlg = 0;
 					m_nEdit = 0;
@@ -856,7 +859,7 @@ void CMainFrame::ParseReply(int nReplyID, unsigned char *pData, int nDataLength)
 	default:
 		{
 			CString str;
-			str.Format(_T("Protocol error: Unexpected reply id (%d)."), nReplyID);
+			str.Format(_T("协议错误: Unexpected reply id (%d)."), nReplyID);
 			ShowStatus(str, 1);
 			break;
 		}
@@ -884,18 +887,18 @@ void CMainFrame::ParseStatus(int nStatusID, unsigned char *pData, int nDataLengt
 		{
 			if (nDataLength<2)
 			{
-				ShowStatus(_T("Protocol error: Unexpected data length"), 1);
+				ShowStatus(_T("协议错误: Unexpected data length"), 1);
 				return;
 			}
 			else if (!GetUsersPane()->m_pListCtrl->ParseUserControlCommand(pData, nDataLength))
-				ShowStatus(_T("Protocol error: Invalid data"), 1);
+				ShowStatus(_T("协议错误: Invalid data"), 1);
 		}
 		break;
 	case 4:
 		{
 			if (nDataLength < 10)
 			{
-				ShowStatus(_T("Protocol error: Unexpected data length"), 1);
+				ShowStatus(_T("协议错误: Unexpected data length"), 1);
 				return;
 			}
 
@@ -976,7 +979,7 @@ void CMainFrame::ParseStatus(int nStatusID, unsigned char *pData, int nDataLengt
 		break;
 	case 7:
 		if (nDataLength != 5)
-			ShowStatus(_T("Protocol error: Invalid data"), 1);
+			ShowStatus(_T("协议错误: Invalid data"), 1);
 		else
 		{
 			int nType = *pData;
@@ -987,7 +990,7 @@ void CMainFrame::ParseStatus(int nStatusID, unsigned char *pData, int nDataLengt
 				m_nRecvCount += size;
 				m_RecvLed.Ping(100);
 				CString str;
-				str.Format(_T("%s bytes received"), makeUserFriendlyString(m_nRecvCount).GetString());
+				str.Format(_T("已接收 %s B"), makeUserFriendlyString(m_nRecvCount).GetString());
 				SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_RECVCOUNT), str);
 			}
 			else
@@ -995,7 +998,7 @@ void CMainFrame::ParseStatus(int nStatusID, unsigned char *pData, int nDataLengt
 				m_nSendCount += size;
 				m_SendLed.Ping(100);
 				CString str;
-				str.Format(_T("%s bytes sent"), makeUserFriendlyString(m_nSendCount).GetString());
+				str.Format(_T("已发送 %s B"), makeUserFriendlyString(m_nSendCount).GetString());
 				SetStatusbarText(m_wndStatusBar.CommandToIndex(ID_INDICATOR_SENDCOUNT), str);
 			}
 
@@ -1004,7 +1007,7 @@ void CMainFrame::ParseStatus(int nStatusID, unsigned char *pData, int nDataLengt
 	default:
 		{
 			CString str;
-			str.Format(_T("Protocol error: Unexpected status id (%d)."), nStatusID);
+			str.Format(_T("协议错误: Unexpected status id (%d)."), nStatusID);
 			ShowStatus(str, 1);
 		}
 		break;
@@ -1019,7 +1022,7 @@ BOOL CMainFrame::SendCommand(int nType)
 	if (!m_pAdminSocket->SendCommand(nType))
 	{
 		CloseAdminSocket();
-		ShowStatus("Error: Connection to server lost...", 1);
+		ShowStatus("错误: Connection to server lost...", 1);
 		return FALSE;
 	}
 	return TRUE;
@@ -1032,7 +1035,7 @@ BOOL CMainFrame::SendCommand(int nType, void *pData, int nDataLength)
 	if (!m_pAdminSocket->SendCommand(nType, pData, nDataLength))
 	{
 		CloseAdminSocket();
-		ShowStatus("Error: Connection to server lost...", 1);
+		ShowStatus("错误: Connection to server lost...", 1);
 		return FALSE;
 	}
 	return TRUE;
@@ -1048,7 +1051,7 @@ void CMainFrame::CloseAdminSocket(bool shouldReconnect)
 
 		CString title;
 		title.LoadString(IDR_MAINFRAME);
-		SetWindowText(title + _T(" (disconnected)"));
+		SetWindowText(title + _T(" (已断开)"));
 	}
 	m_nEdit = 0;
 
@@ -1062,7 +1065,7 @@ void CMainFrame::CloseAdminSocket(bool shouldReconnect)
 		if (!m_nReconnectTimerID) {
 			++m_nReconnectCount;
 			if (m_nReconnectCount < m_pOptions->GetOptionVal(IOPTION_RECONNECTCOUNT)) {
-				ShowStatus("Trying to reconnect in 5 seconds", 0);
+				ShowStatus("尝试在5秒内重新连接", 0);
 				m_nReconnectTimerID = SetTimer(7779, 5000, 0);
 			}
 			else
@@ -1079,7 +1082,7 @@ void CMainFrame::OnFileConnect()
 		m_nReconnectTimerID = 0;
 	}
 	if (m_pAdminSocket)
-		if (AfxMessageBox(_T("Do you really want to close the current connection?"), MB_ICONQUESTION|MB_YESNO) != IDYES)
+		if (AfxMessageBox(_T("你真的想关闭当前的连接吗？"), MB_ICONQUESTION|MB_YESNO) != IDYES)
 			return;
 	CConnectDialog dlg(m_pOptions);
 	if (dlg.DoModal() == IDOK) {
@@ -1147,11 +1150,11 @@ LRESULT CMainFrame::DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				DWORD dwBufferLength;
 				if (m_pOptionsDlg->GetAsCommand(&pBuffer, &dwBufferLength)) {
 					SendCommand(5, pBuffer, dwBufferLength);
-					ShowStatus(_T("Sending settings, please wait..."), 0);
+					ShowStatus(_T("发送设置，请稍候..."), 0);
 					delete [] pBuffer;
 				}
 				else {
-					ShowStatus(_T("Could not serialize settings, too much data."), 1);
+					ShowStatus(_T("数据太多，无法序列化设置。"), 1);
 				}
 			}
 			delete m_pOptionsDlg;
@@ -1165,7 +1168,7 @@ LRESULT CMainFrame::DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				DWORD dwBufferLength;
 				if (m_pUsersDlg->GetAsCommand(&pBuffer, &dwBufferLength)) {
 					SendCommand(6, pBuffer, dwBufferLength);
-					ShowStatus(_T("Sending account settings, please wait..."), 0);
+					ShowStatus(_T("发送帐户设置，请稍候..."), 0);
 					delete [] pBuffer;
 				}
 			}
@@ -1180,7 +1183,7 @@ LRESULT CMainFrame::DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				DWORD dwBufferLength;
 				if (m_pGroupsDlg->GetAsCommand(&pBuffer, &dwBufferLength)) {
 					SendCommand(6, pBuffer, dwBufferLength);
-					ShowStatus(_T("Sending account settings, please wait..."), 0);
+					ShowStatus(_T("发送帐户设置，请稍候..."), 0);
 					delete [] pBuffer;
 				}
 			}
@@ -1310,7 +1313,7 @@ void CMainFrame::DoConnect()
 		family = AF_INET;
 
 	CString msg;
-	msg.Format(_T("Connecting to server %s:%u..."), address, port);
+	msg.Format(_T("连接到服务器 %s:%u..."), address, port);
 	ShowStatus(msg, 0);
 
 	m_pAdminSocket = new CAdminSocket(this);
@@ -1318,7 +1321,7 @@ void CMainFrame::DoConnect()
 
 	m_pAdminSocket->m_Password = m_pOptions->GetOption(IOPTION_LASTSERVERPASS);
 	if (!m_pAdminSocket->Connect(address, (UINT)port) && WSAGetLastError() != WSAEWOULDBLOCK) {
-		ShowStatus(_T("Error, could not connect to server"), 1);
+		ShowStatus(_T("错误，无法连接到服务器"), 1);
 		CloseAdminSocket();
 	}
 }

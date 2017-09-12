@@ -1,4 +1,4 @@
-// FileZilla Server - a Windows ftp server
+﻿// FileZilla Server - a Windows ftp server
 
 // Copyright (C) 2002-2016 - Tim Kosse <tim.kosse@filezilla-project.org>
 
@@ -225,7 +225,7 @@ void CControlSocket::SendStatus(LPCTSTR status, int type)
 	GetLocalTime(&msg->time);
 	if (!m_status.loggedon) {
 		msg->user = new TCHAR[16];
-		_tcscpy(msg->user, _T("(not logged in)"));
+		_tcscpy(msg->user, _T("(未登录)"));
 	}
 	else {
 		msg->user = new TCHAR[_tcslen(m_status.username) + 1];
@@ -252,7 +252,7 @@ BOOL CControlSocket::Send(LPCTSTR str, bool sendStatus, bool newline)
 		auto utf8 = ConvToNetwork(str);
 		if (utf8.empty()) {
 			Close();
-			SendStatus(_T("Failed to convert reply to UTF-8"), 1);
+			SendStatus(_T("无法将回复转换为 UTF-8"), 1);
 			m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 
 			return false;
@@ -309,7 +309,7 @@ BOOL CControlSocket::Send(LPCTSTR str, bool sendStatus, bool newline)
 	else if (!res || res == SOCKET_ERROR) {
 		delete [] buffer;
 		Close();
-		SendStatus(_T("could not send reply, disconnected."), 0);
+		SendStatus(_T("无法发送回复，断开连接。"), 0);
 		m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 		return FALSE;
 	}
@@ -342,7 +342,7 @@ BOOL CControlSocket::Send(LPCTSTR str, bool sendStatus, bool newline)
 void CControlSocket::OnClose(int nErrorCode)
 {
 	Close();
-	SendStatus(_T("disconnected."), 0);
+	SendStatus(_T("已断开"), 0);
 	m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 	CAsyncSocketEx::OnClose(nErrorCode);
 }
