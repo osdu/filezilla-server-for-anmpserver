@@ -70,7 +70,7 @@ FONT 8, "MS Shell Dlg"
 BEGIN
     GROUPBOX        "下载速度限制",IDC_STATIC,0,0,214,114
     CONTROL         "默认(&T)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,11,39,10
-    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,7,21,41,10
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,7,21,60,10
     CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD3,"Button",BS_AUTORADIOBUTTON,7,31,91,10
     CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD4,"Button",BS_AUTORADIOBUTTON,7,41,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,100,30,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -84,7 +84,7 @@ BEGIN
     PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,96,35,11,WS_DISABLED
     GROUPBOX        "上传速度限制",IDC_STATIC,0,121,214,114
     CONTROL         "默认(&F)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,132,39,10
-    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,142,41,10
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,142,60,10
     CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,152,91,10
     CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD4,"Button",BS_AUTORADIOBUTTON,7,162,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,100,150,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -128,7 +128,7 @@ STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     GROUPBOX        "下载速度限制",IDC_STATIC,0,0,331,107
-    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,11,41,10
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,11,60,10
     CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,84,11,91,10
     CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD3,"Button",BS_AUTORADIOBUTTON,6,23,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,176,10,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -139,7 +139,7 @@ BEGIN
     PUSHBUTTON      "上移(&U)",IDC_SPEEDLIMIT_DOWNLOAD_UP,225,70,40,13,WS_DISABLED
     PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,225,87,40,13,WS_DISABLED
     GROUPBOX        "上传速度限制",IDC_STATIC,0,109,331,107
-    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,121,41,10
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,6,121,60,10
     CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,84,121,91,10
     CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,6,132,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,176,119,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -151,12 +151,12 @@ BEGIN
     PUSHBUTTON      "下移(&W)",IDC_SPEEDLIMIT_UPLOAD_DOWN,225,196,40,13,WS_DISABLED
 END
 
-IDD_GROUPS_SPEEDLIMIT DIALOGEX 0, 0, 306, 235
+IDD_GROUPS_SPEEDLIMIT DIALOGEX 0, 0, 356, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "下载速度限制",IDC_STATIC,0,0,214,114
-    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,12,41,10
+    GROUPBOX        "下载速度限制",IDC_STATIC,0,0,264,114
+    CONTROL         "无限制(&I)",IDC_SPEEDLIMIT_DOWNLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,12,60,10
     CONTROL         "固定速度限制为(&C):",IDC_SPEEDLIMIT_DOWNLOAD2,"Button",BS_AUTORADIOBUTTON,7,25,91,10
     CONTROL         "使用速度限制规则(&S):",IDC_SPEEDLIMIT_DOWNLOAD3,"Button",BS_AUTORADIOBUTTON,7,38,89,10
     EDITTEXT        IDC_SPEEDLIMIT_DOWNLOAD_VALUE,100,24,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -168,8 +168,8 @@ BEGIN
     PUSHBUTTON      "删除(&R)",IDC_SPEEDLIMIT_DOWNLOAD_REMOVE,171,66,35,11,WS_DISABLED
     PUSHBUTTON      "上移(&U)",IDC_SPEEDLIMIT_DOWNLOAD_UP,171,80,35,11,WS_DISABLED
     PUSHBUTTON      "下移(&O)",IDC_SPEEDLIMIT_DOWNLOAD_DOWN,171,94,35,11,WS_DISABLED
-    GROUPBOX        "上传速度限制",IDC_STATIC,0,118,214,114
-    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,130,41,10
+    GROUPBOX        "上传速度限制",IDC_STATIC,0,118,264,114
+    CONTROL         "无限制(&L)",IDC_SPEEDLIMIT_UPLOAD1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,7,130,60,10
     CONTROL         "固定速度限制为(&N):",IDC_SPEEDLIMIT_UPLOAD2,"Button",BS_AUTORADIOBUTTON,7,143,91,10
     CONTROL         "使用速度限制规则(&E):",IDC_SPEEDLIMIT_UPLOAD3,"Button",BS_AUTORADIOBUTTON,7,156,89,10
     EDITTEXT        IDC_SPEEDLIMIT_UPLOAD_VALUE,100,141,55,14,ES_AUTOHSCROLL | ES_NUMBER | WS_DISABLED
@@ -221,16 +221,16 @@ BEGIN
     LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由) (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,147,204,20
 END
 
-IDD_GROUPS_IPFILTER DIALOGEX 0, 0, 306, 235
+IDD_GROUPS_IPFILTER DIALOGEX 0, 0, 356, 235
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,200,19
-    EDITTEXT        IDC_GROUPS_IPFILTER_DISALLOWED,0,19,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
-    LTEXT           "允许下列 IP 地址连接到服务器(白名单):",IDC_STATIC,0,76,202,16
-    EDITTEXT        IDC_GROUPS_IPFILTER_ALLOWED,0,96,168,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "不允许下列 IP 地址连接到服务器(黑名单):",IDC_STATIC,0,0,250,19
+    EDITTEXT        IDC_GROUPS_IPFILTER_DISALLOWED,0,19,218,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    LTEXT           "允许下列 IP 地址连接到服务器(白名单):",IDC_STATIC,0,76,252,16
+    EDITTEXT        IDC_GROUPS_IPFILTER_ALLOWED,0,96,218,48,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
     LTEXT           "默认情况下，每一个人都可以连接到该服务器。你可以禁止单个 IP 地址或整个 IP 段。如果你禁止所有地址，你也可以使用 “白名单” 来允许个别的地址或地址段访问。",IDC_STATIC,0,178,272,24
-    LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由) (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,150,196,24
+    LTEXT           "你可以输入单个 IP 地址或者带有 CIDR (无类别域间路由) (http://en.wikipedia.org/wiki/CIDR_notation)",IDC_STATIC,0,150,246,24
 END
 
 IDD_DELETEGROUPINUSE DIALOGEX 0, 0, 164, 97
@@ -383,33 +383,33 @@ BEGIN
     DEFPUSHBUTTON   "确定",IDOK,85,64,50,14,WS_GROUP
 END
 
-IDD_GROUPS DIALOGEX 0, 0, 430, 250
+IDD_GROUPS DIALOGEX 0, 0, 480, 250
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "用户组"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "确定",IDOK,7,210,73,14
     PUSHBUTTON      "取消",IDCANCEL,7,229,73,14
-    GROUPBOX        "用户组(&G)",IDC_STATIC,307,7,116,166,0,WS_EX_TRANSPARENT
-    LISTBOX         IDC_GROUPS_GROUPLIST,314,19,102,108,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
-    PUSHBUTTON      "添加(&A)",IDC_GROUPS_ADDGROUP,314,133,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "删除(&R)",IDC_GROUPS_REMOVEGROUP,367,133,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "重命名(&N)",IDC_GROUPS_RENAMEGROUP,314,151,49,14,0,WS_EX_TRANSPARENT
-    PUSHBUTTON      "复制&Y()",IDC_GROUPS_COPYGROUP,367,151,49,14,0,WS_EX_TRANSPARENT
+    GROUPBOX        "用户组(&G)",IDC_STATIC,357,7,116,166,0,WS_EX_TRANSPARENT
+    LISTBOX         IDC_GROUPS_GROUPLIST,364,19,102,108,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP,WS_EX_TRANSPARENT
+    PUSHBUTTON      "添加(&A)",IDC_GROUPS_ADDGROUP,364,133,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "删除(&R)",IDC_GROUPS_REMOVEGROUP,417,133,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "重命名(&N)",IDC_GROUPS_RENAMEGROUP,364,151,49,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "复制(&Y)",IDC_GROUPS_COPYGROUP,417,151,49,14,0,WS_EX_TRANSPARENT
     LTEXT           "页面:",IDC_STATIC,7,7,20,8
     CONTROL         "Tree1",IDC_PAGE_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,17,73,148
-    CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,336,236,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_DLG_FRAME,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,87,7,386,236,WS_EX_TRANSPARENT
 END
 
 IDD_ENTERSOMETHING_LARGE DIALOGEX 0, 0, 229, 127
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Title"
+CAPTION "标题"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT1,7,87,215,14,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "确定(&O)",IDOK,58,106,50,14
     PUSHBUTTON      "取消(&C)",IDCANCEL,121,106,50,14
-    LTEXT           "Static",IDC_TEXT,7,7,215,69
+    LTEXT           "静态文本",IDC_TEXT,7,7,215,69
 END
 
 IDD_OPTIONS_GENERAL DIALOGEX 0, 0, 332, 246
@@ -445,7 +445,7 @@ CAPTION "确认请求"
 FONT 8, "MS Shell Dlg"
 BEGIN
     LTEXT           "当前有用户已连接到服务器。你真的要将服务器切换到离线状态并断开所有用户吗？",IDC_STATIC,7,7,133,26
-    CONTROL         "No&w",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,33,31,10
+    CONTROL         "现在(&W)",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,33,51,10
     CONTROL         "等待所有用户注销",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,11,44,126,10
     CONTROL         "等待所有传输完成",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,11,55,121,10
     DEFPUSHBUTTON   "是(&Y)",IDOK,20,68,50,14
@@ -456,21 +456,20 @@ IDD_OPTIONS_SECURITY DIALOGEX 0, 0, 331, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "Data connection stealing and bounce attack mitigation",IDC_STATIC,0,0,331,246
-    LTEXT           "Plain FTP does not perform any authentication of the data connection used for transfers. This potentially allows an attacker to steal a data connection. Similarly, unfiltered PORT commands can be used for bounce attacks.",IDC_STATIC,6,13,318,25
-    LTEXT           "To mitigate this risk, FileZilla Server can check that the peer IP address of the data connection matches the peer IP of the control connection, disallowing the transfer on address mismatch.",IDC_STATIC,5,43,318,17
-    LTEXT           "This mitigation has the drawback of not being compatible with server-to-server transfers. It can also cause problems in multi-homed network configurations.",IDC_STATIC,5,67,318,16
-    LTEXT           "&Protection level:",IDC_STATIC,5,91,318,8
-    CONTROL         "Require matching peer IP address of control and data connection (default)",IDC_DATAIPMATCH_EXACT,
-                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,6,102,310,10
-    CONTROL         "Relaxed IP match",IDC_DATAIPMATCH_RELAXED,"Button",BS_AUTORADIOBUTTON,6,125,72,10
-    CONTROL         "Disable IP check",IDC_DATAIPMATCH_NONE,"Button",BS_AUTORADIOBUTTON,6,158,67,10
-    LTEXT           "This is the most secure and recommended option: IPs must match exactly.",IDC_STATIC,16,112,298,13
-    LTEXT           "IPs must only partially match: Same /24 for IPv4, same /64 for IPv6. May be needed in multi-homed network configurations.",IDC_STATIC,16,135,312,18
-    LTEXT           "This option does not offer any connection stealing or bounce attack protection. Required if you want to use server-to-server transfers.",IDC_STATIC,16,168,308,17
-    LTEXT           "Further mitigations:",IDC_STATIC,6,196,318,8
-    LTEXT           "FileZilla Server randomizes the used passive mode ports to make it harder to guess the port of the next transfer.",IDC_STATIC,6,206,318,18
-    LTEXT           "Using FTP over TLS together with forcing PROT P and requiring data connection session resumption protects against data connection stealing as well.",IDC_STATIC,6,224,318,18
+    GROUPBOX        "数据连接窃取和反弹攻击缓解",IDC_STATIC,0,0,331,246
+    LTEXT           "普通FTP不对用于传输的数据连接进行任何身份验证。 这可能允许攻击者窃取数据连接。 类似地，未过滤的PORT命令可用于反弹攻击。",IDC_STATIC,6,13,318,25
+    LTEXT           "为了减轻这种风险，FileZilla Server 可以检查数据连接的对等IP地址是否与控制连接的对等IP匹配，不允许传输地址不匹配。",IDC_STATIC,5,43,318,17
+    LTEXT           "这种缓解具有与服务器到服务器传输不兼容的缺点。 这也可能导致多宿主网络配置中的问题。",IDC_STATIC,5,67,318,16
+    LTEXT           "防护等级(&P):",IDC_STATIC,5,91,318,8
+    CONTROL         "需要匹配对等IP地址的控制和数据连接 (默认)",IDC_DATAIPMATCH_EXACT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,102,310,10
+    CONTROL         "轻松的 IP 匹配",IDC_DATAIPMATCH_RELAXED,"Button",BS_AUTORADIOBUTTON,6,125,72,10
+    CONTROL         "禁用 IP 检查",IDC_DATAIPMATCH_NONE,"Button",BS_AUTORADIOBUTTON,6,158,67,10
+    LTEXT           "这是最安全和推荐的选项: IP必须完全匹配。",IDC_STATIC,16,112,298,13
+    LTEXT           "IP只能部分匹配: Same /24 for IPv4，same /64 for IPv6。可能需要多宿主网络配置",IDC_STATIC,16,135,312,18
+    LTEXT           "此选项不提供任何连接窃取或反弹攻击保护。 如果要使用服务器到服务器传输，则必需。",IDC_STATIC,16,168,308,17
+    LTEXT           "进一步缓解:",IDC_STATIC,6,196,318,8
+    LTEXT           "FileZilla Server 随机使用被动模式端口，以便更难猜测下一次传输的端口。",IDC_STATIC,6,206,318,18
+    LTEXT           "通过使用 FTP over TLS 连同强制 PROT P 并要求数据连接会话恢复也可以防止数据连接窃取。",IDC_STATIC,6,224,318,18
 END
 
 IDD_OPTIONS_MISC DIALOGEX 0, 0, 332, 246
@@ -517,10 +516,10 @@ BEGIN
     LTEXT           "请输入您要管理的 FileZilla Server 安装的地址和端口。",IDC_STATIC,7,7,231,18
     LTEXT           "主机(&H):",IDC_STATIC,7,42,18,8
     EDITTEXT        IDC_CONNECTDIALOG_ADDRESS,43,40,84,14,ES_AUTOHSCROLL
-    LTEXT           "主机名或IP地址。 要引用该计算机，请输入 localhost。",IDC_STATIC,133,35,103,25
-    LTEXT           "端口(&P):",IDC_STATIC,7,66,16,8
-    EDITTEXT        IDC_CONNECTDIALOG_PORT,44,64,40,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "输入管理端口 (默认 14147)，不是FTP端口。",IDC_STATIC,93,63,145,17
+    LTEXT           "主机名或IP地址。",IDC_STATIC,133,43,94,11
+    LTEXT           "端口(&P):",IDC_STATIC,7,66,23,8
+    EDITTEXT        IDC_CONNECTDIALOG_PORT,44,64,71,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "输入管理端口 (默认 14147)。",IDC_STATIC,127,67,111,10
     LTEXT           "密码(&W):",IDC_STATIC,7,90,46,8
     EDITTEXT        IDC_CONNECTDIALOG_PASSWORD,44,88,71,14,ES_PASSWORD | ES_AUTOHSCROLL
     CONTROL         "总是连接到该服务器(&A)",IDC_CONNECTDIALOG_ALWAYS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,109,108,10
@@ -534,8 +533,8 @@ FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     LTEXT           "重要信息:",IDC_STATIC,0,0,32,8
     LTEXT           "出于对安全的考虑，管理界面设置仅允许使用本地连接进行更改。 如果你当前未使用本地连接 (使用 127.0.0.1 作为服务器 IP)，那么对该页的所有更改都将会被服务器忽略。",IDC_STATIC,0,12,332,25
-    LTEXT           "管理界面监听端口(&P):",IDC_STATIC,0,50,151,8
-    EDITTEXT        IDC_OPTIONS_ADMININTERFACE_PORT,162,47,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "管理界面监听端口(&P):",IDC_STATIC,0,50,100,8
+    EDITTEXT        IDC_OPTIONS_ADMININTERFACE_PORT,110,47,40,14,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "将管理界面与下列 IP 地址绑定(&B):",IDC_STATIC,0,70,144,16
     EDITTEXT        IDC_OPTIONS_ADMININTERFACE_IPBINDINGS,0,88,144,28,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
     LTEXT           "使用 * 绑定到所有地址。\n127.0.0.1 为默认绑定地址，它将永远存在并且无法被删除。",IDC_STATIC,0,120,144,32
@@ -562,7 +561,7 @@ BEGIN
     LTEXT           "KB",IDC_STATIC,116,16,10,8
     LTEXT           "日志文件保存方式:",IDC_STATIC,0,32,98,8
     CONTROL         "将所有的日志保存到 'FileZilla Server.log' 中(&A)",IDC_OPTIONS_LOGGING_LOGTYPE,
-                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,0,43,167,10
+                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,0,43,187,10
     CONTROL         "每天使用一个不同的文件来保存日志(&U) (例如: fzs-2003-02-10.log)",IDC_OPTIONS_LOGGING_LOGTYPE2,
                     "Button",BS_AUTORADIOBUTTON,0,55,256,10
     CONTROL         "删除(&D)",IDC_OPTIONS_LOGGING_DELETE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,68,87,10
@@ -584,16 +583,16 @@ BEGIN
     PUSHBUTTON      "取消(&C)",IDCANCEL,99,81,50,14
 END
 
-IDD_GROUPS_GENERAL DIALOGEX 0, 0, 306, 250
+IDD_GROUPS_GENERAL DIALOGEX 0, 0, 356, 250
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
-    GROUPBOX        "用户组设置",IDC_STATIC,0,0,214,30
+    GROUPBOX        "用户组设置",IDC_STATIC,0,0,264,30
     CONTROL         "允许组内用户进行访问",IDC_GROUPS_GENERAL_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,12,133,10
-    GROUPBOX        "描述",IDC_STATIC,0,150,214,75
-    EDITTEXT        IDC_GROUPS_GENERAL_COMMENTS,6,164,200,44,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    GROUPBOX        "描述",IDC_STATIC,0,150,264,75
+    EDITTEXT        IDC_GROUPS_GENERAL_COMMENTS,6,164,250,44,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
     LTEXT           "你可以为上面的组输入一些备注信息",IDC_STATIC,6,212,172,8
-    GROUPBOX        "连接设置",IDC_STATIC,0,41,214,96
+    GROUPBOX        "连接设置",IDC_STATIC,0,41,264,96
     LTEXT           "最大连接数(&X):",IDC_STATIC,6,69,90,8
     EDITTEXT        IDC_GROUPS_MAXCONNCOUNT,106,65,36,15,ES_AUTOHSCROLL | ES_NUMBER
     LTEXT           "每 IP 连接数限制(&L):",IDC_STATIC,6,88,75,8
@@ -606,11 +605,11 @@ IDD_OPTIONS_PASV DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "使用自定义端口范围(&P):",IDD_OPTIONS_PASV_USEPORTRANGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,1,94,10
-    EDITTEXT        IDC_OPTIONS_PASV_PORTMIN,104,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
-    CTEXT           "-",IDC_STATIC,136,1,8,8
-    EDITTEXT        IDC_OPTIONS_PASV_PORTMAX,146,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
-    LTEXT           "(1-65535)",IDC_STATIC,182,1,31,8
+    CONTROL         "使用自定义端口范围(&P):",IDD_OPTIONS_PASV_USEPORTRANGE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,1,104,10
+    EDITTEXT        IDC_OPTIONS_PASV_PORTMIN,114,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
+    CTEXT           "-",IDC_STATIC,146,1,8,8
+    EDITTEXT        IDC_OPTIONS_PASV_PORTMAX,156,0,30,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "(1-65535)",IDC_STATIC,192,1,41,8
     GROUPBOX        "IPv4 特性",IDC_STATIC,0,17,331,229
     LTEXT           "被动模式传输时使用的外部服务器 IP 地址(&I)",IDC_STATIC,6,30,125,19
     CONTROL         "默认(&D)",IDC_OPTIONS_PASV_IPTYPE1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,6,48,39,10
@@ -655,7 +654,7 @@ BEGIN
     LTEXT           "使用 * 号绑定到所有地址.",IDC_STATIC,0,84,94,8
 END
 
-IDD_GROUPS_SHAREDFOLDERS DIALOGEX 0, 0, 306, 241
+IDD_GROUPS_SHAREDFOLDERS DIALOGEX 0, 0, 356, 241
 STYLE DS_SETFONT | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
@@ -695,20 +694,20 @@ END
 
 IDD_ENTERSOMETHING DIALOGEX 0, 0, 207, 74
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Title"
+CAPTION "标题"
 FONT 8, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     EDITTEXT        IDC_EDIT1,7,35,193,14,ES_AUTOHSCROLL
     DEFPUSHBUTTON   "确定(&O)",IDOK,47,53,50,14
     PUSHBUTTON      "取消(&C)",IDCANCEL,110,53,50,14
-    LTEXT           "Static",IDC_TEXT,7,7,193,25
+    LTEXT           "静态文本",IDC_TEXT,7,7,193,25
 END
 
 IDD_OPTIONS_SSL DIALOGEX 0, 0, 332, 246
 STYLE DS_SETFONT | DS_FIXEDSYS | DS_CONTROL | WS_CHILD
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "&启用 FTP over TLS 支持(&E) (FTPS)",IDC_ENABLESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,145,10
+    CONTROL         "启用 FTP over TLS (FTPS) 支持(&E)",IDC_ENABLESSL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,145,10
     CONTROL         "禁止普通未加密的FTP(&D)",IDC_FORCEEXPLICIT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,12,115,10
     GROUPBOX        "X.509 证书",IDC_STATIC,0,28,331,90
     LTEXT           "私钥文件(&P):",IDC_STATIC,6,43,51,8
@@ -724,14 +723,14 @@ BEGIN
     GROUPBOX        "显式和隐式 FTP over TLS",IDC_STATIC,0,121,331,67
     CONTROL         "允许显式 FTP over TLS(&A) (默认: yes)",IDC_ALLOWEXPLICIT,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,133,147,10
-    LTEXT           "注意: Explicit FTP over TLS shares the normal FTP port configured on the General settings page.",IDC_STATIC,18,144,309,8
-    LTEXT           "&Listen for implicit FTP over TLS connections on the following ports (默认: 990):",IDC_STATIC,7,158,258,8
+    LTEXT           "注意: ""显式 FTP over TLS"" 和 ""常规设置页面"" 上的 ""普通 FTP"" 共享端口设置。",IDC_STATIC,18,144,309,8
+    LTEXT           "在以下端口上监听 ""隐式 FTP over TLS"" 连接(&L) (默认: 990):",IDC_STATIC,7,158,258,8
     EDITTEXT        IDC_SSLONLY,7,168,197,14,ES_AUTOHSCROLL
     GROUPBOX        "文件传输安全",IDC_STATIC,0,191,331,55
-    LTEXT           "These settings need to be enabled for file transfers to be secure.",IDC_STATIC,6,202,210,8
-    CONTROL         "F&orce PROT P to encrypt file transfers when using FTP over TLS",IDC_FORCEPROTP,
+    LTEXT           "这些设置需要启用文件传输才能安全。",IDC_STATIC,6,202,210,8
+    CONTROL         "当使用 FTP over TLS 时，强制 PROT P 进行文件加密传输(&O)",IDC_FORCEPROTP,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,215,272,10
-    CONTROL         "Re&quire TLS session resumption on data connection when using PROT P",IDC_REQUIRE_SESSION_RESUMPTION,
+    CONTROL         "当使用 PROT P 时，要求在数据连接上进行 TLS 会话恢复(&Q)",IDC_REQUIRE_SESSION_RESUMPTION,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,228,244,10
 END
 
@@ -763,7 +762,7 @@ BEGIN
     LTEXT           "将密钥与证书保存到(&S):",IDC_STATIC,7,190,72,17
     EDITTEXT        IDC_FILE,83,190,112,14,ES_AUTOHSCROLL
     PUSHBUTTON      "浏览(&B)...",IDC_BROWSE,200,190,50,14
-    LTEXT           "证书生成所耗费的时间将依赖于密钥的大小.",IDC_STATIC,7,214,236,8
+    LTEXT           "证书生成所耗费的时间将依赖于密钥的大小。",IDC_STATIC,7,214,236,8
     DEFPUSHBUTTON   "生成证书(&G)",IDOK,51,228,73,14
     PUSHBUTTON      "取消",IDCANCEL,132,228,73,14
 END
@@ -806,7 +805,7 @@ BEGIN
     IDD_GROUPS, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 423
+        RIGHTMARGIN, 473
         TOPMARGIN, 7
         BOTTOMMARGIN, 243
     END
