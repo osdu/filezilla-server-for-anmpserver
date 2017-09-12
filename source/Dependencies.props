@@ -5,13 +5,15 @@
 
     <!-- EDIT THE LINES BELOW -->
 
-    <libfilezilla_include>D:\GitHub\FileZilla\FileZillaServer\libs\libfilezilla\libfilezilla-0.9.0\lib</libfilezilla_include>
-    <libfilezilla_lib>D:\GitHub\FileZilla\FileZillaServer\libs\libfilezilla\libfilezilla-0.9.0\lib</libfilezilla_lib>
+    <libfilezilla_include>D:\GitHub\FileZilla\FileZillaServer\libs\libfilezilla\libfilezilla-0.10.1\lib</libfilezilla_include>
+    <libfilezilla_lib>D:\GitHub\FileZilla\FileZillaServer\libs\libfilezilla\libfilezilla-0.10.1\lib</libfilezilla_lib>
+
     <zlib_include>D:\GitHub\FileZilla\FileZillaServer\libs\zlib\zlib-1.2.11</zlib_include>
     <zlib_lib_debug>D:\GitHub\FileZilla\FileZillaServer\libs\zlib\zlib-1.2.11\contrib\vstudio\vc14\x86\ZlibStatDebug</zlib_lib_debug>
     <zlib_lib_release>D:\GitHub\FileZilla\FileZillaServer\libs\zlib\zlib-1.2.11\contrib\vstudio\vc14\x86\ZlibStatReleaseWithoutAsm</zlib_lib_release>
-    <openssl_include>D:\GitHub\FileZilla\FileZillaServer\libs\openssl\openssl-1.0.2k-vs2015\include</openssl_include>
-    <openssl_lib>D:\GitHub\FileZilla\FileZillaServer\libs\openssl\openssl-1.0.2k-vs2015\lib</openssl_lib>
+
+    <openssl_include>D:\GitHub\FileZilla\FileZillaServer\libs\openssl\openssl-1.0.2l-vs2008\include</openssl_include>
+    <openssl_lib>D:\GitHub\FileZilla\FileZillaServer\libs\openssl\openssl-1.0.2l-vs2008\lib</openssl_lib>
 
     <!-- EDIT THE LINES ABOVE -->
 
