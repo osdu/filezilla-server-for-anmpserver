@@ -38,8 +38,8 @@ HANDLE killServiceEvent = 0;
 BOOL nServiceRunning = 0;
 DWORD nServiceCurrentStatus = 0;
 
-static TCHAR ServiceDisplayName[257] = _T("FileZilla Server FTP server");
-static TCHAR ServiceName[257] = _T("FileZilla Server");
+static TCHAR ServiceDisplayName[257] = _T("AnmpServer_FileZillaServer");
+static TCHAR ServiceName[257] = _T("AnmpServer_FileZillaServer");
 
 int SetAdminPort(int port);
 int ReloadConfig();
@@ -202,7 +202,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 							int nError = GetLastError();
 							TCHAR buffer[1000];
 							_stprintf(buffer, _T("StartServiceCtrlDispatcher failed with error %d"), nError);
-							MessageBox(0, buffer, _T("Error while starting service"), MB_OK);
+							MessageBox(0, buffer, _T("启动服务时出错"), MB_OK);
 							//error occured
 						}
 						return 0;
@@ -221,20 +221,20 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 
 	if (!bInstalled) {
-		if (nAction == 1 || nAction == 5 || (nAction == 0 && MessageBox(0, _T("安装服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES)) {
+		if (nAction == 1 || nAction == 5 || (nAction == 0 && MessageBox(0, _T("安装服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES)) {
 			Scm scm(SC_MANAGER_CREATE_SERVICE);
 			if (!scm) {
 				return 1;
 			}
 			int nStartMode = (nAction==5)?SERVICE_AUTO_START:SERVICE_DEMAND_START;
 			if (!nAction)
-				if (MessageBox(0, _T("自动启动服务?"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES)
+				if (MessageBox(0, _T("自动启动服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES)
 					nStartMode = SERVICE_AUTO_START;
 			TCHAR buffer[MAX_PATH + 3];
 			buffer[0] = '"';
 			DWORD written = GetModuleFileName(0, buffer + 1, MAX_PATH);
 			if (!written) {
-				MessageBox(0, _T("Failed to get own executable path"), _T("无法安装服务"), MB_ICONSTOP);
+				MessageBox(0, _T("无法获得自身的可执行路径"), _T("无法安装服务"), MB_ICONSTOP);
 				return 1;
 			}
 			buffer[written + 1] = '"';
@@ -249,6 +249,13 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 			if (!hService) {
 				return 1;
 			}
+
+			// Change the service description.
+			LPTSTR szDesc = TEXT("FileZillaServer/0.9.60 (Win32)");
+			SERVICE_DESCRIPTION sd;
+			sd.lpDescription = szDesc;
+			ChangeServiceConfig2(hService, SERVICE_CONFIG_DESCRIPTION, &sd);
+
 			CloseServiceHandle(hService);
 			dwCurrentState = SERVICE_STOPPED;
 		}
@@ -256,7 +263,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 			return 0;
 	}
 
-	if (dwCurrentState == SERVICE_STOPPED && (nAction==3 || (nAction == 0 && MessageBox(0, _T("启动服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState == SERVICE_STOPPED && (nAction==3 || (nAction == 0 && MessageBox(0, _T("启动服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_ALL_ACCESS);
 		if (!scm) {
@@ -271,7 +278,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
-	if (dwCurrentState == SERVICE_STOPPED && (nAction==2 || (nAction == 0 && MessageBox(0, _T("卸载服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState == SERVICE_STOPPED && (nAction==2 || (nAction == 0 && MessageBox(0, _T("卸载服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_CREATE_SERVICE);
 		if (!scm) {
@@ -286,7 +293,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
-	if (dwCurrentState != SERVICE_STOPPED && (nAction==4 || (nAction == 0 && MessageBox(0, _T("停止服务？"), _T("询问"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (dwCurrentState != SERVICE_STOPPED && (nAction==4 || (nAction == 0 && MessageBox(0, _T("停止服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SC_HANDLE hService;
 		Scm scm(SC_MANAGER_ALL_ACCESS);
 		if (!scm) {
@@ -567,7 +574,7 @@ int CompatMain(LPCSTR lpCmdLine)
 	else if (nAction==2 && !hWnd)
 		return 0;
 
-	if (!hWnd && (nAction == 1 || (nAction == 0 && MessageBox(0, _T("Start Server?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	if (!hWnd && (nAction == 1 || (nAction == 0 && MessageBox(0, _T("启动服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		// initialize Winsock library
 		BOOL res=TRUE;
 		WSADATA wsaData;
@@ -598,7 +605,7 @@ int CompatMain(LPCSTR lpCmdLine)
 		WSACleanup();
 		return 0;
 	}
-	else if (hWnd && (nAction == 2 || (nAction == 0 && MessageBox(0, _T("Stop Server?"), _T("Question"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
+	else if (hWnd && (nAction == 2 || (nAction == 0 && MessageBox(0, _T("停止服务？"), _T("FileZilla Server"), MB_YESNO|MB_ICONQUESTION)==IDYES))) {
 		SendMessage(hWnd, WM_CLOSE, 0, 0);
 		if (GetLastError())
 			return 1;
