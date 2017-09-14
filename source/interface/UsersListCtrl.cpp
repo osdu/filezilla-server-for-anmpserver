@@ -444,7 +444,7 @@ bool CUsersListCtrl::ProcessConnOp(unsigned char *pData, DWORD dwDataLength)
 
 void CUsersListCtrl::OnContextmenuKick()
 {
-	if (AfxMessageBox(_T("Do you really want to kick the selected user?"), MB_ICONQUESTION|MB_YESNO)!=IDYES)
+	if (AfxMessageBox(_T("你真的要踢掉选定的用户吗？"), MB_ICONQUESTION|MB_YESNO)!=IDYES)
 		return;
 	POSITION pos = GetFirstSelectedItemPosition();
 	while (pos)
@@ -462,7 +462,7 @@ void CUsersListCtrl::OnContextmenuKick()
 
 void CUsersListCtrl::OnContextmenuBan()
 {
-	if (AfxMessageBox(_T("Do you really want to kick the selected user and ban his IP address?"), MB_ICONQUESTION|MB_YESNO)!=IDYES)
+	if (AfxMessageBox(_T("你真的要踢掉选定的用户并禁止他的IP地址吗？"), MB_ICONQUESTION|MB_YESNO)!=IDYES)
 		return;
 	POSITION pos = GetFirstSelectedItemPosition();
 	while (pos)
@@ -505,7 +505,7 @@ BOOL CUsersListCtrl::ParseUserControlCommand(unsigned char *pData, DWORD dwDataL
 	int type = *pData;
 	if (type < 0 || type > 4)
 	{
-		m_pOwner->ShowStatus(_T("Protocol error: Invalid data"), 1);
+		m_pOwner->ShowStatus(_T("协议错误: Invalid data"), 1);
 		return FALSE;
 	}
 	switch (type)
@@ -660,7 +660,7 @@ BOOL CUsersListCtrl::ParseUserControlCommand(unsigned char *pData, DWORD dwDataL
 	case USERCONTROL_BAN:
 		break;
 	default:
-		m_pOwner->ShowStatus(_T("Protocol error: Specified usercontrol option not implemented"), 1);
+		m_pOwner->ShowStatus(_T("协议错误: Specified usercontrol option not implemented"), 1);
 		return FALSE;
 		break;
 	}

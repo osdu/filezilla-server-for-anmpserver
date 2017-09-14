@@ -82,7 +82,7 @@ void CControlSocket::OnReceive(int nErrorCode)
 		if (nErrorCode) {
 			//Control connection has been closed
 			Close();
-			SendStatus(_T("disconnected."), 0);
+			SendStatus(_T("已断开"), 0);
 			m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 		}
 		return;
@@ -148,7 +148,7 @@ void CControlSocket::OnReceive(int nErrorCode)
 		if (!numread || GetLastError() != WSAEWOULDBLOCK) {
 			//Control connection has been closed
 			Close();
-			SendStatus(_T("disconnected."), 0);
+			SendStatus(_T("已断开"), 0);
 			m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 
 			delete [] buffer;
@@ -1482,14 +1482,14 @@ void CControlSocket::ParseCommand()
 					CString error;
 					int res = m_pSslLayer->SetCertKeyFile(m_owner.m_pOptions->GetOption(OPTION_TLSCERTFILE), m_owner.m_pOptions->GetOption(OPTION_TLSKEYFILE), m_owner.m_pOptions->GetOption(OPTION_TLSKEYPASS), &error);
 					if (res == SSL_FAILURE_LOADDLLS)
-						SendStatus(_T("Failed to load TLS libraries"), 1);
+						SendStatus(_T("无法加载 TLS 库"), 1);
 					else if (res == SSL_FAILURE_INITSSL)
-						SendStatus(_T("Failed to initialize TLS libraries"), 1);
+						SendStatus(_T("无法初始化 TLS 库"), 1);
 					else if (res == SSL_FAILURE_VERIFYCERT) {
 						if (error != _T(""))
 							SendStatus(error, 1);
 						else
-							SendStatus(_T("Failed to set certificate and private key"), 1);
+							SendStatus(_T("无法设置证书和私钥"), 1);
 					}
 					if (res) {
 						RemoveAllLayers();
@@ -1503,9 +1503,9 @@ void CControlSocket::ParseCommand()
 				if (res) {
 					int code = m_pSslLayer->InitSSLConnection(false);
 					if (code == SSL_FAILURE_LOADDLLS)
-						SendStatus(_T("Failed to load TLS libraries"), 1);
+						SendStatus(_T("无法加载 TLS 库"), 1);
 					else if (code == SSL_FAILURE_INITSSL)
-						SendStatus(_T("Failed to initialize TKS library"), 1);
+						SendStatus(_T("无法初始化 TLS 库"), 1);
 
 					res = (code == 0);
 				}
@@ -2069,7 +2069,7 @@ void CControlSocket::ForceClose(int nReason)
 	{
 		// 221 Goodbye
 	}
-	SendStatus(_T("disconnected."), 0);
+	SendStatus(_T("已断开"), 0);
 	m_shutdown = true;
 	int res = ShutDown();
 	if (m_pSslLayer) {
@@ -2227,7 +2227,7 @@ void CControlSocket::OnSend(int nErrorCode)
 			return;
 		if (!numsent || numsent == SOCKET_ERROR) {
 			Close();
-			SendStatus(_T("could not send reply, disconnected."), 0);
+			SendStatus(_T("无法发送回复，断开连接。"), 0);
 			m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 
 			delete [] m_pSendBuffer;
@@ -2280,7 +2280,7 @@ BOOL CControlSocket::DoUserLogin(LPCTSTR password)
 	if (!m_status.user.BypassUserLimit()) {
 		int nMaxUsers = (int)m_owner.m_pOptions->GetOptionVal(OPTION_MAXUSERS);
 		if (m_owner.GetGlobalNumConnections() > nMaxUsers&&nMaxUsers) {
-			SendStatus(_T("Refusing connection. Reason: Max. connection count reached."), 1);
+			SendStatus(_T("拒绝连接。原因: 已到最大连接数。"), 1);
 			Send(_T("421 Too many users are connected, please try again later."));
 			ForceClose(-1);
 			return FALSE;
@@ -2307,7 +2307,7 @@ BOOL CControlSocket::DoUserLogin(LPCTSTR password)
 		}
 	}
 	else {
-		SendStatus(_T("Could not get peer name"), 1);
+		SendStatus(_T("无法获得对等名称"), 1);
 		Send(_T("421 Refusing connection. Could not get peer name."));
 		ForceClose(-1);
 		return FALSE;
@@ -2317,9 +2317,9 @@ BOOL CControlSocket::DoUserLogin(LPCTSTR password)
 	if (m_status.user.GetIpLimit() && count >= m_status.user.GetIpLimit()) {
 		CStdString str;
 		if (count==1)
-			str.Format(_T("Refusing connection. Reason: No more connections allowed from this IP. (%s already connected once)"), peerIP.c_str());
+			str.Format(_T("拒绝连接。原因: 此 IP 不再允许连接。 (%s 已连接过 1 次)"), peerIP.c_str());
 		else
-			str.Format(_T("Refusing connection. Reason: No more connections allowed from this IP. (%s already connected %d times)"), peerIP.c_str(), count);
+			str.Format(_T("拒绝连接。原因: 此 IP 不再允许连接。 (%s 已连接过 %d 次)"), peerIP.c_str(), count);
 		SendStatus(str, 1);
 		Send(_T("421 Refusing connection. No more connections allowed from your IP."));
 		ForceClose(-1);
@@ -2331,7 +2331,7 @@ BOOL CControlSocket::DoUserLogin(LPCTSTR password)
 	count = GetUserCount(m_status.user.user);
 	if (m_status.user.GetUserLimit() && count >= m_status.user.GetUserLimit()) {
 		CStdString str;
-		str.Format(_T("Refusing connection. Reason: Maximum connection count (%d) reached for this user"), m_status.user.GetUserLimit());
+		str.Format(_T("拒绝连接。原因: 该用户达到的最大连接数 (%d)"), m_status.user.GetUserLimit());
 		SendStatus(str, 1);
 		str.Format(_T("421 Refusing connection. Maximum connection count reached for the user '%s'"), m_status.user.user);
 		Send(str);
@@ -2589,14 +2589,14 @@ bool CControlSocket::InitImplicitSsl()
 	CString error;
 	res = m_pSslLayer->SetCertKeyFile(m_owner.m_pOptions->GetOption(OPTION_TLSCERTFILE), m_owner.m_pOptions->GetOption(OPTION_TLSKEYFILE), m_owner.m_pOptions->GetOption(OPTION_TLSKEYPASS), &error);
 	if (res == SSL_FAILURE_LOADDLLS)
-		SendStatus(_T("Failed to load TLS libraries"), 1);
+		SendStatus(_T("无法加载 TLS 库"), 1);
 	else if (res == SSL_FAILURE_INITSSL)
-		SendStatus(_T("Failed to initialize TLS libraries"), 1);
+		SendStatus(_T("无法初始化 TLS 库"), 1);
 	else if (res == SSL_FAILURE_VERIFYCERT) {
 		if (error != _T(""))
 			SendStatus(error, 1);
 		else
-			SendStatus(_T("Failed to set certificate and private key"), 1);
+			SendStatus(_T("无法设置证书和私钥"), 1);
 	}
 	if (res) {
 		RemoveAllLayers();
@@ -2608,9 +2608,9 @@ bool CControlSocket::InitImplicitSsl()
 
 	int code = m_pSslLayer->InitSSLConnection(false);
 	if (code == SSL_FAILURE_LOADDLLS)
-		SendStatus(_T("Failed to load TLS libraries"), 1);
+		SendStatus(_T("无法加载 TLS 库"), 1);
 	else if (code == SSL_FAILURE_INITSSL)
-		SendStatus(_T("Failed to initialize TLS library"), 1);
+		SendStatus(_T("无法初始化 TLS 库"), 1);
 
 	if (!code)
 		return true;
@@ -2622,7 +2622,7 @@ bool CControlSocket::InitImplicitSsl()
 
 	//Close socket
 	Close();
-	SendStatus(_T("disconnected."), 0);
+	SendStatus(_T("已断开"), 0);
 	m_owner.PostThreadMessage(WM_FILEZILLA_THREADMSG, FTM_DELSOCKET, m_userid);
 
 	return false;

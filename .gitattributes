@@ -1,16 +1,16 @@
 # git gui - can it be made to display UTF16?
 #> https://stackoverflow.com/questions/3915072/git-gui-can-it-be-made-to-display-utf16
 
-"MainFrm.cpp" filter=mixedtext-cpp
-"Service.cpp" filter=mixedtext-cpp
-"Options.cpp" filter=mixedtext-cpp
-"UsersDlg.cpp" filter=mixedtext-cpp
-"UsersDlgSharedFolders.cpp" filter=mixedtext-cpp
-"GroupsDlg.cpp" filter=mixedtext-cpp
-"GroupsDlgSharedFolders.cpp" filter=mixedtext-cpp
-"Server.cpp" filter=mixedtext-cpp
-"AdminSocket.cpp" filter=mixedtext-cpp
-"UsersListCtrl.cpp" filter=mixedtext-cpp
-"ControlSocket.cpp" filter=mixedtext-cpp
-"FileZilla server.rc" filter=mixedtext-rc
 
+"/source/ControlSocket.cpp" filter=mixedtext-cpp
+"/source/Server.cpp" filter=mixedtext-cpp
+"/source/Service.cpp" filter=mixedtext-cpp
+
+"/source/interface/AdminSocket.cpp" filter=mixedtext-cpp
+"/source/interface/FileZilla server.rc" filter=mixedtext-rc
+"/source/interface/GroupsDlg.cpp" filter=mixedtext-cpp
+"/source/interface/GroupsDlgSharedFolders.cpp" filter=mixedtext-cpp
+"/source/interface/MainFrm.cpp" filter=mixedtext-cpp
+"/source/interface/UsersDlg.cpp" filter=mixedtext-cpp
+"/source/interface/UsersDlgSharedFolders.cpp" filter=mixedtext-cpp
+"/source/interface/UsersListCtrl.cpp" filter=mixedtext-cpp

@@ -148,14 +148,14 @@ CString CUsersDlgSharedFolders::Validate()
 
 	if (pUser->group == _T("") && pUser->permissions.empty()) {
 		m_cDirs.SetFocus();
-		return _T("You need to share at least one directory and set it as home directory.");
+		return _T("您至少需要共享一个目录并将其设置为主目录。");
 	}
 
 	CString home;
 	for( auto & perm : pUser->permissions ) {
 		if (perm.dir == _T("") || perm.dir == _T("/") || perm.dir == _T("\\")) {
 			m_cDirs.SetFocus();
-			return _T("At least one shared directory is not a valid local path.");
+			return _T("至少有一个共享目录不是有效的本地路径。");
 		}
 
 		if (perm.bIsHome) {
@@ -166,7 +166,7 @@ CString CUsersDlgSharedFolders::Validate()
 
 	if (home.IsEmpty() && pUser->group == _T("")) {
 		m_cDirs.SetFocus();
-		return _T("You need to set a home directory");
+		return _T("您需要设置一个主目录");
 	}
 
 	std::list<CString> prefixes;
@@ -191,7 +191,7 @@ CString CUsersDlgSharedFolders::Validate()
 
 		if (out_of_home && pUser->group == _T("")) {
 			m_cDirs.SetFocus();
-			return _T("You have shared multiple unrelated directories. You need to assign aliases to link them together.\nDouble-click the alias column next to the unlinked directory.\n\nUnlinked directory: " + perm.dir);
+			return _T("您共享了多个不相关的目录。您需要分配别名将它们链接在一起。\nDouble-click the alias column next to the unlinked directory.\n\nUnlinked directory: " + perm.dir);
 		}
 	}
 
@@ -456,7 +456,7 @@ void CUsersDlgSharedFolders::OnEndlabeleditDirs(NMHDR* pNMHDR, LRESULT* pResult)
 	{
 		if (pDispInfo->item.pszText[0] == 0)
 		{
-			AfxMessageBox(_T("Please select a folder!"));
+			AfxMessageBox(_T("请选择一个文件夹！"));
 			*pResult = FALSE;
 		}
 		else
@@ -645,7 +645,7 @@ void CUsersDlgSharedFolders::OnDirmenuEditAliases()
 
 	if (pUser->permissions[index].bIsHome)
 	{
-		AfxMessageBox(_T("Can't set aliases for home dir, this would create a recursive directory structure."));
+		AfxMessageBox(_T("不能为 HOME 目录设置别名，这将创建一个递归目录结构。"));
 		return;
 	}
 
@@ -704,7 +704,7 @@ void CUsersDlgSharedFolders::OnDirmenuEditAliases()
 			m_cDirs.SetItemText(nItem, 1, aliases);
 		}
 		else {
-			AfxMessageBox(_T("At least one alias is not a full virtual path: ") + error);
+			AfxMessageBox(_T("至少有一个别名不是完整的虚拟路径: ") + error);
 		}
 	}
 }

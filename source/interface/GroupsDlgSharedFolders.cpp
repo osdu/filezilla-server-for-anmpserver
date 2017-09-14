@@ -150,7 +150,7 @@ CString CGroupsDlgSharedFolders::Validate()
 	for (auto & permission : pGroup->permissions) {
 		if (permission.dir == _T("") || permission.dir == _T("/") || permission.dir == _T("\\")) {
 			m_cDirs.SetFocus();
-			return _T("At least one shared directory is not a valid local path.");
+			return _T("至少有一个共享目录不是有效的本地路径。");
 		}
 
 		if (permission.bIsHome) {
@@ -419,7 +419,7 @@ void CGroupsDlgSharedFolders::OnEndlabeleditDirs(NMHDR* pNMHDR, LRESULT* pResult
 	{
 		if (pDispInfo->item.pszText[0] == 0)
 		{
-			AfxMessageBox(_T("Please select a folder!"));
+			AfxMessageBox(_T("请选择一个文件夹！"));
 			*pResult = FALSE;
 		}
 		else
@@ -613,7 +613,7 @@ void CGroupsDlgSharedFolders::OnDirmenuEditAliases()
 
 	if (pGroup->permissions[index].bIsHome)
 	{
-		AfxMessageBox(_T("Can't set aliases for home dir, this would create a recursive directory structure."));
+		AfxMessageBox(_T("不能为 HOME 目录设置别名，这将创建一个递归目录结构。"));
 		return;
 	}
 
@@ -672,7 +672,7 @@ void CGroupsDlgSharedFolders::OnDirmenuEditAliases()
 			m_cDirs.SetItemText(nItem, 1, aliases);
 		}
 		else {
-			AfxMessageBox(_T("At least one alias is not a full virtual path: ") + error);
+			AfxMessageBox(_T("至少有一个别名不是完整的虚拟路径: ") + error);
 		}
 	}
 }

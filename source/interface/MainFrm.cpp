@@ -424,7 +424,7 @@ void CMainFrame::OnActive()
 				buffer[0] = nServerState / 256;
 				buffer[1] = nServerState % 256;
 				SendCommand(2, buffer, 2);
-				ShowStatus(_T("所有传输完成后，服务器将脱机离线..."), 0);
+				ShowStatus(_T("所有传输完成后，服务器将离线..."), 0);
 				return;
 			}
 			if (dlg.m_nRadio == 1) {
@@ -545,7 +545,7 @@ void CMainFrame::OnLock()
 		SendCommand(2, buffer, 2);
 	}
 	else {
-		if (AfxMessageBox(_T("你真的想锁定服务器吗？锁定时不会接受新的连接。"), MB_YESNO|MB_ICONQUESTION) != IDYES)
+		if (AfxMessageBox(_T("你真的想锁定服务器吗？锁定后将不会再接受新的连接。"), MB_YESNO|MB_ICONQUESTION) != IDYES)
 			return;
 		int nServerState = m_nServerState | STATE_LOCKED;
 		unsigned char buffer[2];

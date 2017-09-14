@@ -217,7 +217,7 @@ BOOL CAdminSocket::ParseRecvBuffer()
 		if (len + 5 <= m_nRecvBufferPos) {
 			if ((m_pRecvBuffer[0] & 0x03) == 0 && (m_pRecvBuffer[0] & 0x7C) >> 2 == 0) {
 				if (len < 4) {
-					m_pMainFrame->ShowStatus(_T("Invalid auth data"), 1);
+					m_pMainFrame->ShowStatus(_T("认证数据无效"), 1);
 					Close();
 					return FALSE;
 				}
@@ -225,14 +225,14 @@ BOOL CAdminSocket::ParseRecvBuffer()
 
 				unsigned int noncelen1 = *p*256 + p[1];
 				if ((noncelen1+2) > (len-2)) {
-					m_pMainFrame->ShowStatus(_T("Invalid auth data"), 1);
+					m_pMainFrame->ShowStatus(_T("认证数据无效"), 1);
 					Close();
 					return FALSE;
 				}
 
 				unsigned int noncelen2 = p[2 + noncelen1] * 256 + p[2 + noncelen1 + 1];
 				if ((noncelen1+noncelen2+4) > len) {
-					m_pMainFrame->ShowStatus(_T("Invalid auth data"), 1);
+					m_pMainFrame->ShowStatus(_T("认证数据无效"), 1);
 					Close();
 					return FALSE;
 				}

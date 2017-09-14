@@ -689,12 +689,12 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 							}
 						}
 						CStdString str;
-						str.Format(_T("Number of threads increased to %d."), threadnum);
+						str.Format(_T("线程数增加到 %d"), threadnum);
 						ShowStatus(str, 0);
 					}
 					else if (threadnum < m_ThreadArray.size()) {
 						CStdString str;
-						str.Format(_T("Decreasing number of threads to %d."), threadnum);
+						str.Format(_T("线程数减少到 %d"), threadnum);
 						ShowStatus(str, 0);
 						unsigned int i = 0;
 						std::vector<CServerThread *> newList;
@@ -715,7 +715,7 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 					ipBindings != m_pOptions->GetOption(OPTION_IPBINDINGS))
 				{
 					if (!m_ListenSocketList.empty()) {
-						ShowStatus(_T("Closing all listening sockets"), 0);
+						ShowStatus(_T("关闭所有监听 sockets"), 0);
 						for (std::list<CListenSocket*>::iterator listIter = m_ListenSocketList.begin(); listIter != m_ListenSocketList.end(); ++listIter) {
 							(*listIter)->Close();
 							delete *listIter;
@@ -723,11 +723,11 @@ BOOL CServer::ProcessCommand(CAdminSocket *pAdminSocket, int nID, unsigned char 
 						m_ListenSocketList.clear();
 
 						if (!CreateListenSocket()) {
-							ShowStatus(_T("Failed to create a listen socket on any of the specified ports. Server is not online!"), 1);
+							ShowStatus(_T("无法在任何指定端口上创建监听 Socket。服务器不在线！"), 1);
 							m_nServerState &= ~STATE_ONLINE;
 						}
 						else {
-							ShowStatus(_T("Listen socket port changed"), 0);
+							ShowStatus(_T("监听 Socket 端口已更改"), 0);
 							if (!(m_nServerState & STATE_MASK_GOOFFLINE))
 								m_nServerState |= STATE_ONLINE;
 						}
@@ -1171,7 +1171,7 @@ void CServer::VerifyTlsSettings(CAdminSocket *pAdminSocket)
 				}
 			}
 			if (!allowExplicit || !hasExplicit) {
-				ShowStatus(_T("警告: 显式 FTP over TLS 未启用或者没有配置 FTP listen socket。"), 1, pAdminSocket);
+				ShowStatus(_T("警告: 显式 FTP over TLS 未启用或者没有配置 FTP 监听 Socket。"), 1, pAdminSocket);
 			}
 		}
 
